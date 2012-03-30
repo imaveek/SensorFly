@@ -1,0 +1,119 @@
+K 25
+svn:wc:ra_dav:version-url
+V 36
+/svn/!svn/ver/19/trunk/ZigduinoRadio
+END
+ZigduinoRadioInC.c
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/!svn/ver/18/trunk/ZigduinoRadio/ZigduinoRadioInC.c
+END
+ZigduinoRadioEvents.h
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/!svn/ver/17/trunk/ZigduinoRadio/ZigduinoRadioEvents.h
+END
+radio.h
+K 25
+svn:wc:ra_dav:version-url
+V 44
+/svn/!svn/ver/17/trunk/ZigduinoRadio/radio.h
+END
+trx_rfa.c
+K 25
+svn:wc:ra_dav:version-url
+V 45
+/svn/!svn/ver/6/trunk/ZigduinoRadio/trx_rfa.c
+END
+ZigduinoRadioInC.h
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/!svn/ver/18/trunk/ZigduinoRadio/ZigduinoRadioInC.h
+END
+ZigduinoRadio.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/!svn/ver/18/trunk/ZigduinoRadio/ZigduinoRadio.cpp
+END
+trx_datarate_str.c
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/!svn/ver/4/trunk/ZigduinoRadio/trx_datarate_str.c
+END
+board_cfg.h
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/!svn/ver/4/trunk/ZigduinoRadio/board_cfg.h
+END
+atmega_rfa1.h
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/!svn/ver/4/trunk/ZigduinoRadio/atmega_rfa1.h
+END
+ZigduinoRadio.h
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svn/!svn/ver/18/trunk/ZigduinoRadio/ZigduinoRadio.h
+END
+LICENSE.txt
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/!svn/ver/4/trunk/ZigduinoRadio/LICENSE.txt
+END
+trx_datarate.c
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/!svn/ver/4/trunk/ZigduinoRadio/trx_datarate.c
+END
+radio_rfa.c
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/!svn/ver/17/trunk/ZigduinoRadio/radio_rfa.c
+END
+RELEASENOTES.txt
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/svn/!svn/ver/19/trunk/ZigduinoRadio/RELEASENOTES.txt
+END
+transceiver.h
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/!svn/ver/4/trunk/ZigduinoRadio/transceiver.h
+END
+const.h
+K 25
+svn:wc:ra_dav:version-url
+V 44
+/svn/!svn/ver/17/trunk/ZigduinoRadio/const.h
+END
+board.h
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/svn/!svn/ver/4/trunk/ZigduinoRadio/board.h
+END
+ZigduinoRadioCfg.h
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/!svn/ver/12/trunk/ZigduinoRadio/ZigduinoRadioCfg.h
+END
+ZigduinoRadioEvents.c
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/!svn/ver/19/trunk/ZigduinoRadio/ZigduinoRadioEvents.c
+END
