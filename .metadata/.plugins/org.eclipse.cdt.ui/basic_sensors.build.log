@@ -1,0 +1,21 @@
+
+**** Build of configuration Release for project basic_sensors ****
+
+make all 
+Invoking: Print Size
+avr-size --format=avr --mcu=atmega128rfa1 basic_sensors.elf
+AVR Memory Usage
+----------------
+Device: atmega128rfa1
+
+Program:   10792 bytes (8.2% Full)
+(.text + .data + .bootloader)
+
+Data:       1070 bytes (6.5% Full)
+(.data + .bss + .noinit)
+
+
+Finished building: sizedummy
+ 
+
+**** Build Finished ****

@@ -1,0 +1,178 @@
+#define ARDUINO_MAIN
+
+#include "main.h"
+#include "Wire.h"
+#include "I2Cdev.h"
+#include "FlightControl.h"
+#include "ZigduinoRadio.h"
+#include "LowPassFilter.h"
+#include "MPU6050.h"
+#include "RemoteCmd.h"
+#include "SRF01.h"
+
+#define LED_PIN 23
+
+void errHandle(radio_error_t err);
+void onXmitDone(radio_tx_done_t x);
+void blinkLED();
+void executeRemoteCmd(RemoteCmd remoteCmd);
+
+void setup() {
+	// Initialize the digital pin as output.
+	// Pin 23 has an LED connected
+	pinMode(LED_PIN, OUTPUT);
+	digitalWrite(LED_PIN, LOW);
+
+	pinMode(DISTANCE_OE,OUTPUT);
+	digitalWrite(DISTANCE_OE,LOW);
+
+	// *************** Sensors *****************
+	// join I2C bus (I2Cdev library doesn't do this automatically)
+	Wire.begin();
+
+	// initialize serial communication
+	Serial1.begin(9600);
+
+	// *************** ZigduinoRadio ***************
+	ZigduinoRadio.begin(11);
+	ZigduinoRadio.attachError(errHandle);
+	ZigduinoRadio.attachTxDone(onXmitDone);
+
+	// *************** Flight Controller ***********
+	FlightControl1.initialize();
+}
+
+void loop() {
+
+	uint8_t sendBuffer[18];
+	uint8_t buflen=0;
+
+	uint8_t buf[sizeof(RemoteCmd)];
+	RemoteCmd remoteCmd;
+
+	uint16_t height = 0;
+	uint8_t hByte, lByte;
+
+	// Get Commands
+	if (ZigduinoRadio.available() >= (int8_t)sizeof(RemoteCmd))
+	{
+		Serial1.println();
+		Serial1.print("Rx: ");
+		for(uint8_t i=0;i<sizeof(RemoteCmd);i++)
+			buf[i] = ZigduinoRadio.read();
+		remoteCmd.decode(buf);
+		ZigduinoRadio.flush();
+		Serial1.print(remoteCmd.cmd);
+		Serial1.print("=");
+		Serial1.print(remoteCmd.value);
+		Serial1.println();
+
+		executeRemoteCmd(remoteCmd);
+	}
+
+	digitalWrite(DISTANCE_OE, HIGH);
+	Serial1.write((uint8_t)0x00);
+	delay(1);
+	Serial1.write((uint8_t)0x01);                               // Send the address of the SRF01
+	int availbleJunk = Serial1.available();               // As RX and TX are the same pin it will have recieved the data we just sent out, as we dont want this we read it back and ignore it as junk before waiting for useful data to arrive
+	for(int x = 0;  x < availbleJunk; x++) byte junk = Serial1.read();
+	if(Serial1.available() > 2) {
+		//	while (srf01->available() < 2);
+		hByte = Serial1.read();                                   // Get high byte
+		lByte = Serial1.read();                                   // Get low byte
+		range = ((hByte<<8)+lByte);                         // Put them together
+	}
+	delay(100);
+	digitalWrite(DISTANCE_OE, LOW);
+
+
+	// Send  Readings
+	memcpy(sendBuffer,&height,2);buflen += 2;
+	memcpy(sendBuffer,&FlightControl1.gz,2);buflen += 2;
+	memcpy(sendBuffer,&FlightControl1.mz,2);buflen += 2;
+	memcpy(sendBuffer+buflen,&FlightControl1.yawInput,4);buflen += 4;
+	memcpy(sendBuffer+buflen,&FlightControl1.error,4);buflen += 4;
+	memcpy(sendBuffer+buflen,&FlightControl1.topRotDuty,2);buflen += 2;
+	memcpy(sendBuffer+buflen,&FlightControl1.botRotDuty,2);buflen += 2;
+
+	ZigduinoRadio.beginTransmission();
+	ZigduinoRadio.write(sendBuffer,buflen);
+	ZigduinoRadio.endTransmission();
+
+	delay(1000);
+}
+
+// Execute remote commands
+void executeRemoteCmd(RemoteCmd remoteCmd) {
+	switch(remoteCmd.cmd) {
+	case 'p':
+		FlightControl1.yawKp = remoteCmd.value;
+		break;
+	case 'i':
+		FlightControl1.yawKi = remoteCmd.value;
+		break;
+	case 'd':
+		FlightControl1.yawKd = remoteCmd.value;
+		break;
+	case 't':
+		FlightControl1.setTopRotorDuty(remoteCmd.value);
+		break;
+	case 'b':
+		FlightControl1.setBottomRotorDuty(remoteCmd.value);
+		break;
+	case 'g':
+		FlightControl1.gyroSetPoint = remoteCmd.value;
+		break;
+	case 'x':
+		FlightControl1.throttle  = remoteCmd.value;
+		FlightControl1.setTopRotorDuty(remoteCmd.value);
+		FlightControl1.setBottomRotorDuty(remoteCmd.value);
+		break;
+	case 'e':
+		if(remoteCmd.value < 1)
+			FlightControl1.enableYawPID(false);
+		else
+			FlightControl1.enableYawPID(true);
+		break;
+	case 'o':
+		FlightControl1.turn(remoteCmd.value);
+		break;
+	default:
+		break;
+	}
+}
+
+int main(void)
+{
+	init();
+	setup();
+
+	for (;;) {
+		loop();
+		if (serialEventRun) serialEventRun();
+	}
+	return 0;
+}
+
+void errHandle(radio_error_t err)
+{
+	Serial1.println();
+	Serial1.print("Error: ");
+	Serial1.print((uint8_t)err, 10);
+	Serial1.println();
+}
+
+void onXmitDone(radio_tx_done_t x)
+{
+	Serial1.println();
+	Serial1.print("TxDone: ");
+	Serial1.print((uint8_t)x, 10);
+	Serial1.println();
+}
+
+void blinkLED() {
+	static bool blinkState = false;
+	// blink LED to indicate activity
+	blinkState = !blinkState;
+	digitalWrite(LED_PIN, blinkState);
+}

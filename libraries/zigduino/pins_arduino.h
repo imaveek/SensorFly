@@ -62,6 +62,7 @@ const static uint8_t A5 = 19;
 
 #define digitalPinToPCICRbit(p) ( ((p) == 7) ? 1 : 0 ) 
 
+
 #define digitalPinToPCMSK(p)    ( ((((p) >= 8) && ((p) <= 13)) || ((p) == 20)) ? (&PCMSK0) : \
                                 ( ((p) == 7) ? (&PCMSK1) : \
                                 ((uint8_t *)0) ) )
@@ -74,7 +75,7 @@ const static uint8_t A5 = 19;
                                 ( ((p) == 12) ? 3 : \
                                 ( ((p) == 13) ? 1 : \
                                 ( ((p) == 20) ? 2 : \
-                                0 ) ) ) ) ) )
+                                0 ) ) ) ) ) ) ) )
 
 #ifdef ARDUINO_MAIN
 
@@ -154,6 +155,8 @@ const uint8_t PROGMEM digital_pin_to_port_PGM[] = {
 	PD	, // PD 1 ** 22 ** I2C_SDA
 	PD  , // PD 5 ** 23 ** RFTX
 	PD  , // PD 6 ** 24 ** RFRX
+//	PF	, // PF 7 ** 25 ** DISTANCE_OE
+//	PD	, // PD 2|3 ** 26 ** Combined pin RX1 and TX1
 };
 
 const uint8_t PROGMEM digital_pin_to_bit_mask_PGM[] = {
@@ -184,6 +187,8 @@ const uint8_t PROGMEM digital_pin_to_bit_mask_PGM[] = {
 	_BV( 1 )	, // PD 1 ** 22 ** I2C_SDA	
 	_BV( 5 )  	, // PD 5 ** 23 ** RFTX
 	_BV( 6 )  	, // PD 6 ** 24 ** RFRX
+//	_BV( 7 )	, // PF 7 ** 25 ** DISTANCE_OE
+//	_BV( 2 ) | _BV( 3 )		, // PD2 | PD3 ** 26 ** Combined pin RX1 and TX1
 };
 
 const uint8_t PROGMEM digital_pin_to_timer_PGM[] = {
@@ -214,6 +219,8 @@ const uint8_t PROGMEM digital_pin_to_timer_PGM[] = {
 	NOT_ON_TIMER	, // PD 1 ** 22 ** I2C_SDA	
 	NOT_ON_TIMER  	, // PD 5 ** 23 ** RFTX
 	NOT_ON_TIMER  	, // PD 6 ** 24 ** RFRX
+	NOT_ON_TIMER	, // PF 7 ** 25 ** DISTANCE_OE
+	NOT_ON_TIMER	, // PD2 | PD3 ** 26 ** Combined pin RX1 and TX1
 };	
 
 #endif

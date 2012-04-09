@@ -1,0 +1,31 @@
+/*
+ * SRF01.cpp
+ *
+ *  Created on: Apr 3, 2012
+ *      Author: imaveek
+ */
+
+#include "SRF01.h"
+#include "SoftwareSerial.h"
+
+SoftwareSerial srf01 = SoftwareSerial(SRF_TXRX, SRF_TXRX);      // Sets up software serial port for the SRF01
+
+SRF01::SRF01() {
+	// TODO Auto-generated constructor stub
+}
+
+SRF01::initialize() {
+	srf01.begin(9600);
+	// Make sure that the SRF01 software serial port is listening
+	// for data as only one software serial port can listen at a time
+	srf01.listen();
+
+}
+
+SRF01::~SRF01() {
+	// TODO Auto-generated destructor stub
+}
+
+
+
+

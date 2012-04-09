@@ -1,0 +1,115 @@
+/*
+ * FlightControl.cpp
+ *
+ *  Created on: Mar 28, 2012
+ *      Author: imaveek
+ */
+
+#include "FlightControl.h"
+#include "TimerOne.h"
+#include "TimerThree.h"
+#include "MPU6050.h"
+#include <stdlib.h>
+
+FlightControl FlightControl1; //pre-instantiate controller
+
+void FlightControl::initialize() {
+	// Initialize values
+	epsilon = 0.01;
+	dt = 0.01;        //100ms loop time
+	yawMAX = 8;
+	yawMIN = 12;
+	yawKp = 0.1;
+	yawKd = 0.01;
+	yawKi = 0.005;
+
+	// *************** Motor PWM *******************
+	// set a timer of length 100 microseconds
+	// Needed to set the mode 8 for phase and frequency correct PWM
+	Timer1.initialize(PWM_FREQ);
+	Timer1.pwm(MOTOR1_PIN, 0, PWM_FREQ); // PWM frequency 10000Hz
+	Timer1.pwm(MOTOR2_PIN, 0, PWM_FREQ);
+
+	// *************** PID Control *****************
+	Timer3.initialize(PID_FREQ); // Timer 3, 1000us, 100Hz
+	Timer3.attachInterrupt(mainLoop, PID_FREQ);
+
+	// initialize device
+	Serial1.println("Initializing Accel/Gyro ...");
+	AccelGyro.initialize();
+	AccelGyro.setI2CBypassEnabled(HIGH);
+	AccelGyro.setDLPFMode(MPU6050_DLPF_BW_5);
+	AccelGyro.setFullScaleGyroRange(MPU6050_GYRO_FS_1000);
+
+	// verify connection
+	Serial1.println("Testing device connections...");
+	Serial1.println(AccelGyro.testConnection() ? "MPU6050 connection successful" : "MPU6050 connection failed");
+}
+
+float FlightControl::yawPID(float setpoint, float actual_position) {
+
+	static float pre_error = 0;
+	static float integral = 0;
+	float error;
+	float derivative;
+	float output;
+
+	//Caculate P,I,D
+	error = setpoint - actual_position;
+
+	//In case of error too small then stop intergration
+	if(abs(error) > epsilon)
+	{
+		integral = integral + error*dt;
+	}
+	derivative = (error - pre_error)/dt;
+	output = yawKp*error + yawKi*integral + yawKd*derivative;
+
+	//Saturation Filter
+	if(output > yawMAX)
+	{
+		output = yawMAX;
+	}
+	else if(output < yawMIN)
+	{
+		output = yawMIN;
+	}
+
+	//Update error
+	pre_error = error;
+
+	return output;
+}
+
+
+void mainLoop()
+{
+	//	uint16_t yawInput;
+	//	uint16_t throttle = THROTTLE;
+
+	sei();
+
+	// Get rotation
+	gz = AccelGyro.getRotationZ();
+	//	fgz = gyroLPF.filter(gz);
+
+	//	// Call PID loop
+	//	yawInput = yawPID(GYRO_SET_POINT,gz);
+	//
+	//    uint16_t topRotDuty = throttle - yawInput;
+	//    uint16_t botRotDuty = throttle + yawInput;
+	//
+	//    // Set motor input
+	//    if(topRotDuty <= 0 || botRotDuty <= 0){
+	//       topRotDuty = (topRotDuty<4) ? 4:topRotDuty;
+	//       botRotDuty = (botRotDuty<4) ? 4:botRotDuty;
+	//    }
+	//    else{
+	//        topRotDuty = (topRotDuty > 1024) ? 1024:topRotDuty;
+	//        botRotDuty = (botRotDuty > 1024) ? 1024:botRotDuty;
+	//    }
+	//
+	//    // Set motor duty cycles
+	//    Timer1.setPwmDuty(MOTOR1_PIN,topRotDuty);
+	//    Timer1.setPwmDuty(MOTOR2_PIN,botRotDuty);
+}

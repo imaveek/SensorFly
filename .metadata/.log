@@ -1,0 +1,641 @@
+!SESSION 2012-03-30 15:06:39.908 -----------------------------------------------
+eclipse.buildId=M20110909-1335
+java.version=1.6.0_29
+java.vendor=Apple Inc.
+BootLoader constants: OS=macosx, ARCH=x86_64, WS=cocoa, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.cpp.product -product org.eclipse.epp.package.cpp.product -product org.eclipse.epp.package.cpp.product -keyring /Users/imaveek/.eclipse_keyring -showlocation
+Command-line arguments:  -os macosx -ws cocoa -arch x86_64 -product org.eclipse.epp.package.cpp.product -product org.eclipse.epp.package.cpp.product -data /Users/imaveek/SensorFly -product org.eclipse.epp.package.cpp.product -keyring /Users/imaveek/.eclipse_keyring -showlocation
+
+!ENTRY org.eclipse.core.net 1 0 2012-03-30 15:06:50.436
+!MESSAGE System property http.nonProxyHosts has been set to local|*.local|169.254/16|*.169.254/16 by an external source. This value will be overwritten using the values from the preferences
+
+!ENTRY com.android.ide.eclipse.ddms 4 0 2012-03-30 15:07:12.314
+!MESSAGE DDMS files not found: /Applications/eclipse/Eclipse.app/Contents/MacOS/platform-tools/adb /Applications/eclipse/Eclipse.app/Contents/MacOS/tools/hprof-conv /Applications/eclipse/Eclipse.app/Contents/MacOS/tools/traceview 
+
+!ENTRY org.eclipse.jface 2 0 2012-03-30 15:10:52.941
+!MESSAGE Keybinding conflicts occurred.  They may interfere with normal accelerator operation.
+!SUBENTRY 1 org.eclipse.jface 2 0 2012-03-30 15:10:52.941
+!MESSAGE A conflict occurred for ALT+COMMAND+R:
+Binding(ALT+COMMAND+R,
+	ParameterizedCommand(Command(org.python.pydev.debug.setnext,Set Next Statement,
+		,
+		Category(org.python.pydev.ui.category.run,PyDev - Run,Python run category,true),
+		,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,,system)
+Binding(ALT+COMMAND+R,
+	ParameterizedCommand(Command(org.eclipse.jdt.ui.edit.text.java.rename.element,Rename - Refactoring ,
+		Rename the selected element,
+		Category(org.eclipse.jdt.ui.category.refactoring,Refactor - Java,Java Refactoring Actions,true),
+		,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,cocoa,system)
+
+!ENTRY org.eclipse.cdt.core 1 0 2012-03-30 15:16:24.274
+!MESSAGE Indexed 'basic_motors' (35 sources, 111 headers) in 8.00 sec: 6,751 declarations; 13,877 references; 9 unresolved inclusions; 2 syntax errors; 0 unresolved names (0.00%)
+
+!ENTRY org.eclipse.cdt.core 1 0 2012-03-30 15:16:29.018
+!MESSAGE Indexed 'basic_yaw_control' (35 sources, 111 headers) in 4.73 sec: 6,766 declarations; 13,981 references; 9 unresolved inclusions; 3 syntax errors; 0 unresolved names (0.00%)
+
+!ENTRY org.eclipse.cdt.core 1 0 2012-03-30 15:16:31.474
+!MESSAGE Indexed 'basic_radio' (35 sources, 111 headers) in 2.44 sec: 6,760 declarations; 13,961 references; 9 unresolved inclusions; 2 syntax errors; 0 unresolved names (0.00%)
+
+!ENTRY org.eclipse.cdt.core 1 0 2012-03-30 15:16:33.973
+!MESSAGE Indexed 'base_station' (35 sources, 111 headers) in 2.49 sec: 6,761 declarations; 13,946 references; 9 unresolved inclusions; 2 syntax errors; 0 unresolved names (0.00%)
+
+!ENTRY org.eclipse.cdt.core 1 0 2012-03-30 15:16:36.447
+!MESSAGE Indexed 'basic_sensors' (35 sources, 111 headers) in 2.44 sec: 6,762 declarations; 13,961 references; 9 unresolved inclusions; 2 syntax errors; 0 unresolved names (0.00%)
+
+!ENTRY org.eclipse.ui 4 4 2012-03-30 15:17:16.679
+!MESSAGE Invalid preference page path: XML Syntax
+!SESSION 2012-03-30 15:39:13.759 -----------------------------------------------
+eclipse.buildId=M20110909-1335
+java.version=1.6.0_29
+java.vendor=Apple Inc.
+BootLoader constants: OS=macosx, ARCH=x86_64, WS=cocoa, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.cpp.product -product org.eclipse.epp.package.cpp.product -product org.eclipse.epp.package.cpp.product -product org.eclipse.epp.package.cpp.product -product org.eclipse.epp.package.cpp.product -keyring /Users/imaveek/.eclipse_keyring -showlocation
+Command-line arguments:  -os macosx -ws cocoa -arch x86_64 -product org.eclipse.epp.package.cpp.product -product org.eclipse.epp.package.cpp.product -product org.eclipse.epp.package.cpp.product -product org.eclipse.epp.package.cpp.product -data /Users/imaveek/SensorFly -product org.eclipse.epp.package.cpp.product -keyring /Users/imaveek/.eclipse_keyring -showlocation
+
+!ENTRY org.eclipse.core.net 1 0 2012-03-30 15:39:19.356
+!MESSAGE System property http.nonProxyHosts has been set to local|*.local|169.254/16|*.169.254/16 by an external source. This value will be overwritten using the values from the preferences
+
+!ENTRY org.eclipse.jface 2 0 2012-03-30 15:39:22.689
+!MESSAGE Keybinding conflicts occurred.  They may interfere with normal accelerator operation.
+!SUBENTRY 1 org.eclipse.jface 2 0 2012-03-30 15:39:22.689
+!MESSAGE A conflict occurred for ALT+COMMAND+R:
+Binding(ALT+COMMAND+R,
+	ParameterizedCommand(Command(org.python.pydev.debug.setnext,Set Next Statement,
+		,
+		Category(org.python.pydev.ui.category.run,PyDev - Run,Python run category,true),
+		,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,,system)
+Binding(ALT+COMMAND+R,
+	ParameterizedCommand(Command(org.eclipse.jdt.ui.edit.text.java.rename.element,Rename - Refactoring ,
+		Rename the selected element,
+		Category(org.eclipse.jdt.ui.category.refactoring,Refactor - Java,Java Refactoring Actions,true),
+		,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,cocoa,system)
+
+!ENTRY org.eclipse.ui 4 4 2012-03-30 15:52:00.836
+!MESSAGE Invalid preference page path: XML Syntax
+!SESSION 2012-03-30 16:52:29.811 -----------------------------------------------
+eclipse.buildId=M20110909-1335
+java.version=1.6.0_29
+java.vendor=Apple Inc.
+BootLoader constants: OS=macosx, ARCH=x86_64, WS=cocoa, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.cpp.product -keyring /Users/imaveek/.eclipse_keyring -showlocation
+Command-line arguments:  -os macosx -ws cocoa -arch x86_64 -product org.eclipse.epp.package.cpp.product -keyring /Users/imaveek/.eclipse_keyring -showlocation
+
+!ENTRY org.eclipse.core.resources 2 10035 2012-03-30 16:52:41.411
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY org.eclipse.core.net 1 0 2012-03-30 16:52:50.975
+!MESSAGE System property http.nonProxyHosts has been set to local|*.local|169.254/16|*.169.254/16 by an external source. This value will be overwritten using the values from the preferences
+
+!ENTRY org.eclipse.jface 2 0 2012-03-30 16:55:11.375
+!MESSAGE Keybinding conflicts occurred.  They may interfere with normal accelerator operation.
+!SUBENTRY 1 org.eclipse.jface 2 0 2012-03-30 16:55:11.375
+!MESSAGE A conflict occurred for ALT+COMMAND+R:
+Binding(ALT+COMMAND+R,
+	ParameterizedCommand(Command(org.python.pydev.debug.setnext,Set Next Statement,
+		,
+		Category(org.python.pydev.ui.category.run,PyDev - Run,Python run category,true),
+		,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,,system)
+Binding(ALT+COMMAND+R,
+	ParameterizedCommand(Command(org.eclipse.jdt.ui.edit.text.java.rename.element,Rename - Refactoring ,
+		Rename the selected element,
+		Category(org.eclipse.jdt.ui.category.refactoring,Refactor - Java,Java Refactoring Actions,true),
+		,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,cocoa,system)
+
+!ENTRY org.eclipse.ui 4 4 2012-03-30 16:55:16.085
+!MESSAGE Invalid preference page path: XML Syntax
+
+!ENTRY net.sourceforge.vrapper.eclipse 1 0 2012-04-02 17:02:20.945
+!MESSAGE TODO: implement ConvertingState's union efficently
+
+!ENTRY net.sourceforge.vrapper.eclipse 1 0 2012-04-02 17:02:36.281
+!MESSAGE TODO: implement ConvertingState's union efficently
+
+!ENTRY net.sourceforge.vrapper.eclipse 1 0 2012-04-02 17:02:51.025
+!MESSAGE TODO: implement ConvertingState's union efficently
+
+!ENTRY net.sourceforge.vrapper.eclipse 1 0 2012-04-02 17:03:22.745
+!MESSAGE TODO: implement ConvertingState's union efficently
+
+!ENTRY de.innot.avreclipse.core 4 0 2012-04-02 20:26:43.212
+!MESSAGE Can't access project nature
+!STACK 1
+org.eclipse.core.internal.resources.ResourceException: Resource '/base_station' is not open.
+	at org.eclipse.core.internal.resources.Project.checkAccessible(Project.java:150)
+	at org.eclipse.core.internal.resources.Project.hasNature(Project.java:584)
+	at de.innot.avreclipse.ui.actions.UploadProjectAction.run(UploadProjectAction.java:165)
+	at org.eclipse.ui.actions.ActionDelegate.runWithEvent(ActionDelegate.java:70)
+	at org.eclipse.ui.internal.PluginAction.runWithEvent(PluginAction.java:241)
+	at org.eclipse.ui.internal.WWinPluginAction.runWithEvent(WWinPluginAction.java:229)
+	at org.eclipse.jface.action.ActionContributionItem.handleWidgetSelection(ActionContributionItem.java:584)
+	at org.eclipse.jface.action.ActionContributionItem.access$2(ActionContributionItem.java:501)
+	at org.eclipse.jface.action.ActionContributionItem$6.handleEvent(ActionContributionItem.java:452)
+	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:84)
+	at org.eclipse.swt.widgets.Display.sendEvent(Display.java:4128)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1457)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1480)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1465)
+	at org.eclipse.swt.widgets.Widget.notifyListeners(Widget.java:1270)
+	at org.eclipse.swt.widgets.Display.runDeferredEvents(Display.java:3974)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3613)
+	at org.eclipse.ui.internal.Workbench.runEventLoop(Workbench.java:2696)
+	at org.eclipse.ui.internal.Workbench.runUI(Workbench.java:2660)
+	at org.eclipse.ui.internal.Workbench.access$4(Workbench.java:2494)
+	at org.eclipse.ui.internal.Workbench$7.run(Workbench.java:674)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:332)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:667)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:149)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:123)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:196)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:110)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:79)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:344)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:179)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	at java.lang.reflect.Method.invoke(Method.java:597)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:622)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:577)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1410)
+!SUBENTRY 1 org.eclipse.core.resources 4 372 2012-04-02 20:26:43.214
+!MESSAGE Resource '/base_station' is not open.
+
+!ENTRY org.eclipse.ui 4 0 2012-04-02 20:26:43.216
+!MESSAGE Unhandled event loop exception
+!STACK 0
+java.lang.NullPointerException
+	at de.innot.avreclipse.ui.actions.UploadProjectAction.run(UploadProjectAction.java:178)
+	at org.eclipse.ui.actions.ActionDelegate.runWithEvent(ActionDelegate.java:70)
+	at org.eclipse.ui.internal.PluginAction.runWithEvent(PluginAction.java:241)
+	at org.eclipse.ui.internal.WWinPluginAction.runWithEvent(WWinPluginAction.java:229)
+	at org.eclipse.jface.action.ActionContributionItem.handleWidgetSelection(ActionContributionItem.java:584)
+	at org.eclipse.jface.action.ActionContributionItem.access$2(ActionContributionItem.java:501)
+	at org.eclipse.jface.action.ActionContributionItem$6.handleEvent(ActionContributionItem.java:452)
+	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:84)
+	at org.eclipse.swt.widgets.Display.sendEvent(Display.java:4128)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1457)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1480)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1465)
+	at org.eclipse.swt.widgets.Widget.notifyListeners(Widget.java:1270)
+	at org.eclipse.swt.widgets.Display.runDeferredEvents(Display.java:3974)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3613)
+	at org.eclipse.ui.internal.Workbench.runEventLoop(Workbench.java:2696)
+	at org.eclipse.ui.internal.Workbench.runUI(Workbench.java:2660)
+	at org.eclipse.ui.internal.Workbench.access$4(Workbench.java:2494)
+	at org.eclipse.ui.internal.Workbench$7.run(Workbench.java:674)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:332)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:667)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:149)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:123)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:196)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:110)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:79)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:344)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:179)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	at java.lang.reflect.Method.invoke(Method.java:597)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:622)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:577)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1410)
+
+!ENTRY de.innot.avreclipse.core 4 0 2012-04-02 20:29:14.550
+!MESSAGE Can't access project nature
+!STACK 1
+org.eclipse.core.internal.resources.ResourceException: Resource '/base_station' is not open.
+	at org.eclipse.core.internal.resources.Project.checkAccessible(Project.java:150)
+	at org.eclipse.core.internal.resources.Project.hasNature(Project.java:584)
+	at de.innot.avreclipse.ui.actions.UploadProjectAction.run(UploadProjectAction.java:165)
+	at org.eclipse.ui.actions.ActionDelegate.runWithEvent(ActionDelegate.java:70)
+	at org.eclipse.ui.internal.PluginAction.runWithEvent(PluginAction.java:241)
+	at org.eclipse.ui.internal.WWinPluginAction.runWithEvent(WWinPluginAction.java:229)
+	at org.eclipse.jface.action.ActionContributionItem.handleWidgetSelection(ActionContributionItem.java:584)
+	at org.eclipse.jface.action.ActionContributionItem.access$2(ActionContributionItem.java:501)
+	at org.eclipse.jface.action.ActionContributionItem$6.handleEvent(ActionContributionItem.java:452)
+	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:84)
+	at org.eclipse.swt.widgets.Display.sendEvent(Display.java:4128)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1457)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1480)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1465)
+	at org.eclipse.swt.widgets.Widget.notifyListeners(Widget.java:1270)
+	at org.eclipse.swt.widgets.Display.runDeferredEvents(Display.java:3974)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3613)
+	at org.eclipse.ui.internal.Workbench.runEventLoop(Workbench.java:2696)
+	at org.eclipse.ui.internal.Workbench.runUI(Workbench.java:2660)
+	at org.eclipse.ui.internal.Workbench.access$4(Workbench.java:2494)
+	at org.eclipse.ui.internal.Workbench$7.run(Workbench.java:674)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:332)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:667)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:149)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:123)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:196)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:110)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:79)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:344)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:179)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	at java.lang.reflect.Method.invoke(Method.java:597)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:622)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:577)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1410)
+!SUBENTRY 1 org.eclipse.core.resources 4 372 2012-04-02 20:29:14.551
+!MESSAGE Resource '/base_station' is not open.
+
+!ENTRY org.eclipse.ui 4 0 2012-04-02 20:29:14.552
+!MESSAGE Unhandled event loop exception
+!STACK 0
+java.lang.NullPointerException
+	at de.innot.avreclipse.ui.actions.UploadProjectAction.run(UploadProjectAction.java:178)
+	at org.eclipse.ui.actions.ActionDelegate.runWithEvent(ActionDelegate.java:70)
+	at org.eclipse.ui.internal.PluginAction.runWithEvent(PluginAction.java:241)
+	at org.eclipse.ui.internal.WWinPluginAction.runWithEvent(WWinPluginAction.java:229)
+	at org.eclipse.jface.action.ActionContributionItem.handleWidgetSelection(ActionContributionItem.java:584)
+	at org.eclipse.jface.action.ActionContributionItem.access$2(ActionContributionItem.java:501)
+	at org.eclipse.jface.action.ActionContributionItem$6.handleEvent(ActionContributionItem.java:452)
+	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:84)
+	at org.eclipse.swt.widgets.Display.sendEvent(Display.java:4128)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1457)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1480)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1465)
+	at org.eclipse.swt.widgets.Widget.notifyListeners(Widget.java:1270)
+	at org.eclipse.swt.widgets.Display.runDeferredEvents(Display.java:3974)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3613)
+	at org.eclipse.ui.internal.Workbench.runEventLoop(Workbench.java:2696)
+	at org.eclipse.ui.internal.Workbench.runUI(Workbench.java:2660)
+	at org.eclipse.ui.internal.Workbench.access$4(Workbench.java:2494)
+	at org.eclipse.ui.internal.Workbench$7.run(Workbench.java:674)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:332)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:667)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:149)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:123)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:196)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:110)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:79)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:344)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:179)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	at java.lang.reflect.Method.invoke(Method.java:597)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:622)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:577)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1410)
+
+!ENTRY org.eclipse.core.resources 4 2 2012-04-03 15:56:41.837
+!MESSAGE Problems occurred when invoking code from plug-in: "org.eclipse.core.resources".
+!STACK 1
+org.eclipse.core.internal.resources.ResourceException: Resource '/basic_sensors/Release/libraries/SoftwareSerial' does not exist.
+	at org.eclipse.core.internal.resources.Resource.checkExists(Resource.java:320)
+	at org.eclipse.core.internal.resources.Resource.checkAccessible(Resource.java:194)
+	at org.eclipse.core.internal.resources.Container.members(Container.java:266)
+	at org.eclipse.core.internal.resources.Container.members(Container.java:249)
+	at org.eclipse.cdt.managedbuilder.makegen.gnu.GnuMakefileGenerator.generateDependencies(GnuMakefileGenerator.java:592)
+	at org.eclipse.cdt.managedbuilder.internal.core.CommonBuilder.performPostbuildGeneration(CommonBuilder.java:847)
+	at org.eclipse.cdt.managedbuilder.internal.core.CommonBuilder.build(CommonBuilder.java:758)
+	at org.eclipse.cdt.managedbuilder.internal.core.CommonBuilder.build(CommonBuilder.java:501)
+	at org.eclipse.cdt.managedbuilder.internal.core.CommonBuilder.build(CommonBuilder.java:450)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:728)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:199)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:239)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:292)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:295)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:351)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:374)
+	at org.eclipse.core.internal.resources.Workspace.buildInternal(Workspace.java:513)
+	at org.eclipse.core.internal.resources.Workspace.build(Workspace.java:422)
+	at org.eclipse.ui.actions.GlobalBuildAction$1.run(GlobalBuildAction.java:180)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+!SUBENTRY 1 org.eclipse.core.resources 4 368 2012-04-03 15:56:41.838
+!MESSAGE Resource '/basic_sensors/Release/libraries/SoftwareSerial' does not exist.
+!SUBENTRY 1 org.eclipse.core.resources 4 368 2012-04-03 15:56:41.838
+!MESSAGE Resource '/basic_sensors/Release/libraries/SoftwareSerial' does not exist.
+
+!ENTRY org.eclipse.core.resources 4 75 2012-04-03 15:56:42.503
+!MESSAGE Errors occurred during the build.
+!SUBENTRY 1 org.eclipse.cdt.managedbuilder.core 4 75 2012-04-03 15:56:42.503
+!MESSAGE Errors running builder 'CDT Builder' on project 'basic_sensors'.
+!STACK 1
+org.eclipse.core.internal.resources.ResourceException: Resource '/basic_sensors/Release/libraries/SoftwareSerial' does not exist.
+	at org.eclipse.core.internal.resources.Resource.checkExists(Resource.java:320)
+	at org.eclipse.core.internal.resources.Resource.checkAccessible(Resource.java:194)
+	at org.eclipse.core.internal.resources.Container.members(Container.java:266)
+	at org.eclipse.core.internal.resources.Container.members(Container.java:249)
+	at org.eclipse.cdt.managedbuilder.makegen.gnu.GnuMakefileGenerator.generateDependencies(GnuMakefileGenerator.java:592)
+	at org.eclipse.cdt.managedbuilder.internal.core.CommonBuilder.performPostbuildGeneration(CommonBuilder.java:847)
+	at org.eclipse.cdt.managedbuilder.internal.core.CommonBuilder.build(CommonBuilder.java:758)
+	at org.eclipse.cdt.managedbuilder.internal.core.CommonBuilder.build(CommonBuilder.java:501)
+	at org.eclipse.cdt.managedbuilder.internal.core.CommonBuilder.build(CommonBuilder.java:450)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:728)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:199)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:239)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:292)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:295)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:351)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:374)
+	at org.eclipse.core.internal.resources.Workspace.buildInternal(Workspace.java:513)
+	at org.eclipse.core.internal.resources.Workspace.build(Workspace.java:422)
+	at org.eclipse.ui.actions.GlobalBuildAction$1.run(GlobalBuildAction.java:180)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+!SUBENTRY 2 org.eclipse.core.resources 4 368 2012-04-03 15:56:42.503
+!MESSAGE Resource '/basic_sensors/Release/libraries/SoftwareSerial' does not exist.
+!SUBENTRY 1 org.eclipse.core.resources 4 368 2012-04-03 15:56:42.503
+!MESSAGE Resource '/basic_sensors/Release/libraries/SoftwareSerial' does not exist.
+
+!ENTRY org.eclipse.ui 4 0 2012-04-03 17:06:47.345
+!MESSAGE Unhandled event loop exception
+!STACK 0
+org.eclipse.swt.SWTException: Failed to execute runnable (java.lang.NullPointerException)
+	at org.eclipse.swt.SWT.error(SWT.java:4282)
+	at org.eclipse.swt.SWT.error(SWT.java:4197)
+	at org.eclipse.swt.widgets.Synchronizer.runAsyncMessages(Synchronizer.java:138)
+	at org.eclipse.swt.widgets.Display.runAsyncMessages(Display.java:3938)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3615)
+	at org.eclipse.ui.internal.Workbench.runEventLoop(Workbench.java:2696)
+	at org.eclipse.ui.internal.Workbench.runUI(Workbench.java:2660)
+	at org.eclipse.ui.internal.Workbench.access$4(Workbench.java:2494)
+	at org.eclipse.ui.internal.Workbench$7.run(Workbench.java:674)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:332)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:667)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:149)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:123)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:196)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:110)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:79)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:344)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:179)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	at java.lang.reflect.Method.invoke(Method.java:597)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:622)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:577)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1410)
+Caused by: java.lang.NullPointerException
+	at org.eclipse.swt.graphics.TextLayout.computeRuns(TextLayout.java:225)
+	at org.eclipse.swt.graphics.TextLayout.getLineCount(TextLayout.java:996)
+	at org.eclipse.swt.custom.StyledTextRenderer.getTextLayout(StyledTextRenderer.java:981)
+	at org.eclipse.swt.custom.StyledTextRenderer.getTextLayout(StyledTextRenderer.java:720)
+	at org.eclipse.swt.custom.StyledTextRenderer.calculate(StyledTextRenderer.java:211)
+	at org.eclipse.swt.custom.StyledTextRenderer.calculateClientArea(StyledTextRenderer.java:229)
+	at org.eclipse.swt.custom.StyledText.resetCache(StyledText.java:7791)
+	at org.eclipse.swt.custom.StyledText.redraw(StyledText.java:7378)
+	at org.eclipse.jface.text.CursorLinePainter.drawHighlightLine(CursorLinePainter.java:179)
+	at org.eclipse.jface.text.CursorLinePainter.deactivate(CursorLinePainter.java:194)
+	at org.eclipse.jface.text.PaintManager.removePainter(PaintManager.java:214)
+	at org.eclipse.jface.text.TextViewer.removePainter(TextViewer.java:5255)
+	at org.eclipse.ui.texteditor.SourceViewerDecorationSupport.hideCursorLine(SourceViewerDecorationSupport.java:709)
+	at org.eclipse.ui.texteditor.SourceViewerDecorationSupport.updateTextDecorations(SourceViewerDecorationSupport.java:306)
+	at org.eclipse.ui.texteditor.SourceViewerDecorationSupport.dispose(SourceViewerDecorationSupport.java:387)
+	at org.eclipse.compare.contentmergeviewer.TextMergeViewer.handleDispose(TextMergeViewer.java:1856)
+	at org.eclipse.cdt.internal.ui.compare.AbstractMergeViewer.handleDispose(AbstractMergeViewer.java:98)
+	at org.eclipse.cdt.internal.ui.text.c.hover.CMacroCompareViewer.handleDispose(CMacroCompareViewer.java:133)
+	at org.eclipse.jface.viewers.ContentViewer$2.widgetDisposed(ContentViewer.java:214)
+	at org.eclipse.swt.widgets.TypedListener.handleEvent(TypedListener.java:123)
+	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:84)
+	at org.eclipse.swt.widgets.Display.sendEvent(Display.java:4128)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1457)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1480)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1461)
+	at org.eclipse.swt.widgets.Widget.release(Widget.java:1299)
+	at org.eclipse.swt.widgets.Control.release(Control.java:2817)
+	at org.eclipse.swt.widgets.Composite.releaseChildren(Composite.java:903)
+	at org.eclipse.swt.widgets.Widget.release(Widget.java:1302)
+	at org.eclipse.swt.widgets.Control.release(Control.java:2817)
+	at org.eclipse.swt.widgets.Composite.releaseChildren(Composite.java:903)
+	at org.eclipse.swt.widgets.Widget.release(Widget.java:1302)
+	at org.eclipse.swt.widgets.Control.release(Control.java:2817)
+	at org.eclipse.swt.widgets.Composite.releaseChildren(Composite.java:903)
+	at org.eclipse.swt.widgets.Widget.release(Widget.java:1302)
+	at org.eclipse.swt.widgets.Control.release(Control.java:2817)
+	at org.eclipse.swt.widgets.Composite.releaseChildren(Composite.java:903)
+	at org.eclipse.swt.widgets.Widget.release(Widget.java:1302)
+	at org.eclipse.swt.widgets.Control.release(Control.java:2817)
+	at org.eclipse.swt.widgets.Composite.releaseChildren(Composite.java:903)
+	at org.eclipse.swt.widgets.Canvas.releaseChildren(Canvas.java:313)
+	at org.eclipse.swt.widgets.Decorations.releaseChildren(Decorations.java:391)
+	at org.eclipse.swt.widgets.Shell.releaseChildren(Shell.java:1371)
+	at org.eclipse.swt.widgets.Widget.release(Widget.java:1302)
+	at org.eclipse.swt.widgets.Control.release(Control.java:2817)
+	at org.eclipse.swt.widgets.Widget.dispose(Widget.java:662)
+	at org.eclipse.jface.text.AbstractInformationControl.dispose(AbstractInformationControl.java:513)
+	at org.eclipse.cdt.internal.ui.text.AbstractCompareViewerInformationControl.dispose(AbstractCompareViewerInformationControl.java:240)
+	at org.eclipse.cdt.internal.ui.text.c.hover.CMacroExpansionExplorationControl.dispose(CMacroExpansionExplorationControl.java:407)
+	at org.eclipse.jface.text.AbstractInformationControlManager.getInformationControl(AbstractInformationControlManager.java:812)
+	at org.eclipse.jface.internal.text.InformationControlReplacer.showInformationControl(InformationControlReplacer.java:130)
+	at org.eclipse.jface.text.AbstractInformationControlManager.internalShowInformationControl(AbstractInformationControlManager.java:1164)
+	at org.eclipse.jface.text.AbstractInformationControlManager.presentInformation(AbstractInformationControlManager.java:1150)
+	at org.eclipse.jface.text.AbstractInformationControlManager.setInformation(AbstractInformationControlManager.java:418)
+	at org.eclipse.jface.internal.text.InformationControlReplacer.computeInformation(InformationControlReplacer.java:114)
+	at org.eclipse.jface.text.AbstractInformationControlManager.doShowInformation(AbstractInformationControlManager.java:1131)
+	at org.eclipse.jface.text.AbstractInformationControlManager.showInformation(AbstractInformationControlManager.java:1121)
+	at org.eclipse.jface.internal.text.InformationControlReplacer.replaceInformationControl(InformationControlReplacer.java:99)
+	at org.eclipse.jface.text.AbstractInformationControlManager.replaceInformationControl(AbstractInformationControlManager.java:1298)
+	at org.eclipse.jface.text.AbstractHoverInformationControlManager.replaceInformationControl(AbstractHoverInformationControlManager.java:809)
+	at org.eclipse.jface.text.TextViewerHoverManager.replaceInformationControl(TextViewerHoverManager.java:309)
+	at org.eclipse.jface.text.AbstractHoverInformationControlManager$4.run(AbstractHoverInformationControlManager.java:871)
+	at org.eclipse.ui.internal.UILockListener.doPendingWork(UILockListener.java:164)
+	at org.eclipse.ui.internal.UISynchronizer$3.run(UISynchronizer.java:158)
+	at org.eclipse.swt.widgets.RunnableLock.run(RunnableLock.java:35)
+	at org.eclipse.swt.widgets.Synchronizer.runAsyncMessages(Synchronizer.java:135)
+	... 22 more
+
+!ENTRY org.eclipse.ui 4 0 2012-04-03 19:33:12.287
+!MESSAGE Unhandled event loop exception
+!STACK 0
+java.lang.NullPointerException
+	at org.eclipse.swt.graphics.TextLayout.computeRuns(TextLayout.java:225)
+	at org.eclipse.swt.graphics.TextLayout.getLineCount(TextLayout.java:996)
+	at org.eclipse.swt.custom.StyledTextRenderer.getTextLayout(StyledTextRenderer.java:981)
+	at org.eclipse.swt.custom.StyledTextRenderer.getTextLayout(StyledTextRenderer.java:720)
+	at org.eclipse.swt.custom.StyledTextRenderer.calculate(StyledTextRenderer.java:211)
+	at org.eclipse.swt.custom.StyledTextRenderer.calculateClientArea(StyledTextRenderer.java:229)
+	at org.eclipse.swt.custom.StyledText.handleResize(StyledText.java:6148)
+	at org.eclipse.swt.custom.StyledText$7.handleEvent(StyledText.java:5641)
+	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:84)
+	at org.eclipse.swt.widgets.Display.sendEvent(Display.java:4128)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1457)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1480)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1461)
+	at org.eclipse.swt.widgets.Control.resized(Control.java:3252)
+	at org.eclipse.swt.widgets.Composite.resized(Composite.java:930)
+	at org.eclipse.swt.widgets.Control.setFrameSize(Control.java:3784)
+	at org.eclipse.swt.widgets.Display.windowProc(Display.java:5463)
+	at org.eclipse.swt.internal.cocoa.OS.objc_msgSend(Native Method)
+	at org.eclipse.swt.internal.cocoa.NSView.setFrame(NSView.java:267)
+	at org.eclipse.swt.widgets.Control.setBounds(Control.java:3517)
+	at org.eclipse.swt.widgets.Control.setBounds(Control.java:3506)
+	at org.eclipse.jface.text.source.SourceViewer$RulerLayout.layout(SourceViewer.java:152)
+	at org.eclipse.swt.widgets.Composite.updateLayout(Composite.java:1194)
+	at org.eclipse.swt.widgets.Composite.resized(Composite.java:933)
+	at org.eclipse.swt.widgets.Control.setFrameSize(Control.java:3784)
+	at org.eclipse.swt.widgets.Display.windowProc(Display.java:5463)
+	at org.eclipse.swt.internal.cocoa.OS.objc_msgSend(Native Method)
+	at org.eclipse.swt.internal.cocoa.NSView.setFrame(NSView.java:267)
+	at org.eclipse.swt.widgets.Control.setBounds(Control.java:3517)
+	at org.eclipse.swt.widgets.Control.setBounds(Control.java:3506)
+	at org.eclipse.compare.internal.MergeSourceViewer.setBounds(MergeSourceViewer.java:916)
+	at org.eclipse.compare.contentmergeviewer.TextMergeViewer.handleResizeLeftRight(TextMergeViewer.java:3212)
+	at org.eclipse.compare.contentmergeviewer.ContentMergeViewer$ContentMergeViewerLayout.layout(ContentMergeViewer.java:169)
+	at org.eclipse.swt.widgets.Composite.updateLayout(Composite.java:1194)
+	at org.eclipse.swt.widgets.Composite.updateLayout(Composite.java:1200)
+	at org.eclipse.swt.widgets.Composite.updateLayout(Composite.java:1200)
+	at org.eclipse.swt.widgets.Composite.updateLayout(Composite.java:1200)
+	at org.eclipse.swt.widgets.Composite.updateLayout(Composite.java:1200)
+	at org.eclipse.swt.widgets.Composite.updateLayout(Composite.java:1200)
+	at org.eclipse.swt.widgets.Composite.layout(Composite.java:703)
+	at org.eclipse.swt.widgets.Display.runSettings(Display.java:4068)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3603)
+	at org.eclipse.ui.internal.Workbench.runEventLoop(Workbench.java:2696)
+	at org.eclipse.ui.internal.Workbench.runUI(Workbench.java:2660)
+	at org.eclipse.ui.internal.Workbench.access$4(Workbench.java:2494)
+	at org.eclipse.ui.internal.Workbench$7.run(Workbench.java:674)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:332)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:667)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:149)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:123)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:196)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:110)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:79)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:344)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:179)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	at java.lang.reflect.Method.invoke(Method.java:597)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:622)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:577)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1410)
+
+!ENTRY net.sourceforge.vrapper.eclipse 1 0 2012-04-04 00:05:03.173
+!MESSAGE TODO: implement ConvertingState's union efficently
+!SESSION 2012-04-06 00:49:40.157 -----------------------------------------------
+eclipse.buildId=M20110909-1335
+java.version=1.6.0_29
+java.vendor=Apple Inc.
+BootLoader constants: OS=macosx, ARCH=x86_64, WS=cocoa, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.cpp.product -keyring /Users/imaveek/.eclipse_keyring -showlocation
+Command-line arguments:  -os macosx -ws cocoa -arch x86_64 -product org.eclipse.epp.package.cpp.product -keyring /Users/imaveek/.eclipse_keyring -showlocation
+
+!ENTRY org.eclipse.core.resources 2 10035 2012-04-06 00:51:05.780
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY org.eclipse.core.net 1 0 2012-04-06 00:52:30.908
+!MESSAGE System property http.nonProxyHosts has been set to local|*.local|169.254/16|*.169.254/16 by an external source. This value will be overwritten using the values from the preferences
+
+!ENTRY org.eclipse.jface 2 0 2012-04-06 10:40:17.524
+!MESSAGE Keybinding conflicts occurred.  They may interfere with normal accelerator operation.
+!SUBENTRY 1 org.eclipse.jface 2 0 2012-04-06 10:40:17.524
+!MESSAGE A conflict occurred for ALT+COMMAND+R:
+Binding(ALT+COMMAND+R,
+	ParameterizedCommand(Command(org.python.pydev.debug.setnext,Set Next Statement,
+		,
+		Category(org.python.pydev.ui.category.run,PyDev - Run,Python run category,true),
+		,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,,system)
+Binding(ALT+COMMAND+R,
+	ParameterizedCommand(Command(org.eclipse.jdt.ui.edit.text.java.rename.element,Rename - Refactoring ,
+		Rename the selected element,
+		Category(org.eclipse.jdt.ui.category.refactoring,Refactor - Java,Java Refactoring Actions,true),
+		,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,cocoa,system)
+
+!ENTRY de.innot.avreclipse.core 4 0 2012-04-07 11:00:29.569
+!MESSAGE I/O Error reading output
+!STACK 0
+java.io.IOException: Stream closed
+	at java.io.BufferedInputStream.getBufIfOpen(BufferedInputStream.java:145)
+	at java.io.BufferedInputStream.read(BufferedInputStream.java:308)
+	at sun.nio.cs.StreamDecoder.readBytes(StreamDecoder.java:264)
+	at sun.nio.cs.StreamDecoder.implRead(StreamDecoder.java:306)
+	at sun.nio.cs.StreamDecoder.read(StreamDecoder.java:158)
+	at java.io.InputStreamReader.read(InputStreamReader.java:167)
+	at java.io.BufferedReader.fill(BufferedReader.java:136)
+	at java.io.BufferedReader.readLine(BufferedReader.java:299)
+	at java.io.BufferedReader.readLine(BufferedReader.java:362)
+	at de.innot.avreclipse.core.toolinfo.ExternalCommandLauncher$LogStreamRunner.run(ExternalCommandLauncher.java:118)
+	at java.lang.Thread.run(Thread.java:680)
+
+!ENTRY de.innot.avreclipse.core 4 0 2012-04-08 12:03:58.606
+!MESSAGE I/O Error reading output
+!STACK 0
+java.io.IOException: Stream closed
+	at java.io.BufferedInputStream.getBufIfOpen(BufferedInputStream.java:145)
+	at java.io.BufferedInputStream.read(BufferedInputStream.java:308)
+	at sun.nio.cs.StreamDecoder.readBytes(StreamDecoder.java:264)
+	at sun.nio.cs.StreamDecoder.implRead(StreamDecoder.java:306)
+	at sun.nio.cs.StreamDecoder.read(StreamDecoder.java:158)
+	at java.io.InputStreamReader.read(InputStreamReader.java:167)
+	at java.io.BufferedReader.fill(BufferedReader.java:136)
+	at java.io.BufferedReader.readLine(BufferedReader.java:299)
+	at java.io.BufferedReader.readLine(BufferedReader.java:362)
+	at de.innot.avreclipse.core.toolinfo.ExternalCommandLauncher$LogStreamRunner.run(ExternalCommandLauncher.java:118)
+	at java.lang.Thread.run(Thread.java:680)
+
+!ENTRY org.eclipse.ui 4 4 2012-04-08 14:06:10.251
+!MESSAGE Invalid preference page path: XML Syntax
+
+!ENTRY de.innot.avreclipse.core 4 0 2012-04-08 14:06:58.691
+!MESSAGE I/O Error reading output
+!STACK 0
+java.io.IOException: Stream closed
+	at java.io.BufferedInputStream.getBufIfOpen(BufferedInputStream.java:145)
+	at java.io.BufferedInputStream.read(BufferedInputStream.java:308)
+	at sun.nio.cs.StreamDecoder.readBytes(StreamDecoder.java:264)
+	at sun.nio.cs.StreamDecoder.implRead(StreamDecoder.java:306)
+	at sun.nio.cs.StreamDecoder.read(StreamDecoder.java:158)
+	at java.io.InputStreamReader.read(InputStreamReader.java:167)
+	at java.io.BufferedReader.fill(BufferedReader.java:136)
+	at java.io.BufferedReader.readLine(BufferedReader.java:299)
+	at java.io.BufferedReader.readLine(BufferedReader.java:362)
+	at de.innot.avreclipse.core.toolinfo.ExternalCommandLauncher$LogStreamRunner.run(ExternalCommandLauncher.java:118)
+	at java.lang.Thread.run(Thread.java:680)
+
+!ENTRY org.eclipse.cdt.ui 4 0 2012-04-09 08:49:58.330
+!MESSAGE Error in CDT UI during reconcile
+!STACK 1
+C Model Exception: C Model Status [Element HMC5883L.h does not exist.]
+	at org.eclipse.cdt.internal.core.model.CElement.newNotPresentException(CElement.java:485)
+	at org.eclipse.cdt.internal.core.model.TranslationUnit.makeConsistent(TranslationUnit.java:538)
+	at org.eclipse.cdt.internal.core.model.ReconcileWorkingCopyOperation.executeOperation(ReconcileWorkingCopyOperation.java:62)
+	at org.eclipse.cdt.internal.core.model.CModelOperation.execute(CModelOperation.java:339)
+	at org.eclipse.cdt.internal.core.model.CModelOperation.run(CModelOperation.java:602)
+	at org.eclipse.cdt.internal.core.model.CModelOperation.runOperation(CModelOperation.java:630)
+	at org.eclipse.cdt.internal.core.model.WorkingCopy.reconcile(WorkingCopy.java:403)
+	at org.eclipse.cdt.internal.ui.text.CReconcilingStrategy.reconcile(CReconcilingStrategy.java:88)
+	at org.eclipse.cdt.internal.ui.text.CReconcilingStrategy.reconcile(CReconcilingStrategy.java:73)
+	at org.eclipse.cdt.internal.ui.text.CompositeReconcilingStrategy.reconcile(CompositeReconcilingStrategy.java:84)
+	at org.eclipse.cdt.internal.ui.text.CCompositeReconcilingStrategy.reconcile(CCompositeReconcilingStrategy.java:90)
+	at org.eclipse.jface.text.reconciler.MonoReconciler.process(MonoReconciler.java:77)
+	at org.eclipse.cdt.internal.ui.text.CReconciler.process(CReconciler.java:396)
+	at org.eclipse.jface.text.reconciler.AbstractReconciler$BackgroundThread.run(AbstractReconciler.java:206)
+!SUBENTRY 1 org.eclipse.cdt.core 4 969 2012-04-09 08:49:58.331
+!MESSAGE Element HMC5883L.h does not exist.

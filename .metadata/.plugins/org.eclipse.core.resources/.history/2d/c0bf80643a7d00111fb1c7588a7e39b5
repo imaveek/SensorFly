@@ -1,0 +1,161 @@
+/*
+ * FlightControl.cpp
+ *
+ *  Created on: Mar 28, 2012
+ *      Author: imaveek
+ */
+
+#include "FlightControl.h"
+#include "TimerOne.h"
+#include "TimerThree.h"
+#include "MPU6050.h"
+#include "HMC5883L.h"
+#include <stdlib.h>
+
+#define GYRO_LPF_LEN 20
+#define PWM_FREQ 100
+#define PID_FREQ 10000UL
+
+void * pointerToObj;
+static void wrapper();
+
+FlightControl FlightControl1;
+
+void FlightControl::initialize() {
+	// Initialize values
+	epsilon = 500;
+	dt = 0.01;        //100ms loop time
+	yawMAX = 100;
+	yawMIN = 0;
+	yawKp = 0.001;
+	yawKd = 0;
+	yawKi = 0;
+	yawPIDenabled = false;
+	gyroSetPoint = -118;
+	throttle = 400;
+
+	pre_error=0;
+	integral=0;
+	error=0;
+	derivative=0;
+
+	yawInput=0;
+	topRotDuty=0;
+	botRotDuty=0;
+	gz=0;
+
+	// *************** Motor PWM *******************
+	// set a timer of length 100 microseconds
+	// Needed to set the mode 8 for phase and frequency correct PWM
+	Timer1.initialize(PWM_FREQ);
+	Timer1.pwm(MOTOR1_PIN, 0, PWM_FREQ); // PWM frequency 10000Hz
+	Timer1.pwm(MOTOR2_PIN, 0, PWM_FREQ);
+
+	// *************** PID Control *****************
+	Timer3.initialize(PID_FREQ); // Timer 3, 10000us, 100Hz
+	pointerToObj = this;
+	Timer3.attachInterrupt(wrapper, PID_FREQ);
+
+	// initialize device
+	Serial1.println("Initializing Accel/Gyro ...");
+	AccelGyro.initialize();
+	AccelGyro.setI2CBypassEnabled(HIGH);
+	AccelGyro.setDLPFMode(MPU6050_DLPF_BW_5);
+	AccelGyro.setFullScaleGyroRange(MPU6050_GYRO_FS_1000);
+
+	Compass.initialize();
+
+	// verify connection
+	Serial1.println("Testing Accel/Gyro connections...");
+	Serial1.println(AccelGyro.testConnection() ? "MPU6050 connection successful" : "MPU6050 connection failed");
+	Serial1.println(Compass.testConnection() ? "HMC5883L connection successful" : "HMC5883L connection failed");
+
+}
+
+float FlightControl::yawPID(float setpoint, float actual_position) {
+
+	float output=0;
+
+	//Calculate P,I,D
+	error = setpoint - actual_position;
+
+	//In case of error too small then stop integration
+	if(abs(error) > epsilon)
+	{
+		integral = integral + error*dt;
+	}
+	derivative = (error - pre_error)/dt;
+	output = yawKp*error + yawKi*integral + yawKd*derivative;
+
+	//Saturation Filter
+	if(output > yawMAX)
+	{
+		output = yawMAX;
+	}
+	else if(output < yawMIN)
+	{
+		output = yawMIN;
+	}
+
+	//Update error
+	pre_error = error;
+
+	return output;
+}
+
+
+// To call the main loop function in the timer interrupt
+void wrapper() {
+	FlightControl * mySelf =  (FlightControl *) pointerToObj;
+	mySelf->mainLoop();
+}
+
+void FlightControl::mainLoop()
+{
+	sei();
+
+	// Get rotation
+	gz = AccelGyro.getRotationZ();
+	mz = Compass.getHeadingZ();
+
+	// Call PID loop
+	if (yawPIDenabled) {
+		yawInput = yawPID(gyroSetPoint,gz);
+
+		uint16_t topRotDuty = abs(throttle - yawInput);
+		uint16_t botRotDuty = abs(throttle + yawInput);
+
+		// Set motor input
+		if(topRotDuty <= 0 || botRotDuty <= 0){
+			topRotDuty = (topRotDuty<4) ? 4:topRotDuty;
+			botRotDuty = (botRotDuty<4) ? 4:botRotDuty;
+		}
+		else{
+			topRotDuty = (topRotDuty > 1024) ? 1024:topRotDuty;
+			botRotDuty = (botRotDuty > 1024) ? 1024:botRotDuty;
+		}
+
+		// Set motor duty cycles
+		setTopRotorDuty(topRotDuty);
+		setBottomRotorDuty(botRotDuty);
+	}
+}
+
+
+void FlightControl::turn(uint8_t angle) {
+	// Convert angle to range
+
+
+}
+
+void FlightControl::enableYawPID(bool status) {
+	this->yawPIDenabled = status;
+}
+
+void FlightControl::setTopRotorDuty(uint16_t duty) {
+	Timer1.setPwmDuty(MOTOR1_PIN,duty);
+}
+
+void FlightControl::setBottomRotorDuty(uint16_t duty) {
+	Timer1.setPwmDuty(MOTOR2_PIN,duty);
+}

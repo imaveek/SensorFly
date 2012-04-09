@@ -1,0 +1,114 @@
+#define ARDUINO_MAIN
+
+#include "main.h"
+#include "Wire.h"
+#include "I2Cdev.h"
+#include "FlightControl.h"
+#include "ZigduinoRadio.h"
+#include "LowPassFilter.h"
+#include "MPU6050.h"
+#include "RemoteCmd.h"
+
+#define LED_PIN 23
+
+void errHandle(radio_error_t err);
+void onXmitDone(radio_tx_done_t x);
+void blinkLED();
+void executeRemoteCmd(RemoteCmd remoteCmd);
+
+void setup() {
+	// Initialize the digital pin as output.
+	// Pin 23 has an LED connected
+	pinMode(LED_PIN, OUTPUT);
+	digitalWrite(LED_PIN, LOW);
+
+	// *************** Sensors *****************
+	// join I2C bus (I2Cdev library doesn't do this automatically)
+	Wire.begin();
+
+	// initialize serial communication
+	Serial1.begin(9600);
+
+	// *************** ZigduinoRadio ***************
+	ZigduinoRadio.begin(11);
+	ZigduinoRadio.attachError(errHandle);
+	ZigduinoRadio.attachTxDone(onXmitDone);
+
+	// *************** Flight Controller ***********
+	FlightControl1.initialize();
+}
+
+void loop() {
+
+	uint8_t cmd;
+	uint8_t buf[sizeof(RemoteCmd)];
+	RemoteCmd remoteCmd;
+
+	int16_t gz;
+
+	gz = AccelGyro.getRotationZ();
+
+	// Print out to screen
+	Serial1.print(gz);
+	Serial1.println();
+
+	// Get Commands
+	if (ZigduinoRadio.available() >= sizeof(RemoteCmd))
+	{
+		Serial1.println();
+		Serial1.print("Rx: ");
+		for(int i=0;i<sizeof(RemoteCmd);i++)
+			buf[i] = ZigduinoRadio.read();
+		remoteCmd.decode(buf);
+		ZigduinoRadio.flush();
+
+		executeRemoteCmd();
+	}
+
+
+	// Send Gyro Readings
+	ZigduinoRadio.beginTransmission();
+	ZigduinoRadio.write((uint8_t *)gz,2);
+	ZigduinoRadio.endTransmission();
+
+	delay(1000);
+}
+
+void executeRemoteCmd(RemoteCmd remoteCmd) {
+
+}
+
+int main(void)
+{
+	init();
+	setup();
+
+	for (;;) {
+		loop();
+		if (serialEventRun) serialEventRun();
+	}
+	return 0;
+}
+
+void errHandle(radio_error_t err)
+{
+	Serial1.println();
+	Serial1.print("Error: ");
+	Serial1.print((uint8_t)err, 10);
+	Serial1.println();
+}
+
+void onXmitDone(radio_tx_done_t x)
+{
+	Serial1.println();
+	Serial1.print("TxDone: ");
+	Serial1.print((uint8_t)x, 10);
+	Serial1.println();
+}
+
+void blinkLED() {
+	static bool blinkState = false;
+	// blink LED to indicate activity
+	blinkState = !blinkState;
+	digitalWrite(LED_PIN, blinkState);
+}

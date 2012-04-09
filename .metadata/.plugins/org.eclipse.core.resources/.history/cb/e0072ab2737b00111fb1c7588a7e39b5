@@ -1,0 +1,35 @@
+/*
+ * RemoteCmd.cpp
+ *
+ *  Created on: Mar 31, 2012
+ *      Author: imaveek
+ */
+
+#include "RemoteCmd.h"
+
+RemoteCmd::RemoteCmd() {
+	// TODO Auto-generated constructor stub
+}
+
+RemoteCmd::RemoteCmd(uint8_t * buf) {
+	cmd = buf[0];
+	value = buf[1] | (buf[2]<<8) | (buf[3]<<16) | (buf[4]<<24);
+}
+
+RemoteCmd::RemoteCmd(uint8_t cmd, float value) {
+	this->cmd = cmd;
+	this->value = cmd;
+}
+
+void RemoteCmd::serialize(uint8_t *buf) {
+	buf[0] = cmd;
+	buf[1] = (value & 0x000000FF);
+	buf[2] = (value & 0x0000FF00) >> 8;
+	buf[3] = (value & 0x00FF0000) >> 16;
+	buf[4] = (value & 0xFF000000) >> 24;
+}
+
+RemoteCmd::~RemoteCmd() {
+	// TODO Auto-generated destructor stub
+}
+

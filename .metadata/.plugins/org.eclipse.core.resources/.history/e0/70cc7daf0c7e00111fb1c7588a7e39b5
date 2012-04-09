@@ -1,0 +1,36 @@
+/*
+ * SRF01.cpp
+ *
+ *  Created on: Apr 3, 2012
+ *      Author: imaveek
+ */
+
+#include "SRF01.h"
+#include "SoftwareSerial.h"
+#include "Arduino.h"
+
+#define LCD_RX           0x02                                       // Defines pin to be used as rx pin for LCD03
+#define LCD_TX           0x03                                       // Defines pin to be used as tx pin for LCD03
+#define SRF_TXRX         0x05                                       // Defines pin to be used as RX and TX for SRF01
+#define LCD_SET_CUR      0x02                                       // Byte used to tell LCD03 we wish to move the cursor
+#define LCD_CLEAR        0x0C                                       // Byte used to clear LCD03 screen
+#define LCD_HIDE_CUR     0x04                                       // Byte used to hide LCD03 cursor
+#define SRF_ADDRESS      0x01                                       // Address of the SFR01
+#define GETSOFT          0x5D                                       // Byte to tell SRF01 we wish to read software version
+#define GETRANGE         0x54                                       // Byte used to get range from SRF01
+#define GETSTATUS        0x5F                                       // Byte used to get the status of the transducer
+
+
+SRF01::SRF01() {
+	// TODO Auto-generated constructor stub
+
+}
+
+uint8_t SRF01::value() {
+
+}
+
+SRF01::~SRF01() {
+	// TODO Auto-generated destructor stub
+}
+

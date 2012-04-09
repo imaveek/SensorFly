@@ -1,0 +1,34 @@
+/*
+ * SRF01.h
+ *
+ *  Created on: Apr 3, 2012
+ *      Author: imaveek
+ */
+
+#ifndef SRF01_H_
+#define SRF01_H_
+
+#include "SoftwareSerial.h"
+#include "Arduino.h"
+#include "SRF01.h"
+
+#define SRF_TXRX 	0x05   // Defines pin to be used as RX and TX for SRF01
+
+#define SRF_ADDRESS 0x01   // Address of the SFR01
+#define GETSOFT     0x5D   // Byte to tell SRF01 we wish to read software version
+#define GETRANGE    0x54   // Byte used to get range from SRF01
+#define GETSTATUS   0x5F   // Byte used to get the status of the transducer
+
+
+class SRF01 {
+public:
+	SRF01();
+	void SRF01_Cmd(byte Address, byte cmd);
+	uint16_t getRange();
+	bool getLockedStatus();
+	void initialize();
+	virtual ~SRF01();
+};
+
+
+#endif /* SRF01_H_ */

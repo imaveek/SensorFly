@@ -1,0 +1,24 @@
+/*
+ * SRF01.cpp
+ *
+ *  Created on: Apr 3, 2012
+ *      Author: imaveek
+ */
+
+#include "SRF01.h"
+#include "SoftwareSerial.h"
+
+
+SRF01::SRF01() {
+	// TODO Auto-generated constructor stub
+	srf01.begin(9600);
+
+}
+
+SRF01::~SRF01() {
+	// TODO Auto-generated destructor stub
+}
+
+
+
+

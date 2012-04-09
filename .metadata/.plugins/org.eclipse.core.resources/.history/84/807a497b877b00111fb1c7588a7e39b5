@@ -1,0 +1,137 @@
+#define ARDUINO_MAIN
+
+#include "main.h"
+#include "Wire.h"
+#include "I2Cdev.h"
+#include "ZigduinoRadio.h"
+#include "RemoteCmd.h"
+
+
+#define LED_PIN 23
+#define CMD_MAX_LEN 20
+
+bool blinkState = false;
+RemoteCmd remoteCmd;
+
+void errHandle(radio_error_t err);
+void onXmitDone(radio_tx_done_t x);
+
+void setup() {
+	// join I2C bus (I2Cdev library doesn't do this automatically)
+	Wire.begin();
+
+	// initialize serial communication
+	// (38400 chosen because it works as well at 8MHz as it does at 16MHz, but
+	// it's really up to you depending on your project)
+	Serial1.begin(9600);
+
+	// configure Arduino LED for
+	pinMode(LED_PIN, OUTPUT);
+
+	// ZigduinoRadio
+	ZigduinoRadio.begin(11);
+	ZigduinoRadio.attachError(errHandle);
+	ZigduinoRadio.attachTxDone(onXmitDone);
+}
+
+void loop()
+{
+
+	static char mode = 0;
+
+	int16_t gz;
+	uint8_t buf[sizeof(RemoteCmd)];
+	char cmdbuf[CMD_MAX_LEN];
+	uint8_t val=0, len=0, cmdlen=0;
+
+	switch(mode) {
+	case 'r': // Print received readings on screen
+		if (ZigduinoRadio.available())
+		{
+			Serial1.println();
+			Serial1.print("Rx: ");
+			while(ZigduinoRadio.available() >= 2) {
+				gz = ZigduinoRadio.read();
+				gz = gz | (ZigduinoRadio.read() << 8);
+				Serial1.println(gz);
+			}
+		}
+		if (Serial1.available()) {
+			char c = Serial1.read();
+			if (c == 27)
+				mode = 0;
+		}
+		break;
+	case 'c': // Send commands
+		Serial1.println("Enter command:");
+		Serial1.print(">>");
+
+		// Read command string
+		cmdlen=0;
+		do {
+			while(!Serial1.available());
+			char c = Serial1.read();
+			cmdbuf[cmdlen++] = Serial1.read();
+
+		} while(Serial1.peek != '\n' && cmdlen<CMD_MAX_LEN);
+		len = Serial1.readBytesUntil('\n',cmdbuf,CMD_MAX_LEN);
+		cmdbuf[len] = '\0'; // Terminate string
+		Serial1.print(cmdbuf);
+		Serial1.flush();
+
+		// Parse string
+		val = sscanf(cmdbuf,"%c=%f",&remoteCmd.cmd,&remoteCmd.value);
+		if (val == 2) {
+			Serial1.println("OK");
+			// Send command
+			remoteCmd.encode(buf);
+			ZigduinoRadio.beginTransmission();
+			ZigduinoRadio.write(buf,sizeof(RemoteCmd));
+			ZigduinoRadio.endTransmission();
+		} else {
+			Serial1.println("Error. Try Again.");
+		}
+		break;
+	default:
+		Serial1.println("Hello");
+		Serial1.println("Select Mode:");
+		Serial1.println("r - Show Sensor Readings");
+		Serial1.println("c - Send command");
+		Serial1.println(">>");
+
+		while(!Serial1.available());
+		mode = Serial1.read();
+		Serial1.print(mode);
+		Serial1.println();
+		break;
+	}
+	delay(100);
+}
+
+void errHandle(radio_error_t err)
+{
+	Serial1.println();
+	Serial1.print("Error: ");
+	Serial1.print((uint8_t)err, 10);
+	Serial1.println();
+}
+
+void onXmitDone(radio_tx_done_t x)
+{
+	Serial1.println();
+	Serial1.print("TxDone: ");
+	Serial1.print((uint8_t)x, 10);
+	Serial1.println();
+}
+
+int main(void)
+{
+	init();
+	setup();
+	for (;;) {
+		loop();
+		if (serialEventRun) serialEventRun();
+	}
+	return 0;
+}
+

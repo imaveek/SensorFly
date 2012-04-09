@@ -184,7 +184,7 @@ float Stream::parseFloat(char skipChar){
 
   do{
     if(c == skipChar)
-      ; // ignore
+      ; // @Suppress()
     else if(c == '-')
       isNegative = true;
     else if (c == '.')

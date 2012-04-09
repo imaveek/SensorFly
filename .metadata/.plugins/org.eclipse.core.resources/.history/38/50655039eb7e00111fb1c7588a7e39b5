@@ -1,0 +1,175 @@
+/*
+ * FlightControl.cpp
+ *
+ *  Created on: Mar 28, 2012
+ *      Author: imaveek
+ */
+
+#include "FlightControl.h"
+#include "TimerOne.h"
+#include "TimerThree.h"
+#include "MPU6050.h"
+#include "HMC5883L.h"
+#include "MaxBotix.h"
+#include <stdlib.h>
+
+#define GYRO_LPF_LEN 20
+#define PWM_FREQ 100
+#define PID_FREQ 10000UL
+
+#define DUTY_MIN 0
+#define DUTY_MAX 1024
+#define ALT_PID_FREQ_DIV 2
+
+
+void * pointerToObj;
+static void wrapper();
+
+float gyrosum = 0;
+int16_t turnStop = 0;
+
+FlightControl FlightControl1;
+
+void FlightControl::initialize() {
+	// Initialize values
+	yawPIDenabled = false;
+	altPIDenabled = false;
+	gyroSetPoint = -118;
+	altSetPoint = 50;
+
+	throttle = 400;
+	yawInput=0;
+	topRotDuty=0;
+	botRotDuty=0;
+	gz=0;
+	alt=0;
+
+	yawPID = new PID(0.3,0,0,500,0.01,100,0);
+	altPID = new PID(0.3,0,0,500,0.01,100,0);
+
+	// *************** Motor PWM *******************
+	// set a timer of length 100 microseconds
+	// Needed to set the mode 8 for phase and frequency correct PWM
+	Timer1.initialize(PWM_FREQ);
+	Timer1.pwm(MOTOR1_PIN, 0, PWM_FREQ); // PWM frequency 10000Hz
+	Timer1.pwm(MOTOR2_PIN, 0, PWM_FREQ);
+
+	pinMode(MOTOR3_PIN, OUTPUT);
+
+	// *************** PID Control *****************
+	Timer3.initialize(PID_FREQ); // Timer 3, 10000us, 100Hz
+	pointerToObj = this;
+	Timer3.attachInterrupt(wrapper, PID_FREQ);
+
+	// initialize device
+	Serial1.println("Initializing Accel/Gyro ...");
+	AccelGyro.initialize();
+	AccelGyro.setI2CBypassEnabled(HIGH);
+	AccelGyro.setDLPFMode(MPU6050_DLPF_BW_5);
+	AccelGyro.setFullScaleGyroRange(MPU6050_GYRO_FS_1000);
+
+	Compass.initialize();
+
+	// verify connection
+	Serial1.println("Testing Accel/Gyro connections...");
+	Serial1.println(AccelGyro.testConnection() ? "MPU6050 connection successful" : "MPU6050 connection failed");
+	Serial1.println(Compass.testConnection() ? "HMC5883L connection successful" : "HMC5883L connection failed");
+
+}
+
+void FlightControl::goForward(bool status) {
+	if(status)
+		digitalWrite(MOTOR3_PIN,HIGH);
+	else
+		digitalWrite(MOTOR3_PIN,LOW);
+}
+
+
+// To call the main loop function in the timer interrupt
+void wrapper() {
+	FlightControl * mySelf =  (FlightControl *) pointerToObj;
+	mySelf->mainLoop();
+}
+
+void FlightControl::mainLoop()
+{
+	sei();
+
+	static uint8_t loopCounter=0;
+
+	// Get measurements
+	gz = AccelGyro.getRotationZ();
+	mz = Compass.getHeadingZ();
+	alt = AltSensor.value();
+
+	loopCounter++;
+
+	// Slow Altitude Control loop
+	if (altPIDenabled && (loopCounter % ALT_PID_FREQ_DIV)==0) {
+		throttle = altPID->loop(altSetPoint,alt);
+		throttle = (throttle<DUTY_MIN) ? DUTY_MIN:throttle;
+		throttle = (throttle>DUTY_MAX) ? DUTY_MAX:throttle;
+		setTopRotorDuty(throttle);
+		setBottomRotorDuty(throttle);
+	}
+
+	// Fast Yaw Control loop
+	if (yawPIDenabled) {
+		yawInput = yawPID->loop(gyroSetPoint,gz);
+		topRotDuty = abs(throttle - yawInput);
+		botRotDuty = abs(throttle + yawInput);
+		// Set motor input
+		if(topRotDuty <= 0 || botRotDuty <= 0){
+			topRotDuty = (topRotDuty<DUTY_MIN) ? DUTY_MIN:topRotDuty;
+			botRotDuty = (botRotDuty<DUTY_MIN) ? DUTY_MIN:botRotDuty;
+		}
+		else{
+			topRotDuty = (topRotDuty>DUTY_MAX) ? DUTY_MAX:topRotDuty;
+			botRotDuty = (botRotDuty>DUTY_MAX) ? DUTY_MAX:botRotDuty;
+		}
+		// Set motor duty cycles
+		setTopRotorDuty(topRotDuty);
+		setBottomRotorDuty(botRotDuty);
+	}
+
+
+	// Open loop turn
+	if(turnEnabled) {
+		gyrosum += abs(gz) * 0.01 * 1000 / 32768;
+		if (gyrosum > turnStop) {
+			gyrosum = 0;
+			turnEnabled = 0;
+			enableYawPID(true);
+		}
+	}
+
+}
+
+
+void FlightControl::turn(int16_t angle) {
+	int8_t sign = angle/abs(angle);
+	enableYawPID(false);
+	// Convert angle to range
+
+	gyrosum = 0;
+	turnStop = abs(angle);
+
+	setTopRotorDuty(throttle+(sign*25));
+	setBottomRotorDuty(throttle-(sign*25));
+}
+
+void FlightControl::enableYawPID(bool status) {
+	this->yawPIDenabled = status;
+}
+
+void FlightControl::enableAltPID(bool status) {
+	this->altPIDenabled = status;
+}
+
+void FlightControl::setTopRotorDuty(uint16_t duty) {
+	Timer1.setPwmDuty(MOTOR1_PIN,duty);
+}
+
+void FlightControl::setBottomRotorDuty(uint16_t duty) {
+	Timer1.setPwmDuty(MOTOR2_PIN,duty);
+}

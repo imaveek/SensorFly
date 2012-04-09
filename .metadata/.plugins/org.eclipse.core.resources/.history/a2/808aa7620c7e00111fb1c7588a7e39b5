@@ -1,0 +1,22 @@
+/*
+ * SRF01.cpp
+ *
+ *  Created on: Apr 3, 2012
+ *      Author: imaveek
+ */
+
+#include "/Users/imaveek/SensorFly/libraries/SRF01/SRF01.h"
+
+SRF01::SRF01() {
+	// TODO Auto-generated constructor stub
+
+}
+
+uint8_t SRF01::value() {
+
+}
+
+SRF01::~SRF01() {
+	// TODO Auto-generated destructor stub
+}
+

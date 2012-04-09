@@ -1,0 +1,18 @@
+/*
+ * MaxBotix.h
+ *
+ *  Created on: Apr 4, 2012
+ *      Author: imaveek
+ */
+
+#ifndef MAXBOTIX_H_
+#define MAXBOTIX_H_
+
+class MaxBotix {
+public:
+	MaxBotix();
+	uint16_t value();
+	virtual ~MaxBotix();
+};
+
+#endif /* MAXBOTIX_H_ */

@@ -1,0 +1,115 @@
+#define ARDUINO_MAIN
+
+#include "main.h"
+#include "Wire.h"
+#include "I2Cdev.h"
+#include "FlightControl.h"
+#include "ZigduinoRadio.h"
+#include "LowPassFilter.h"
+
+#define LED_PIN 23
+
+#define GYRO_SET_POINT 0
+#define THROTTLE 800
+#define GYRO_LPF_LEN 20
+
+int16_t gz, fgz;
+
+
+void errHandle(radio_error_t err);
+void onXmitDone(radio_tx_done_t x);
+void blinkLED();
+
+void setup() {
+	// Initialize the digital pin as output.
+	// Pin 23 has an LED connected
+	pinMode(LED_PIN, OUTPUT);
+	digitalWrite(LED_PIN, LOW);
+
+	// *************** Sensors *****************
+	// join I2C bus (I2Cdev library doesn't do this automatically)
+	Wire.begin();
+
+	// initialize serial communication
+	Serial1.begin(9600);
+
+	// initialize device
+	Serial1.println("Initializing I2C devices...");
+	AccelGyro.initialize();
+	AccelGyro.setI2CBypassEnabled(HIGH);
+	AccelGyro.setDLPFMode(MPU6050_DLPF_BW_5);
+	AccelGyro.setFullScaleGyroRange(MPU6050_GYRO_FS_1000);
+
+	// verify connection
+	Serial1.println("Testing device connections...");
+	Serial1.println(AccelGyro.testConnection() ? "MPU6050 connection successful" : "MPU6050 connection failed");
+
+	// *************** ZigduinoRadio ***************
+	ZigduinoRadio.begin(11);
+	ZigduinoRadio.attachError(errHandle);
+	ZigduinoRadio.attachTxDone(onXmitDone);
+
+	// *************** Flight Controller ***********
+	FlightControl1.initialize(;)
+}
+
+void loop() {
+
+	uint8_t cmd;
+
+	// Print out to screen
+	Serial1.print(gz);
+	Serial1.println();
+
+	// Get Commands
+	if (ZigduinoRadio.available())
+	{
+		Serial1.println();
+		Serial1.print("Rx: ");
+		while(ZigduinoRadio.available()) {
+			cmd = ZigduinoRadio.read();
+		}
+	}
+
+	// Send Gyro Readings
+	ZigduinoRadio.beginTransmission();
+	ZigduinoRadio.write((uint8_t *)&fgz,2);
+	ZigduinoRadio.endTransmission();
+
+	delay(1000);
+}
+
+int main(void)
+{
+	init();
+	setup();
+
+	for (;;) {
+		loop();
+		if (serialEventRun) serialEventRun();
+	}
+	return 0;
+}
+
+void errHandle(radio_error_t err)
+{
+	Serial1.println();
+	Serial1.print("Error: ");
+	Serial1.print((uint8_t)err, 10);
+	Serial1.println();
+}
+
+void onXmitDone(radio_tx_done_t x)
+{
+	Serial1.println();
+	Serial1.print("TxDone: ");
+	Serial1.print((uint8_t)x, 10);
+	Serial1.println();
+}
+
+void blinkLED() {
+	static bool blinkState = false;
+	// blink LED to indicate activity
+	blinkState = !blinkState;
+	digitalWrite(LED_PIN, blinkState);
+}

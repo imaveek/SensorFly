@@ -1,17 +1,21 @@
 #define ARDUINO_MAIN
 
 #include "main.h"
-
 #include "Wire.h"
 #include "I2Cdev.h"
 #include "ZigduinoRadio.h"
+#include "RemoteCmd.h"
 
 
 #define LED_PIN 23
+#define CMD_MAX_LEN 20
+
 bool blinkState = false;
+RemoteCmd remoteCmd;
 
 void errHandle(radio_error_t err);
 void onXmitDone(radio_tx_done_t x);
+
 void setup() {
 	// join I2C bus (I2Cdev library doesn't do this automatically)
 	Wire.begin();
@@ -32,48 +36,138 @@ void setup() {
 
 void loop()
 {
-	int16_t gz;
+	static char mode = 0;
+	const uint8_t rxbuflen = 32;
+	uint8_t rxBuffer[rxbuflen];
+	uint8_t buflen=0;
+	float gyrosum;
 
-	if (Serial1.available())
-	{
-		ZigduinoRadio.beginTransmission();
+	int16_t gz=0,mz=0,h=0;
+	int16_t throttle=0,topRotDuty=0,botRotDuty=0;
+	float yawInput=0,yawError=0;
+	float altInput=0,altError=0;
 
-		Serial1.println();
-		Serial1.print("Tx: ");
 
-		while(Serial1.available())
+	uint8_t buf[sizeof(RemoteCmd)];
+	char cmdbuf[CMD_MAX_LEN];
+	uint8_t val=0, cmdlen=0;
+	char str[10];
+
+	switch(mode) {
+	case 'r': // Print received readings on screen
+		if (ZigduinoRadio.available())
 		{
+			Serial1.println();
+			Serial1.print("Rx: ");
+			while(ZigduinoRadio.available() >= rxbuflen) {
+				for(uint8_t k=0;k<rxbuflen;k++)
+					rxBuffer[k]=ZigduinoRadio.read();
+			}
+			ZigduinoRadio.flush();
+
+			memcpy(&h,rxBuffer+buflen,2);buflen += 2;
+			memcpy(&gz,rxBuffer+buflen,2);buflen += 2;
+			memcpy(&mz,rxBuffer+buflen,2);buflen += 2;
+
+			memcpy(&yawInput,rxBuffer+buflen,4);buflen += 4;
+			memcpy(&yawError,rxBuffer+buflen,4);buflen += 4;
+			memcpy(&topRotDuty,rxBuffer+buflen,2);buflen += 2;
+			memcpy(&botRotDuty,rxBuffer+buflen,2);buflen += 2;
+
+			memcpy(&altInput,rxBuffer+buflen,4);buflen += 4;
+			memcpy(&altError,rxBuffer+buflen,4);buflen += 4;
+			memcpy(&throttle,rxBuffer+buflen,2);buflen += 2;
+
+			memcpy(&gyrosum,rxBuffer+buflen,4);buflen += 4;
+
+			// Sensors
+			Serial1.println();
+			Serial1.print("h:");Serial1.print(h);
+			Serial1.print("\t gz:");Serial1.print(gz);
+			Serial1.print("\t mz:");Serial1.print(mz);
+			Serial1.println();
+			// Yaw loop
+			Serial1.print("yawInp:");Serial1.print(yawInput);
+			Serial1.print("\t yawErr:");Serial1.print(yawError);
+			Serial1.print("\t topRot:");Serial1.print(topRotDuty);
+			Serial1.print("\t botRot:");Serial1.print(botRotDuty);
+			Serial1.println();
+			// Alt loop
+			Serial1.print("altInp:");Serial1.print(altInput);
+			Serial1.print("\t altErr:");Serial1.print(altError);
+			Serial1.print("\t throttle:");Serial1.print(throttle);
+			Serial1.println();
+			// Turn
+			Serial1.print("gyrosum:");Serial1.print(gyrosum);
+			Serial1.println();
+
+		}
+		Serial1.flush();
+		delay(500);
+		if (Serial1.available()) {
 			char c = Serial1.read();
-			Serial1.write(c);
-			ZigduinoRadio.write(c);
+			if (c == 27)
+				mode = 0;
+		}
+		break;
+	case 'c': // Send commands
+		Serial1.flush();
+		Serial1.println("Enter command:");
+		Serial1.print(">>");
+
+		// Read command string
+		cmdlen=0;
+		while(true) {
+			while(!Serial1.available());
+			char c = Serial1.read();
+			if (c == 27) {
+				mode = 0;
+				Serial1.flush();
+				break;
+			}
+			if (c == '\r') {
+				cmdbuf[cmdlen++] = '\0';
+				Serial1.flush();
+				break;
+			}
+			if (cmdlen >= CMD_MAX_LEN-1) {
+				cmdbuf[CMD_MAX_LEN-1] = '\0';
+				break;
+			}
+			cmdbuf[cmdlen++] = c;
+			Serial1.print(c);
 		}
 
 		Serial1.println();
 
-		ZigduinoRadio.endTransmission();
-	}
+		// Parse string //%f does not work in sscanf
+		val = sscanf(cmdbuf,"%c=%s",&remoteCmd.cmd,str);
+		remoteCmd.value = atof(str);
 
-	if (ZigduinoRadio.available())
-	{
-		Serial1.println();
-		Serial1.print("Rx: ");
-
-		while(ZigduinoRadio.available() == 2) {
-			gz = ZigduinoRadio.read();
-			gz = gz | (ZigduinoRadio.read() << 8);
-			Serial1.println(gz);
+		if (val==2) {
+			Serial1.println("OK");
+			// Send command
+			remoteCmd.encode(buf);
+			ZigduinoRadio.beginTransmission();
+			ZigduinoRadio.write(buf,sizeof(RemoteCmd));
+			ZigduinoRadio.endTransmission();
+		} else {
+			Serial1.println("Error. Try Again.");
 		}
+		break;
+	default:
+		Serial1.flush();
+		Serial1.println("*************************");
+		Serial1.println("Select Mode:");
+		Serial1.println("r - Show Sensor Readings");
+		Serial1.println("c - Send command");
+		Serial1.print(">>");
 
-		/*
+		while(!Serial1.available());
+		mode = Serial1.read();
+		Serial1.print(mode);
 		Serial1.println();
-		Serial1.print("LQI: ");
-		Serial1.print(ZigduinoRadio.getLqi(), 10);
-		Serial1.print(", RSSI: ");
-		Serial1.print(ZigduinoRadio.getLastRssi(), 10);
-		Serial1.print(" dBm, ED: ");
-		Serial1.print(ZigduinoRadio.getLastEd(), 10);
-		Serial1.println("dBm");
-		 */
+		break;
 	}
 	delay(100);
 }
