@@ -14,10 +14,10 @@ class LowPassFilter {
 
 private:
 	// Properties
-	int16_t *buffer;
+	int32_t *buffer;
 	uint8_t numItems;
 	uint8_t curItem;
-	int16_t lastSum;
+	int32_t lastSum;
 	uint8_t bufferLen;
 
 public:
@@ -25,7 +25,7 @@ public:
 	LowPassFilter(uint8_t bufferLen);
 	virtual ~LowPassFilter();
 
-	int16_t filter(int16_t x);
+	int32_t filter(int32_t x);
 };
 
 #endif /* LOWPASSFILTER_H_ */

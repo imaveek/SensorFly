@@ -11,15 +11,15 @@ LowPassFilter::LowPassFilter(uint8_t bufferLen) {
 	numItems = 0;
 	lastSum = 0;
 	curItem = 0;
-	buffer = new int16_t[bufferLen];
+	buffer = new int32_t[bufferLen];
 	for(uint8_t i=0;i<bufferLen;i++)
 		buffer[i] = 0;
 	this->bufferLen = bufferLen;
 }
 
-int16_t LowPassFilter::filter(int16_t x) {
-	int16_t replacedX;
-	int16_t sum;
+int32_t LowPassFilter::filter(int32_t x) {
+	int32_t replacedX;
+	int32_t sum;
 	curItem++;
 
 	// Rollover

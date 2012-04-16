@@ -28,6 +28,7 @@ public:
 	float loop(float setpoint, float actual_position);
 	PID(float Kp, float Ki, float Kd, float epsilon, float dt, float MAX, float MIN);
 	PID();
+	void reset();
 	virtual ~PID();
 };
 

@@ -64,7 +64,7 @@ int analogRead(uint8_t pin)
 #endif
 
 	// without a delay, we seem to read from the wrong channel
-	//delay(100);
+//	delay(100);
 
 #if defined(ADCSRA) && defined(ADCL)
 	// start the conversion

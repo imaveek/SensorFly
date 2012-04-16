@@ -39,7 +39,7 @@
 #include <avr/io.h>
 #include <avr/interrupt.h>
 
-#define RESOLUTION 65536    // Timer1 is 16 bit
+#define RESOLUTION_TIM3 65536    // Timer1 is 16 bit
 
 class TimerThree
 {

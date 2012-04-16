@@ -2,16 +2,42 @@
 **** Build of configuration Release for project basic_sensors ****
 
 make all 
+Building file: /Users/imaveek/SensorFly/libraries/FlightControl/FlightControl.cpp
+Invoking: AVR C++ Compiler
+avr-g++ -I"/Users/imaveek/SensorFly/libraries/LowPassFilter" -I"/Users/imaveek/SensorFly/libraries/MaxBotix" -I"/Users/imaveek/SensorFly/libraries/zigduino" -I"/Users/imaveek/SensorFly/libraries/Comp6DOF" -I"/Users/imaveek/SensorFly/libraries/SoftwareSerial" -I"/Users/imaveek/SensorFly/libraries/Timers" -I"/Users/imaveek/SensorFly/libraries/SPI" -I"/Users/imaveek/SensorFly/libraries/Wire" -I"/Users/imaveek/SensorFly/libraries/I2Cdev" -I"/Users/imaveek/SensorFly/libraries/MPU6050" -I"/Users/imaveek/SensorFly/libraries/Wire/utility" -I"/Users/imaveek/SensorFly/libraries/ZigduinoRadio" -I"/Users/imaveek/SensorFly/libraries/ZigduinoRadio/boards" -I"/Users/imaveek/SensorFly/libraries/HMC5883L" -Wall -Os -ffunction-sections -fdata-sections -funsigned-char -funsigned-bitfields -fno-exceptions --pedantic -c -mmcu=atmega128rfa1 -DF_CPU=16000000UL -MMD -MP -MF"libraries/FlightControl/FlightControl.d" -MT"libraries/FlightControl/FlightControl.d" -c -o "libraries/FlightControl/FlightControl.o" "/Users/imaveek/SensorFly/libraries/FlightControl/FlightControl.cpp"
+In file included from /Users/imaveek/SensorFly/libraries/I2Cdev/I2Cdev.h:68,
+                 from /Users/imaveek/SensorFly/libraries/MPU6050/MPU6050.h:40,
+                 from /Users/imaveek/SensorFly/libraries/FlightControl/FlightControl.cpp:11:
+/Users/imaveek/SensorFly/libraries/zigduino/Arduino.h:191:14: warning: anonymous variadic macros were introduced in C99
+Finished building: /Users/imaveek/SensorFly/libraries/FlightControl/FlightControl.cpp
+ 
+Building target: basic_sensors.elf
+Invoking: AVR C++ Linker
+avr-gcc --cref -s -Os -o"basic_sensors.elf"  ./libraries/zigduino/CDC.o ./libraries/zigduino/HID.o ./libraries/zigduino/HardwareSerial.o ./libraries/zigduino/IPAddress.o ./libraries/zigduino/Print.o ./libraries/zigduino/Stream.o ./libraries/zigduino/Tone.o ./libraries/zigduino/USBCore.o ./libraries/zigduino/WInterrupts.o ./libraries/zigduino/WMath.o ./libraries/zigduino/WString.o ./libraries/zigduino/new.o ./libraries/zigduino/wiring.o ./libraries/zigduino/wiring_analog.o ./libraries/zigduino/wiring_digital.o ./libraries/zigduino/wiring_pulse.o ./libraries/zigduino/wiring_shift.o  ./libraries/ZigduinoRadio/ZigduinoRadio.o ./libraries/ZigduinoRadio/ZigduinoRadioEvents.o ./libraries/ZigduinoRadio/ZigduinoRadioInC.o ./libraries/ZigduinoRadio/radio_rfa.o ./libraries/ZigduinoRadio/trx_datarate.o ./libraries/ZigduinoRadio/trx_datarate_str.o ./libraries/ZigduinoRadio/trx_rfa.o  ./libraries/Wire/utility/twi.o  ./libraries/Wire/Wire.o  ./libraries/Timers/TimerOne.o ./libraries/Timers/TimerThree.o  ./libraries/SoftwareSerial/SoftwareSerial.o  ./libraries/SPI/SPI.o  ./libraries/Misc/RemoteCmd.o  ./libraries/MaxBotix/MaxBotix.o  ./libraries/MPU6050/MPU6050.o  ./libraries/LowPassFilter/LowPassFilter.o  ./libraries/I2Cdev/I2Cdev.o  ./libraries/HMC5883L/HMC5883L.o  ./libraries/FlightControl/FlightControl.o ./libraries/FlightControl/PID.o  ./libraries/Comp6DOF/Comp6DOF_n0m1.o  ./main.o   -lc -lm -lprintf_flt -lscanf_flt -lm -Wl,-Map,basic_sensors.map,--cref -Wl,--gc-sections -mmcu=atmega128rfa1
+Finished building target: basic_sensors.elf
+ 
+Invoking: AVR Create Extended Listing
+avr-objdump -h -S basic_sensors.elf  >"basic_sensors.lss"
+Finished building: basic_sensors.lss
+ 
+Create Flash image (ihex format)
+avr-objcopy -R .eeprom -O ihex basic_sensors.elf  "basic_sensors.hex"
+Finished building: basic_sensors.hex
+ 
+Create eeprom image (ihex format)
+avr-objcopy -j .eeprom --no-change-warnings --change-section-lma .eeprom=0 -O ihex basic_sensors.elf  "basic_sensors.eep"
+Finished building: basic_sensors.eep
+ 
 Invoking: Print Size
 avr-size --format=avr --mcu=atmega128rfa1 basic_sensors.elf
 AVR Memory Usage
 ----------------
 Device: atmega128rfa1
 
-Program:   10792 bytes (8.2% Full)
+Program:   12066 bytes (9.2% Full)
 (.text + .data + .bootloader)
 
-Data:       1070 bytes (6.5% Full)
+Data:       1200 bytes (7.3% Full)
 (.data + .bss + .noinit)
 
 

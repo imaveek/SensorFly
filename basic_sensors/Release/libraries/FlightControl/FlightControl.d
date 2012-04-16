@@ -2,6 +2,7 @@ libraries/FlightControl/FlightControl.d \
   libraries/FlightControl/FlightControl.o:  \
  /Users/imaveek/SensorFly/libraries/FlightControl/FlightControl.cpp \
   /Users/imaveek/SensorFly/libraries/FlightControl/FlightControl.h \
+  /Users/imaveek/SensorFly/libraries/FlightControl/PID.h \
   /Users/imaveek/SensorFly/libraries/Timers/TimerOne.h \
   /Users/imaveek/SensorFly/libraries/Timers/TimerThree.h \
   /Users/imaveek/SensorFly/libraries/MPU6050/MPU6050.h \
@@ -19,9 +20,14 @@ libraries/FlightControl/FlightControl.d \
   /Users/imaveek/SensorFly/libraries/Wire/Wire.h \
   /Users/imaveek/SensorFly/libraries/zigduino/Stream.h \
   /Users/imaveek/SensorFly/libraries/zigduino/HardwareSerial.h \
-  /Users/imaveek/SensorFly/libraries/HMC5883L/HMC5883L.h
+  /Users/imaveek/SensorFly/libraries/HMC5883L/HMC5883L.h \
+  /Users/imaveek/SensorFly/libraries/LowPassFilter/LowPassFilter.h \
+  /Users/imaveek/SensorFly/libraries/Comp6DOF/Comp6DOF_n0m1.h \
+  /Users/imaveek/SensorFly/libraries/MaxBotix/MaxBotix.h
 
 /Users/imaveek/SensorFly/libraries/FlightControl/FlightControl.h:
+
+/Users/imaveek/SensorFly/libraries/FlightControl/PID.h:
 
 /Users/imaveek/SensorFly/libraries/Timers/TimerOne.h:
 
@@ -58,3 +64,9 @@ libraries/FlightControl/FlightControl.d \
 /Users/imaveek/SensorFly/libraries/zigduino/HardwareSerial.h:
 
 /Users/imaveek/SensorFly/libraries/HMC5883L/HMC5883L.h:
+
+/Users/imaveek/SensorFly/libraries/LowPassFilter/LowPassFilter.h:
+
+/Users/imaveek/SensorFly/libraries/Comp6DOF/Comp6DOF_n0m1.h:
+
+/Users/imaveek/SensorFly/libraries/MaxBotix/MaxBotix.h:

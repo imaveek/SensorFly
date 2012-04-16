@@ -38,12 +38,13 @@ libraries/Wire/utility \
 libraries/Wire \
 libraries/Timers \
 libraries/SoftwareSerial \
-libraries/SRF01 \
 libraries/SPI \
 libraries/Misc \
+libraries/MaxBotix \
 libraries/MPU6050 \
 libraries/LowPassFilter \
 libraries/I2Cdev \
 libraries/HMC5883L \
 libraries/FlightControl \
+libraries/Comp6DOF \
 

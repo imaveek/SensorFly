@@ -18,20 +18,39 @@
 #define MOTOR3_DIR_PIN 17
 
 class FlightControl {
+private:
+	bool isExecutingFlightPlan;
+
+	void takeOffMode();
+	void landMode();
+	void hoverMode();
+	void idleMode();
+	void turnMode();
+	void flightPlan();
+
 public:
 	// Properties
-	int16_t gyroSetPoint;
-	int16_t altSetPoint;
+	int16_t gyroBias;
+	int16_t accZbias;
 	int16_t throttle;
+
+	int16_t gyroSetPoint;
+	int16_t accZsetPoint;
+	int16_t altSetPoint;
 
 	int16_t topRotDuty;
 	int16_t botRotDuty;
 
-	int16_t gz;
+	int16_t ax,ay,az;
+	int16_t gx,gy,gz;
 	int16_t mx,my,mz;
+
+	float heading;
 	int16_t alt;
 
 	float gyrosum;
+	float velZ;
+	float dispZ;
 
 	float dt;
 	float yawInput;
@@ -39,6 +58,7 @@ public:
 
 	PID* yawPID;
 	PID* altPID;
+	PID* alt2PID;
 
 	bool yawPIDenabled;
 	bool altPIDenabled;
@@ -47,9 +67,8 @@ public:
 		Land,
 		Turn,
 		Hover,
-		Idle,
-		Hop
-	} flightMode;
+		Idle
+	} flightMode, lastFlightMode;
 
 	// Methods
 	void initialize();
@@ -66,8 +85,11 @@ public:
 	void forward(bool status);
 	void land();
 	void hover();
-	void hop();
-	void takeOffturn();
+
+	void calibrateGyro();
+	void calibrateAccZ();
+
+	void executeFlightPlan();
 };
 
 extern FlightControl FlightControl1;

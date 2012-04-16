@@ -55,7 +55,7 @@ Archive member included because of file (symbol)
 /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/libc.a(addsf3x.o)
                               /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/libc.a(addsf3.o) (__addsf3x)
 /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/libc.a(cmpsf2.o)
-                              ./libraries/zigduino/Print.o (__ltsf2)
+                              ./libraries/Comp6DOF/Comp6DOF_n0m1.o (__eqsf2)
 /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/libc.a(divsf3.o)
                               ./libraries/zigduino/Print.o (__divsf3)
 /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/libc.a(divsf3x.o)
@@ -83,7 +83,7 @@ Archive member included because of file (symbol)
 /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/libc.a(fp_zero.o)
                               /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/libc.a(addsf3x.o) (__fp_zero)
 /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/libc.a(gesf2.o)
-                              ./libraries/FlightControl/FlightControl.o (__gtsf2)
+                              ./libraries/FlightControl/PID.o (__gtsf2)
 /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/libc.a(mulsf3.o)
                               ./libraries/zigduino/Print.o (__mulsf3)
 /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/libc.a(mulsf3x.o)
@@ -94,8 +94,6 @@ Archive member included because of file (symbol)
                               /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/libc.a(itoa.o) (strrev)
 /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/avr51/libgcc.a(_mulsi3.o)
                               ./libraries/zigduino/Print.o (__mulsi3)
-/usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/avr51/libgcc.a(_udivmodqi4.o)
-                              ./libraries/FlightControl/FlightControl.o (__udivmodqi4)
 /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/avr51/libgcc.a(_udivmodhi4.o)
                               /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/libc.a(itoa.o) (__udivmodhi4)
 /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/avr51/libgcc.a(_divmodhi4.o)
@@ -199,6 +197,8 @@ Discarded input sections
  .text._ZN5Print7printlnEhi
                 0x00000000        0x0 ./libraries/zigduino/Print.o
  .text._ZN5Print7printlnEli
+                0x00000000        0x0 ./libraries/zigduino/Print.o
+ .text._ZN5Print5printEii
                 0x00000000        0x0 ./libraries/zigduino/Print.o
  .text._ZN5Print7printlnEii
                 0x00000000        0x0 ./libraries/zigduino/Print.o
@@ -499,6 +499,8 @@ Discarded input sections
                 0x00000000        0x0 ./libraries/ZigduinoRadio/ZigduinoRadio.o
  .text._ZN14cZigduinoRadio4peekEv
                 0x00000000        0x0 ./libraries/ZigduinoRadio/ZigduinoRadio.o
+ .text._ZN14cZigduinoRadio17beginTransmissionEv
+                0x00000000        0x0 ./libraries/ZigduinoRadio/ZigduinoRadio.o
  .text._ZN14cZigduinoRadio18cancelTransmissionEv
                 0x00000000        0x0 ./libraries/ZigduinoRadio/ZigduinoRadio.o
  .text._ZN14cZigduinoRadio11getLastRssiEv
@@ -525,6 +527,12 @@ Discarded input sections
                 0x00000000        0x0 ./libraries/ZigduinoRadio/ZigduinoRadio.o
  .text._ZN14cZigduinoRadio5doCcaEv
                 0x00000000        0x0 ./libraries/ZigduinoRadio/ZigduinoRadio.o
+ .text._ZN14cZigduinoRadio15endTransmissionEv
+                0x00000000        0x0 ./libraries/ZigduinoRadio/ZigduinoRadio.o
+ .text._ZN14cZigduinoRadio5writeEh
+                0x00000000        0x0 ./libraries/ZigduinoRadio/ZigduinoRadio.o
+ .text._ZN14cZigduinoRadio5writeEPhh
+                0x00000000        0x0 ./libraries/ZigduinoRadio/ZigduinoRadio.o
  .text._ZN14cZigduinoRadio5writeEPc
                 0x00000000        0x0 ./libraries/ZigduinoRadio/ZigduinoRadio.o
  .text._ZN14cZigduinoRadio4sendEh
@@ -532,6 +540,10 @@ Discarded input sections
  .text._ZN14cZigduinoRadio7txFrameEPhh
                 0x00000000        0x0 ./libraries/ZigduinoRadio/ZigduinoRadio.o
  .text._ZN14cZigduinoRadioC2Ev
+                0x00000000        0x0 ./libraries/ZigduinoRadio/ZigduinoRadio.o
+ .bss._ZN14cZigduinoRadio17txTmpBufferLengthE
+                0x00000000        0x0 ./libraries/ZigduinoRadio/ZigduinoRadio.o
+ .bss._ZN14cZigduinoRadio21usedBeginTransmissionE
                 0x00000000        0x0 ./libraries/ZigduinoRadio/ZigduinoRadio.o
  .text          0x00000000        0x0 ./libraries/ZigduinoRadio/ZigduinoRadioEvents.o
  .data          0x00000000        0x0 ./libraries/ZigduinoRadio/ZigduinoRadioEvents.o
@@ -627,6 +639,8 @@ Discarded input sections
  .bss           0x00000000        0x0 ./libraries/ZigduinoRadio/radio_rfa.o
  .text.radio_do_cca
                 0x00000000        0x0 ./libraries/ZigduinoRadio/radio_rfa.o
+ .text.radio_send_frame
+                0x00000000        0x0 ./libraries/ZigduinoRadio/radio_rfa.o
  .text.radio_error
                 0x00000000        0x0 ./libraries/ZigduinoRadio/radio_rfa.o
  .text.radio_force_state
@@ -666,6 +680,8 @@ Discarded input sections
  .text.trx_frame_read_data_crc
                 0x00000000        0x0 ./libraries/ZigduinoRadio/trx_rfa.o
  .text.trx_frame_read_crc
+                0x00000000        0x0 ./libraries/ZigduinoRadio/trx_rfa.o
+ .text.trx_frame_write
                 0x00000000        0x0 ./libraries/ZigduinoRadio/trx_rfa.o
  .text          0x00000000        0x0 ./libraries/Wire/utility/twi.o
  .data          0x00000000        0x0 ./libraries/Wire/utility/twi.o
@@ -939,8 +955,6 @@ Discarded input sections
  .text._ZN7MPU605011getRotationEPiS0_S0_
                 0x00000000        0x0 ./libraries/MPU6050/MPU6050.o
  .text._ZN7MPU605014getTemperatureEv
-                0x00000000        0x0 ./libraries/MPU6050/MPU6050.o
- .text._ZN7MPU605016getAccelerationZEv
                 0x00000000        0x0 ./libraries/MPU6050/MPU6050.o
  .text._ZN7MPU605016getAccelerationYEv
                 0x00000000        0x0 ./libraries/MPU6050/MPU6050.o
@@ -1363,11 +1377,19 @@ Discarded input sections
                 0x00000000        0x0 ./libraries/HMC5883L/HMC5883L.o
  .text._ZN8HMC5883L13getLockStatusEv
                 0x00000000        0x0 ./libraries/HMC5883L/HMC5883L.o
+ .text._ZN8HMC5883L11getHeadingZEv
+                0x00000000        0x0 ./libraries/HMC5883L/HMC5883L.o
  .text._ZN8HMC5883L11getHeadingYEv
                 0x00000000        0x0 ./libraries/HMC5883L/HMC5883L.o
  .text._ZN8HMC5883L11getHeadingXEv
                 0x00000000        0x0 ./libraries/HMC5883L/HMC5883L.o
  .text._ZN8HMC5883L10getHeadingEPiS0_S0_
+                0x00000000        0x0 ./libraries/HMC5883L/HMC5883L.o
+ .text._ZN8HMC5883L7setModeEh
+                0x00000000        0x0 ./libraries/HMC5883L/HMC5883L.o
+ .text._ZN8HMC5883L7setGainEh
+                0x00000000        0x0 ./libraries/HMC5883L/HMC5883L.o
+ .text._ZN8HMC5883L10initializeEv
                 0x00000000        0x0 ./libraries/HMC5883L/HMC5883L.o
  .text._ZN8HMC5883L7getModeEv
                 0x00000000        0x0 ./libraries/HMC5883L/HMC5883L.o
@@ -1387,11 +1409,13 @@ Discarded input sections
                 0x00000000        0x0 ./libraries/HMC5883L/HMC5883L.o
  .text          0x00000000        0x0 ./libraries/FlightControl/FlightControl.o
  .bss           0x00000000        0x0 ./libraries/FlightControl/FlightControl.o
- .text._ZN13FlightControl3hopEv
+ .text._ZN13FlightControl17executeFlightPlanEv
                 0x00000000        0x0 ./libraries/FlightControl/FlightControl.o
  .text._ZN13FlightControl4idleEv
                 0x00000000        0x0 ./libraries/FlightControl/FlightControl.o
  .text._ZN13FlightControl12enableAltPIDEb
+                0x00000000        0x0 ./libraries/FlightControl/FlightControl.o
+ .text._ZN13FlightControl7forwardEb
                 0x00000000        0x0 ./libraries/FlightControl/FlightControl.o
  .text          0x00000000        0x0 ./libraries/FlightControl/PID.o
  .data          0x00000000        0x0 ./libraries/FlightControl/PID.o
@@ -1400,16 +1424,47 @@ Discarded input sections
                 0x00000000        0x0 ./libraries/FlightControl/PID.o
  .text._ZN3PIDC1Ev
                 0x00000000        0x0 ./libraries/FlightControl/PID.o
+ .text._ZN3PID5resetEv
+                0x00000000        0x0 ./libraries/FlightControl/PID.o
  .text._ZN3PIDC2Efffffff
                 0x00000000        0x0 ./libraries/FlightControl/PID.o
  .text._ZN3PIDD2Ev
                 0x00000000        0x0 ./libraries/FlightControl/PID.o
+ .text          0x00000000        0x0 ./libraries/Comp6DOF/Comp6DOF_n0m1.o
+ .data          0x00000000        0x0 ./libraries/Comp6DOF/Comp6DOF_n0m1.o
+ .bss           0x00000000        0x0 ./libraries/Comp6DOF/Comp6DOF_n0m1.o
+ .text._ZN13Comp6DOF_n0m1C2Ev
+                0x00000000        0x0 ./libraries/Comp6DOF/Comp6DOF_n0m1.o
+ .text._ZN13Comp6DOF_n0m1C1Ev
+                0x00000000        0x0 ./libraries/Comp6DOF/Comp6DOF_n0m1.o
+ .text._ZN13Comp6DOF_n0m110degToAngleEi
+                0x00000000        0x0 ./libraries/Comp6DOF/Comp6DOF_n0m1.o
+ .text._ZN13Comp6DOF_n0m16divIntEii
+                0x00000000        0x0 ./libraries/Comp6DOF/Comp6DOF_n0m1.o
+ .text._ZN13Comp6DOF_n0m17atanIntEii
+                0x00000000        0x0 ./libraries/Comp6DOF/Comp6DOF_n0m1.o
+ .text._ZN13Comp6DOF_n0m18atan2IntEii
+                0x00000000        0x0 ./libraries/Comp6DOF/Comp6DOF_n0m1.o
+ .text._ZN13Comp6DOF_n0m16sinIntEj
+                0x00000000        0x0 ./libraries/Comp6DOF/Comp6DOF_n0m1.o
+ .text._ZN13Comp6DOF_n0m110lowPassIntEiiii
+                0x00000000        0x0 ./libraries/Comp6DOF/Comp6DOF_n0m1.o
+ .text._ZN13Comp6DOF_n0m111compCompassEiiiiiih
+                0x00000000        0x0 ./libraries/Comp6DOF/Comp6DOF_n0m1.o
+ .text._ZN13Comp6DOF_n0m122linearEquationsSolvingEiPfS0_S0_
+                0x00000000        0x0 ./libraries/Comp6DOF/Comp6DOF_n0m1.o
+ .text._ZN13Comp6DOF_n0m17intSqrtEm
+                0x00000000        0x0 ./libraries/Comp6DOF/Comp6DOF_n0m1.o
+ .text._ZN13Comp6DOF_n0m18calSenseEPiS0_S0_S0_S0_
+                0x00000000        0x0 ./libraries/Comp6DOF/Comp6DOF_n0m1.o
+ .text._ZN13Comp6DOF_n0m110calOffsetsEv
+                0x00000000        0x0 ./libraries/Comp6DOF/Comp6DOF_n0m1.o
+ .text._ZN13Comp6DOF_n0m113deviantSpreadEiii
+                0x00000000        0x0 ./libraries/Comp6DOF/Comp6DOF_n0m1.o
+ .rodata._ZL6sinLUT
+                0x00000000        0x0 ./libraries/Comp6DOF/Comp6DOF_n0m1.o
  .text          0x00000000        0x0 ./main.o
  .bss           0x00000000        0x0 ./main.o
- .text._Z8blinkLEDv
-                0x00000000        0x0 ./main.o
- .bss._ZZ8blinkLEDvE10blinkState
-                0x00000000        0x0 ./main.o
  .text          0x00000000        0x0 /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/libc.a(malloc.o)
  .bss           0x00000000        0x0 /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/libc.a(malloc.o)
  .debug_abbrev  0x00000000        0x0 /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/libc.a(malloc.o)
@@ -1717,9 +1772,6 @@ Discarded input sections
  .text          0x00000000        0x0 /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/avr51/libgcc.a(_mulsi3.o)
  .data          0x00000000        0x0 /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/avr51/libgcc.a(_mulsi3.o)
  .bss           0x00000000        0x0 /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/avr51/libgcc.a(_mulsi3.o)
- .text          0x00000000        0x0 /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/avr51/libgcc.a(_udivmodqi4.o)
- .data          0x00000000        0x0 /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/avr51/libgcc.a(_udivmodqi4.o)
- .bss           0x00000000        0x0 /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/avr51/libgcc.a(_udivmodqi4.o)
  .text          0x00000000        0x0 /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/avr51/libgcc.a(_udivmodhi4.o)
  .data          0x00000000        0x0 /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/avr51/libgcc.a(_udivmodhi4.o)
  .bss           0x00000000        0x0 /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/avr51/libgcc.a(_udivmodhi4.o)
@@ -1732,7 +1784,6 @@ Discarded input sections
  .text          0x00000000        0x0 /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/avr51/libgcc.a(_divmodsi4.o)
  .data          0x00000000        0x0 /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/avr51/libgcc.a(_divmodsi4.o)
  .bss           0x00000000        0x0 /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/avr51/libgcc.a(_divmodsi4.o)
- .text.libgcc   0x00000000        0x0 /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/avr51/libgcc.a(_divmodsi4.o)
  .text          0x00000000        0x0 /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/avr51/libgcc.a(_exit.o)
  .data          0x00000000        0x0 /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/avr51/libgcc.a(_exit.o)
  .bss           0x00000000        0x0 /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/avr51/libgcc.a(_exit.o)
@@ -1806,6 +1857,7 @@ LOAD ./libraries/I2Cdev/I2Cdev.o
 LOAD ./libraries/HMC5883L/HMC5883L.o
 LOAD ./libraries/FlightControl/FlightControl.o
 LOAD ./libraries/FlightControl/PID.o
+LOAD ./libraries/Comp6DOF/Comp6DOF_n0m1.o
 LOAD ./main.o
 LOAD /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/libc.a
 LOAD /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/libm.a
@@ -1906,7 +1958,7 @@ LOAD /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/avr51/libgcc.a
 .rela.plt
  *(.rela.plt)
 
-.text           0x00000000     0x4870
+.text           0x00000000     0x4734
  *(.vectors)
  .vectors       0x00000000      0x120 /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/crtm128rfa1.o
                 0x00000000                __vectors
@@ -2106,551 +2158,530 @@ LOAD /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/avr51/libgcc.a
  .text._ZN5Print5printEli
                 0x00000aa4       0x80 ./libraries/zigduino/Print.o
                 0x00000aa4                Print::print(long, int)
- .text._ZN5Print5printEii
-                0x00000b24       0x26 ./libraries/zigduino/Print.o
-                0x00000b24                Print::print(int, int)
  .text._ZN5Print5printEPKc
-                0x00000b4a        0x6 ./libraries/zigduino/Print.o
-                0x00000b4a                Print::print(char const*)
+                0x00000b24        0x6 ./libraries/zigduino/Print.o
+                0x00000b24                Print::print(char const*)
  .text._ZN5Print10printFloatEdh
-                0x00000b50      0x136 ./libraries/zigduino/Print.o
-                0x00000b50                Print::printFloat(double, unsigned char)
+                0x00000b2a      0x136 ./libraries/zigduino/Print.o
+                0x00000b2a                Print::printFloat(double, unsigned char)
  .text._ZN5Print5printEdi
-                0x00000c86        0x6 ./libraries/zigduino/Print.o
-                0x00000c86                Print::print(double, int)
+                0x00000c60        0x6 ./libraries/zigduino/Print.o
+                0x00000c60                Print::print(double, int)
  .text._ZN5Print7printlnEPKc
-                0x00000c8c       0x26 ./libraries/zigduino/Print.o
-                0x00000c8c                Print::println(char const*)
+                0x00000c66       0x26 ./libraries/zigduino/Print.o
+                0x00000c66                Print::println(char const*)
  .text._Z12disableTimerh
-                0x00000cb2       0x66 ./libraries/zigduino/Tone.o
-                0x00000cb2                disableTimer(unsigned char)
+                0x00000c8c       0x66 ./libraries/zigduino/Tone.o
+                0x00000c8c                disableTimer(unsigned char)
  .text._Z6noToneh
-                0x00000d18       0x3c ./libraries/zigduino/Tone.o
-                0x00000d18                noTone(unsigned char)
+                0x00000cf2       0x3c ./libraries/zigduino/Tone.o
+                0x00000cf2                noTone(unsigned char)
  .text.__vector_13
-                0x00000d54       0xc0 ./libraries/zigduino/Tone.o
-                0x00000d54                __vector_13
+                0x00000d2e       0xc0 ./libraries/zigduino/Tone.o
+                0x00000d2e                __vector_13
  .text.__vector_7
-                0x00000e14       0x62 ./libraries/zigduino/WInterrupts.o
-                0x00000e14                __vector_7
+                0x00000dee       0x62 ./libraries/zigduino/WInterrupts.o
+                0x00000dee                __vector_7
  .text.__vector_6
-                0x00000e76       0x62 ./libraries/zigduino/WInterrupts.o
-                0x00000e76                __vector_6
+                0x00000e50       0x62 ./libraries/zigduino/WInterrupts.o
+                0x00000e50                __vector_6
  .text.__vector_5
-                0x00000ed8       0x62 ./libraries/zigduino/WInterrupts.o
-                0x00000ed8                __vector_5
+                0x00000eb2       0x62 ./libraries/zigduino/WInterrupts.o
+                0x00000eb2                __vector_5
  .text.__vector_8
-                0x00000f3a       0x62 ./libraries/zigduino/WInterrupts.o
-                0x00000f3a                __vector_8
+                0x00000f14       0x62 ./libraries/zigduino/WInterrupts.o
+                0x00000f14                __vector_8
  .text.__vector_1
-                0x00000f9c       0x62 ./libraries/zigduino/WInterrupts.o
-                0x00000f9c                __vector_1
+                0x00000f76       0x62 ./libraries/zigduino/WInterrupts.o
+                0x00000f76                __vector_1
  .text.__vector_2
-                0x00000ffe       0x62 ./libraries/zigduino/WInterrupts.o
-                0x00000ffe                __vector_2
- .text._ZdaPv   0x00001060        0xa ./libraries/zigduino/new.o
-                0x00001060                operator delete[](void*)
- .text._ZdlPv   0x0000106a        0x6 ./libraries/zigduino/new.o
-                0x0000106a                operator delete(void*)
- .text._Znaj    0x00001070        0x6 ./libraries/zigduino/new.o
-                0x00001070                operator new[](unsigned int)
- .text._Znwj    0x00001076        0x6 ./libraries/zigduino/new.o
-                0x00001076                operator new(unsigned int)
+                0x00000fd8       0x62 ./libraries/zigduino/WInterrupts.o
+                0x00000fd8                __vector_2
+ .text._ZdaPv   0x0000103a        0xa ./libraries/zigduino/new.o
+                0x0000103a                operator delete[](void*)
+ .text._ZdlPv   0x00001044        0x6 ./libraries/zigduino/new.o
+                0x00001044                operator delete(void*)
+ .text._Znaj    0x0000104a        0x6 ./libraries/zigduino/new.o
+                0x0000104a                operator new[](unsigned int)
+ .text._Znwj    0x00001050        0x6 ./libraries/zigduino/new.o
+                0x00001050                operator new(unsigned int)
  .text.__vector_23
-                0x0000107c       0x90 ./libraries/zigduino/wiring.o
-                0x0000107c                __vector_23
- .text.millis   0x0000110c       0x1c ./libraries/zigduino/wiring.o
-                0x0000110c                millis
- .text.micros   0x00001128       0x4c ./libraries/zigduino/wiring.o
-                0x00001128                micros
- .text.delay    0x00001174       0x4c ./libraries/zigduino/wiring.o
-                0x00001174                delay
- .text.init     0x000011c0       0xce ./libraries/zigduino/wiring.o
-                0x000011c0                init
+                0x00001056       0x90 ./libraries/zigduino/wiring.o
+                0x00001056                __vector_23
+ .text.millis   0x000010e6       0x1c ./libraries/zigduino/wiring.o
+                0x000010e6                millis
+ .text.micros   0x00001102       0x4c ./libraries/zigduino/wiring.o
+                0x00001102                micros
+ .text.delay    0x0000114e       0x4c ./libraries/zigduino/wiring.o
+                0x0000114e                delay
+ .text.init     0x0000119a       0xce ./libraries/zigduino/wiring.o
+                0x0000119a                init
  .text.analogRead
-                0x0000128e       0x68 ./libraries/zigduino/wiring_analog.o
-                0x0000128e                analogRead
- .text.pinMode  0x000012f6       0x4c ./libraries/zigduino/wiring_digital.o
-                0x000012f6                pinMode
+                0x00001268       0x68 ./libraries/zigduino/wiring_analog.o
+                0x00001268                analogRead
+ .text.pinMode  0x000012d0       0x4c ./libraries/zigduino/wiring_digital.o
+                0x000012d0                pinMode
  .text.turnOffPWM
-                0x00001342       0xfc ./libraries/zigduino/wiring_digital.o
+                0x0000131c       0xfc ./libraries/zigduino/wiring_digital.o
  .text.digitalWrite
-                0x0000143e       0x66 ./libraries/zigduino/wiring_digital.o
-                0x0000143e                digitalWrite
+                0x00001418       0x66 ./libraries/zigduino/wiring_digital.o
+                0x00001418                digitalWrite
  .text._ZN14cZigduinoRadio11attachErrorEPFv13radio_error_tE
-                0x000014a4        0xa ./libraries/ZigduinoRadio/ZigduinoRadio.o
-                0x000014a4                cZigduinoRadio::attachError(void (*)(radio_error_t))
+                0x0000147e        0xa ./libraries/ZigduinoRadio/ZigduinoRadio.o
+                0x0000147e                cZigduinoRadio::attachError(void (*)(radio_error_t))
  .text._ZN14cZigduinoRadio12attachTxDoneEPFv15radio_tx_done_tE
-                0x000014ae       0x18 ./libraries/ZigduinoRadio/ZigduinoRadio.o
-                0x000014ae                cZigduinoRadio::attachTxDone(void (*)(radio_tx_done_t))
+                0x00001488       0x18 ./libraries/ZigduinoRadio/ZigduinoRadio.o
+                0x00001488                cZigduinoRadio::attachTxDone(void (*)(radio_tx_done_t))
  .text._ZN14cZigduinoRadio14onReceiveFrameEhPhhh
-                0x000014c6       0xb8 ./libraries/ZigduinoRadio/ZigduinoRadio.o
-                0x000014c6                cZigduinoRadio::onReceiveFrame(unsigned char, unsigned char*, unsigned char, unsigned char)
+                0x000014a0       0xb8 ./libraries/ZigduinoRadio/ZigduinoRadio.o
+                0x000014a0                cZigduinoRadio::onReceiveFrame(unsigned char, unsigned char*, unsigned char, unsigned char)
  .text._ZN14cZigduinoRadio5flushEv
-                0x0000157e        0xa ./libraries/ZigduinoRadio/ZigduinoRadio.o
-                0x0000157e                cZigduinoRadio::flush()
+                0x00001558        0xa ./libraries/ZigduinoRadio/ZigduinoRadio.o
+                0x00001558                cZigduinoRadio::flush()
  .text._ZN14cZigduinoRadio4readEv
-                0x00001588       0x2e ./libraries/ZigduinoRadio/ZigduinoRadio.o
-                0x00001588                cZigduinoRadio::read()
+                0x00001562       0x2e ./libraries/ZigduinoRadio/ZigduinoRadio.o
+                0x00001562                cZigduinoRadio::read()
  .text._ZN14cZigduinoRadio9availableEv
-                0x000015b6       0x1c ./libraries/ZigduinoRadio/ZigduinoRadio.o
-                0x000015b6                cZigduinoRadio::available()
- .text._ZN14cZigduinoRadio17beginTransmissionEv
-                0x000015d2        0xe ./libraries/ZigduinoRadio/ZigduinoRadio.o
-                0x000015d2                cZigduinoRadio::beginTransmission()
+                0x00001590       0x1c ./libraries/ZigduinoRadio/ZigduinoRadio.o
+                0x00001590                cZigduinoRadio::available()
  .text._ZN14cZigduinoRadio8onTxDoneE15radio_tx_done_t
-                0x000015e0       0x1c ./libraries/ZigduinoRadio/ZigduinoRadio.o
-                0x000015e0                cZigduinoRadio::onTxDone(radio_tx_done_t)
- .text._ZN14cZigduinoRadio15endTransmissionEv
-                0x000015fc       0x8c ./libraries/ZigduinoRadio/ZigduinoRadio.o
-                0x000015fc                cZigduinoRadio::endTransmission()
- .text._ZN14cZigduinoRadio5writeEh
-                0x00001688       0xc2 ./libraries/ZigduinoRadio/ZigduinoRadio.o
-                0x00001688                cZigduinoRadio::write(unsigned char)
- .text._ZN14cZigduinoRadio5writeEPhh
-                0x0000174a       0x32 ./libraries/ZigduinoRadio/ZigduinoRadio.o
-                0x0000174a                cZigduinoRadio::write(unsigned char*, unsigned char)
+                0x000015ac       0x1c ./libraries/ZigduinoRadio/ZigduinoRadio.o
+                0x000015ac                cZigduinoRadio::onTxDone(radio_tx_done_t)
  .text._ZN14cZigduinoRadio5beginEaPh
-                0x0000177c       0x82 ./libraries/ZigduinoRadio/ZigduinoRadio.o
-                0x0000177c                cZigduinoRadio::begin(signed char, unsigned char*)
+                0x000015c8       0x82 ./libraries/ZigduinoRadio/ZigduinoRadio.o
+                0x000015c8                cZigduinoRadio::begin(signed char, unsigned char*)
  .text._ZN14cZigduinoRadio5beginEa
-                0x000017fe        0xa ./libraries/ZigduinoRadio/ZigduinoRadio.o
-                0x000017fe                cZigduinoRadio::begin(signed char)
+                0x0000164a        0xa ./libraries/ZigduinoRadio/ZigduinoRadio.o
+                0x0000164a                cZigduinoRadio::begin(signed char)
  .text._ZN14cZigduinoRadioC1Ev
-                0x00001808       0x22 ./libraries/ZigduinoRadio/ZigduinoRadio.o
-                0x00001808                cZigduinoRadio::cZigduinoRadio()
+                0x00001654       0x22 ./libraries/ZigduinoRadio/ZigduinoRadio.o
+                0x00001654                cZigduinoRadio::cZigduinoRadio()
  .text._GLOBAL__I__ZN14cZigduinoRadio13rxFrameBufferE
-                0x0000182a        0xa ./libraries/ZigduinoRadio/ZigduinoRadio.o
+                0x00001676        0xa ./libraries/ZigduinoRadio/ZigduinoRadio.o
  .text.usr_radio_error
-                0x00001834       0x10 ./libraries/ZigduinoRadio/ZigduinoRadioEvents.o
-                0x00001834                usr_radio_error
+                0x00001680       0x10 ./libraries/ZigduinoRadio/ZigduinoRadioEvents.o
+                0x00001680                usr_radio_error
  .text.usr_radio_receive_frame
-                0x00001844       0x14 ./libraries/ZigduinoRadio/ZigduinoRadioEvents.o
-                0x00001844                usr_radio_receive_frame
+                0x00001690       0x14 ./libraries/ZigduinoRadio/ZigduinoRadioEvents.o
+                0x00001690                usr_radio_receive_frame
  .text.usr_radio_tx_done
-                0x00001858       0x10 ./libraries/ZigduinoRadio/ZigduinoRadioEvents.o
-                0x00001858                usr_radio_tx_done
+                0x000016a4       0x10 ./libraries/ZigduinoRadio/ZigduinoRadioEvents.o
+                0x000016a4                usr_radio_tx_done
  .text.zr_attach_receive_frame
-                0x00001868        0xa ./libraries/ZigduinoRadio/ZigduinoRadioEvents.o
-                0x00001868                zr_attach_receive_frame
+                0x000016b4        0xa ./libraries/ZigduinoRadio/ZigduinoRadioEvents.o
+                0x000016b4                zr_attach_receive_frame
  .text.zr_attach_tx_done
-                0x00001872        0xa ./libraries/ZigduinoRadio/ZigduinoRadioEvents.o
-                0x00001872                zr_attach_tx_done
+                0x000016be        0xa ./libraries/ZigduinoRadio/ZigduinoRadioEvents.o
+                0x000016be                zr_attach_tx_done
  .text.__vector_59
-                0x0000187c       0x58 ./libraries/ZigduinoRadio/radio_rfa.o
-                0x0000187c                __vector_59
- .text.radio_send_frame
-                0x000018d4       0x16 ./libraries/ZigduinoRadio/radio_rfa.o
-                0x000018d4                radio_send_frame
+                0x000016c8       0x58 ./libraries/ZigduinoRadio/radio_rfa.o
+                0x000016c8                __vector_59
  .text.radio_receive_frame
-                0x000018ea       0x58 ./libraries/ZigduinoRadio/radio_rfa.o
-                0x000018ea                radio_receive_frame
+                0x00001720       0x58 ./libraries/ZigduinoRadio/radio_rfa.o
+                0x00001720                radio_receive_frame
  .text.__vector_60
-                0x00001942       0x52 ./libraries/ZigduinoRadio/radio_rfa.o
-                0x00001942                __vector_60
+                0x00001778       0x52 ./libraries/ZigduinoRadio/radio_rfa.o
+                0x00001778                __vector_60
  .text.radio_set_state
-                0x00001994       0xf4 ./libraries/ZigduinoRadio/radio_rfa.o
-                0x00001994                radio_set_state
+                0x000017ca       0xf4 ./libraries/ZigduinoRadio/radio_rfa.o
+                0x000017ca                radio_set_state
  .text.__vector_63
-                0x00001a88       0x94 ./libraries/ZigduinoRadio/radio_rfa.o
-                0x00001a88                __vector_63
+                0x000018be       0x94 ./libraries/ZigduinoRadio/radio_rfa.o
+                0x000018be                __vector_63
  .text.radio_set_param
-                0x00001b1c       0xf0 ./libraries/ZigduinoRadio/radio_rfa.o
-                0x00001b1c                radio_set_param
+                0x00001952       0xf0 ./libraries/ZigduinoRadio/radio_rfa.o
+                0x00001952                radio_set_param
  .text.radio_init
-                0x00001c0c       0x86 ./libraries/ZigduinoRadio/radio_rfa.o
-                0x00001c0c                radio_init
+                0x00001a42       0x86 ./libraries/ZigduinoRadio/radio_rfa.o
+                0x00001a42                radio_init
  .text.trx_set_datarate
-                0x00001c92        0x8 ./libraries/ZigduinoRadio/trx_datarate.o
-                0x00001c92                trx_set_datarate
+                0x00001ac8        0x8 ./libraries/ZigduinoRadio/trx_datarate.o
+                0x00001ac8                trx_set_datarate
  .text.trx_reg_write
-                0x00001c9a        0xc ./libraries/ZigduinoRadio/trx_rfa.o
-                0x00001c9a                trx_reg_write
+                0x00001ad0        0xc ./libraries/ZigduinoRadio/trx_rfa.o
+                0x00001ad0                trx_reg_write
  .text.trx_reg_read
-                0x00001ca6        0xc ./libraries/ZigduinoRadio/trx_rfa.o
-                0x00001ca6                trx_reg_read
+                0x00001adc        0xc ./libraries/ZigduinoRadio/trx_rfa.o
+                0x00001adc                trx_reg_read
  .text.trx_bit_read
-                0x00001cb2       0x1a ./libraries/ZigduinoRadio/trx_rfa.o
-                0x00001cb2                trx_bit_read
+                0x00001ae8       0x1a ./libraries/ZigduinoRadio/trx_rfa.o
+                0x00001ae8                trx_bit_read
  .text.trx_bit_write
-                0x00001ccc       0x24 ./libraries/ZigduinoRadio/trx_rfa.o
-                0x00001ccc                trx_bit_write
+                0x00001b02       0x24 ./libraries/ZigduinoRadio/trx_rfa.o
+                0x00001b02                trx_bit_write
  .text.trx_frame_read
-                0x00001cf0       0x3e ./libraries/ZigduinoRadio/trx_rfa.o
-                0x00001cf0                trx_frame_read
- .text.trx_frame_write
-                0x00001d2e       0x16 ./libraries/ZigduinoRadio/trx_rfa.o
-                0x00001d2e                trx_frame_write
+                0x00001b26       0x3e ./libraries/ZigduinoRadio/trx_rfa.o
+                0x00001b26                trx_frame_read
  .text.twi_readFrom
-                0x00001d44       0x6e ./libraries/Wire/utility/twi.o
-                0x00001d44                twi_readFrom
+                0x00001b64       0x6e ./libraries/Wire/utility/twi.o
+                0x00001b64                twi_readFrom
  .text.twi_writeTo
-                0x00001db2       0x86 ./libraries/Wire/utility/twi.o
-                0x00001db2                twi_writeTo
+                0x00001bd2       0x86 ./libraries/Wire/utility/twi.o
+                0x00001bd2                twi_writeTo
  .text.twi_transmit
-                0x00001e38       0x36 ./libraries/Wire/utility/twi.o
-                0x00001e38                twi_transmit
+                0x00001c58       0x36 ./libraries/Wire/utility/twi.o
+                0x00001c58                twi_transmit
  .text.__vector_39
-                0x00001e6e      0x2fe ./libraries/Wire/utility/twi.o
-                0x00001e6e                __vector_39
+                0x00001c8e      0x2fe ./libraries/Wire/utility/twi.o
+                0x00001c8e                __vector_39
  .text.twi_init
-                0x0000216c       0x32 ./libraries/Wire/utility/twi.o
-                0x0000216c                twi_init
+                0x00001f8c       0x32 ./libraries/Wire/utility/twi.o
+                0x00001f8c                twi_init
  .text._ZN7TwoWire17beginTransmissionEh
-                0x0000219e       0x14 ./libraries/Wire/Wire.o
-                0x0000219e                TwoWire::beginTransmission(unsigned char)
+                0x00001fbe       0x14 ./libraries/Wire/Wire.o
+                0x00001fbe                TwoWire::beginTransmission(unsigned char)
  .text._ZN7TwoWire9availableEv
-                0x000021b2       0x12 ./libraries/Wire/Wire.o
-                0x000021b2                TwoWire::available()
+                0x00001fd2       0x12 ./libraries/Wire/Wire.o
+                0x00001fd2                TwoWire::available()
  .text._ZN7TwoWire4readEv
-                0x000021c4       0x2a ./libraries/Wire/Wire.o
-                0x000021c4                TwoWire::read()
+                0x00001fe4       0x2a ./libraries/Wire/Wire.o
+                0x00001fe4                TwoWire::read()
  .text._ZN7TwoWire4peekEv
-                0x000021ee       0x22 ./libraries/Wire/Wire.o
-                0x000021ee                TwoWire::peek()
+                0x0000200e       0x22 ./libraries/Wire/Wire.o
+                0x0000200e                TwoWire::peek()
  .text._ZN7TwoWire5flushEv
-                0x00002210        0x2 ./libraries/Wire/Wire.o
-                0x00002210                TwoWire::flush()
+                0x00002030        0x2 ./libraries/Wire/Wire.o
+                0x00002030                TwoWire::flush()
  .text._GLOBAL__I__ZN7TwoWire8rxBufferE
-                0x00002212       0x2e ./libraries/Wire/Wire.o
+                0x00002032       0x2e ./libraries/Wire/Wire.o
  .text._ZN7TwoWire5writeEPKhj
-                0x00002240       0x62 ./libraries/Wire/Wire.o
-                0x00002240                TwoWire::write(unsigned char const*, unsigned int)
+                0x00002060       0x62 ./libraries/Wire/Wire.o
+                0x00002060                TwoWire::write(unsigned char const*, unsigned int)
  .text._ZN7TwoWire5writeEh
-                0x000022a2       0x60 ./libraries/Wire/Wire.o
-                0x000022a2                TwoWire::write(unsigned char)
+                0x000020c2       0x60 ./libraries/Wire/Wire.o
+                0x000020c2                TwoWire::write(unsigned char)
  .text._ZN7TwoWire15endTransmissionEv
-                0x00002302       0x20 ./libraries/Wire/Wire.o
-                0x00002302                TwoWire::endTransmission()
+                0x00002122       0x20 ./libraries/Wire/Wire.o
+                0x00002122                TwoWire::endTransmission()
  .text._ZN7TwoWire11requestFromEhh
-                0x00002322       0x1a ./libraries/Wire/Wire.o
-                0x00002322                TwoWire::requestFrom(unsigned char, unsigned char)
+                0x00002142       0x1a ./libraries/Wire/Wire.o
+                0x00002142                TwoWire::requestFrom(unsigned char, unsigned char)
  .text._ZN7TwoWire5beginEv
-                0x0000233c       0x16 ./libraries/Wire/Wire.o
-                0x0000233c                TwoWire::begin()
+                0x0000215c       0x16 ./libraries/Wire/Wire.o
+                0x0000215c                TwoWire::begin()
  .text.__vector_20
-                0x00002352       0x56 ./libraries/Timers/TimerOne.o
-                0x00002352                __vector_20
+                0x00002172       0x56 ./libraries/Timers/TimerOne.o
+                0x00002172                __vector_20
  .text._ZN8TimerOne9setPeriodEl
-                0x000023a8       0xe8 ./libraries/Timers/TimerOne.o
-                0x000023a8                TimerOne::setPeriod(long)
+                0x000021c8       0xe8 ./libraries/Timers/TimerOne.o
+                0x000021c8                TimerOne::setPeriod(long)
  .text._ZN8TimerOne10initializeEl
-                0x00002490       0x10 ./libraries/Timers/TimerOne.o
-                0x00002490                TimerOne::initialize(long)
+                0x000022b0       0x10 ./libraries/Timers/TimerOne.o
+                0x000022b0                TimerOne::initialize(long)
  .text._ZN8TimerOne10setPwmDutyEci
-                0x000024a0       0x60 ./libraries/Timers/TimerOne.o
-                0x000024a0                TimerOne::setPwmDuty(char, int)
+                0x000022c0       0x60 ./libraries/Timers/TimerOne.o
+                0x000022c0                TimerOne::setPwmDuty(char, int)
  .text._ZN8TimerOne3pwmEcil
-                0x00002500       0x6e ./libraries/Timers/TimerOne.o
-                0x00002500                TimerOne::pwm(char, int, long)
+                0x00002320       0x6e ./libraries/Timers/TimerOne.o
+                0x00002320                TimerOne::pwm(char, int, long)
  .text.__vector_35
-                0x0000256e       0x56 ./libraries/Timers/TimerThree.o
-                0x0000256e                __vector_35
+                0x0000238e       0x56 ./libraries/Timers/TimerThree.o
+                0x0000238e                __vector_35
  .text._ZN10TimerThree9setPeriodEl
-                0x000025c4       0xe2 ./libraries/Timers/TimerThree.o
-                0x000025c4                TimerThree::setPeriod(long)
+                0x000023e4       0xe2 ./libraries/Timers/TimerThree.o
+                0x000023e4                TimerThree::setPeriod(long)
  .text._ZN10TimerThree10initializeEl
-                0x000026a6       0x10 ./libraries/Timers/TimerThree.o
-                0x000026a6                TimerThree::initialize(long)
+                0x000024c6       0x10 ./libraries/Timers/TimerThree.o
+                0x000024c6                TimerThree::initialize(long)
  .text._ZN10TimerThree15attachInterruptEPFvvEl
-                0x000026b6       0x3e ./libraries/Timers/TimerThree.o
-                0x000026b6                TimerThree::attachInterrupt(void (*)(), long)
+                0x000024d6       0x3e ./libraries/Timers/TimerThree.o
+                0x000024d6                TimerThree::attachInterrupt(void (*)(), long)
  .text._ZN14SoftwareSerial4recvEv
-                0x000026f4       0xd4 ./libraries/SoftwareSerial/SoftwareSerial.o
-                0x000026f4                SoftwareSerial::recv()
+                0x00002514       0xd4 ./libraries/SoftwareSerial/SoftwareSerial.o
+                0x00002514                SoftwareSerial::recv()
  .text._ZN14SoftwareSerial16handle_interruptEv
-                0x000027c8       0x12 ./libraries/SoftwareSerial/SoftwareSerial.o
-                0x000027c8                SoftwareSerial::handle_interrupt()
+                0x000025e8       0x12 ./libraries/SoftwareSerial/SoftwareSerial.o
+                0x000025e8                SoftwareSerial::handle_interrupt()
  .text.__vector_9
-                0x000027da       0x50 ./libraries/SoftwareSerial/SoftwareSerial.o
-                0x000027da                __vector_9
+                0x000025fa       0x50 ./libraries/SoftwareSerial/SoftwareSerial.o
+                0x000025fa                __vector_9
  .text.__vector_10
-                0x0000282a       0x50 ./libraries/SoftwareSerial/SoftwareSerial.o
-                0x0000282a                __vector_10
+                0x0000264a       0x50 ./libraries/SoftwareSerial/SoftwareSerial.o
+                0x0000264a                __vector_10
  .text.__vector_11
-                0x0000287a       0x50 ./libraries/SoftwareSerial/SoftwareSerial.o
-                0x0000287a                __vector_11
+                0x0000269a       0x50 ./libraries/SoftwareSerial/SoftwareSerial.o
+                0x0000269a                __vector_11
  .text._ZN9RemoteCmdC1Ev
-                0x000028ca       0x1e ./libraries/Misc/RemoteCmd.o
-                0x000028ca                RemoteCmd::RemoteCmd()
+                0x000026ea       0x1e ./libraries/Misc/RemoteCmd.o
+                0x000026ea                RemoteCmd::RemoteCmd()
  .text._ZN9RemoteCmd6decodeEPh
-                0x000028e8       0x96 ./libraries/Misc/RemoteCmd.o
-                0x000028e8                RemoteCmd::decode(unsigned char*)
+                0x00002708       0x96 ./libraries/Misc/RemoteCmd.o
+                0x00002708                RemoteCmd::decode(unsigned char*)
  .text._ZN9RemoteCmdD1Ev
-                0x0000297e        0xc ./libraries/Misc/RemoteCmd.o
-                0x0000297e                RemoteCmd::~RemoteCmd()
+                0x0000279e        0xc ./libraries/Misc/RemoteCmd.o
+                0x0000279e                RemoteCmd::~RemoteCmd()
  .text._ZN9RemoteCmdD0Ev
-                0x0000298a       0x12 ./libraries/Misc/RemoteCmd.o
-                0x0000298a                RemoteCmd::~RemoteCmd()
+                0x000027aa       0x12 ./libraries/Misc/RemoteCmd.o
+                0x000027aa                RemoteCmd::~RemoteCmd()
  .text._ZN8MaxBotixD1Ev
-                0x0000299c        0xc ./libraries/MaxBotix/MaxBotix.o
-                0x0000299c                MaxBotix::~MaxBotix()
+                0x000027bc        0xc ./libraries/MaxBotix/MaxBotix.o
+                0x000027bc                MaxBotix::~MaxBotix()
  .text._ZN8MaxBotixD0Ev
-                0x000029a8       0x12 ./libraries/MaxBotix/MaxBotix.o
-                0x000029a8                MaxBotix::~MaxBotix()
+                0x000027c8       0x12 ./libraries/MaxBotix/MaxBotix.o
+                0x000027c8                MaxBotix::~MaxBotix()
  .text._ZN8MaxBotix5valueEv
-                0x000029ba        0x8 ./libraries/MaxBotix/MaxBotix.o
-                0x000029ba                MaxBotix::value()
+                0x000027da        0x8 ./libraries/MaxBotix/MaxBotix.o
+                0x000027da                MaxBotix::value()
  .text._ZN8MaxBotixC1Ev
-                0x000029c2       0x14 ./libraries/MaxBotix/MaxBotix.o
-                0x000029c2                MaxBotix::MaxBotix()
+                0x000027e2       0x1c ./libraries/MaxBotix/MaxBotix.o
+                0x000027e2                MaxBotix::MaxBotix()
  .text._Z41__static_initialization_and_destruction_0ii
-                0x000029d6       0x2e ./libraries/MaxBotix/MaxBotix.o
+                0x000027fe       0x2e ./libraries/MaxBotix/MaxBotix.o
  .text._GLOBAL__D_AltSensor
-                0x00002a04        0xe ./libraries/MaxBotix/MaxBotix.o
+                0x0000282c        0xe ./libraries/MaxBotix/MaxBotix.o
  .text._GLOBAL__I_AltSensor
-                0x00002a12        0xe ./libraries/MaxBotix/MaxBotix.o
+                0x0000283a        0xe ./libraries/MaxBotix/MaxBotix.o
  .text._GLOBAL__I_AccelGyro
-                0x00002a20        0x8 ./libraries/MPU6050/MPU6050.o
+                0x00002848        0x8 ./libraries/MPU6050/MPU6050.o
  .text._ZN7MPU605012getRotationZEv
-                0x00002a28       0x3e ./libraries/MPU6050/MPU6050.o
-                0x00002a28                MPU6050::getRotationZ()
+                0x00002850       0x3e ./libraries/MPU6050/MPU6050.o
+                0x00002850                MPU6050::getRotationZ()
+ .text._ZN7MPU605016getAccelerationZEv
+                0x0000288e       0x3e ./libraries/MPU6050/MPU6050.o
+                0x0000288e                MPU6050::getAccelerationZ()
  .text._ZN7MPU605015setSleepEnabledEb
-                0x00002a66       0x10 ./libraries/MPU6050/MPU6050.o
-                0x00002a66                MPU6050::setSleepEnabled(bool)
+                0x000028cc       0x10 ./libraries/MPU6050/MPU6050.o
+                0x000028cc                MPU6050::setSleepEnabled(bool)
  .text._ZN7MPU605019setI2CBypassEnabledEb
-                0x00002a76       0x10 ./libraries/MPU6050/MPU6050.o
-                0x00002a76                MPU6050::setI2CBypassEnabled(bool)
+                0x000028dc       0x10 ./libraries/MPU6050/MPU6050.o
+                0x000028dc                MPU6050::setI2CBypassEnabled(bool)
  .text._ZN7MPU605014setClockSourceEh
-                0x00002a86       0x16 ./libraries/MPU6050/MPU6050.o
-                0x00002a86                MPU6050::setClockSource(unsigned char)
+                0x000028ec       0x16 ./libraries/MPU6050/MPU6050.o
+                0x000028ec                MPU6050::setClockSource(unsigned char)
  .text._ZN7MPU605022setFullScaleAccelRangeEh
-                0x00002a9c       0x16 ./libraries/MPU6050/MPU6050.o
-                0x00002a9c                MPU6050::setFullScaleAccelRange(unsigned char)
+                0x00002902       0x16 ./libraries/MPU6050/MPU6050.o
+                0x00002902                MPU6050::setFullScaleAccelRange(unsigned char)
  .text._ZN7MPU605021setFullScaleGyroRangeEh
-                0x00002ab2       0x16 ./libraries/MPU6050/MPU6050.o
-                0x00002ab2                MPU6050::setFullScaleGyroRange(unsigned char)
+                0x00002918       0x16 ./libraries/MPU6050/MPU6050.o
+                0x00002918                MPU6050::setFullScaleGyroRange(unsigned char)
  .text._ZN7MPU605010initializeEv
-                0x00002ac8       0x2a ./libraries/MPU6050/MPU6050.o
-                0x00002ac8                MPU6050::initialize()
+                0x0000292e       0x2a ./libraries/MPU6050/MPU6050.o
+                0x0000292e                MPU6050::initialize()
  .text._ZN7MPU605011setDLPFModeEh
-                0x00002af2       0x16 ./libraries/MPU6050/MPU6050.o
-                0x00002af2                MPU6050::setDLPFMode(unsigned char)
+                0x00002958       0x16 ./libraries/MPU6050/MPU6050.o
+                0x00002958                MPU6050::setDLPFMode(unsigned char)
  .text._ZN7MPU605011getDeviceIDEv
-                0x00002b08       0x3c ./libraries/MPU6050/MPU6050.o
-                0x00002b08                MPU6050::getDeviceID()
+                0x0000296e       0x3c ./libraries/MPU6050/MPU6050.o
+                0x0000296e                MPU6050::getDeviceID()
  .text._ZN7MPU605014testConnectionEv
-                0x00002b44       0x10 ./libraries/MPU6050/MPU6050.o
-                0x00002b44                MPU6050::testConnection()
- .text._ZN13LowPassFilter6filterEi
-                0x00002b54       0x88 ./libraries/LowPassFilter/LowPassFilter.o
-                0x00002b54                LowPassFilter::filter(int)
+                0x000029aa       0x10 ./libraries/MPU6050/MPU6050.o
+                0x000029aa                MPU6050::testConnection()
+ .text._ZN13LowPassFilter6filterEl
+                0x000029ba       0x96 ./libraries/LowPassFilter/LowPassFilter.o
+                0x000029ba                LowPassFilter::filter(long)
  .text._ZN13LowPassFilterD1Ev
-                0x00002bdc       0x18 ./libraries/LowPassFilter/LowPassFilter.o
-                0x00002bdc                LowPassFilter::~LowPassFilter()
+                0x00002a50       0x18 ./libraries/LowPassFilter/LowPassFilter.o
+                0x00002a50                LowPassFilter::~LowPassFilter()
  .text._ZN13LowPassFilterD0Ev
-                0x00002bf4       0x26 ./libraries/LowPassFilter/LowPassFilter.o
-                0x00002bf4                LowPassFilter::~LowPassFilter()
+                0x00002a68       0x26 ./libraries/LowPassFilter/LowPassFilter.o
+                0x00002a68                LowPassFilter::~LowPassFilter()
  .text._ZN13LowPassFilterC1Eh
-                0x00002c1a       0x50 ./libraries/LowPassFilter/LowPassFilter.o
-                0x00002c1a                LowPassFilter::LowPassFilter(unsigned char)
+                0x00002a8e       0x5c ./libraries/LowPassFilter/LowPassFilter.o
+                0x00002a8e                LowPassFilter::LowPassFilter(unsigned char)
  .text._ZN6I2Cdev10writeBytesEhhhPh
-                0x00002c6a       0x66 ./libraries/I2Cdev/I2Cdev.o
-                0x00002c6a                I2Cdev::writeBytes(unsigned char, unsigned char, unsigned char, unsigned char*)
+                0x00002aea       0x66 ./libraries/I2Cdev/I2Cdev.o
+                0x00002aea                I2Cdev::writeBytes(unsigned char, unsigned char, unsigned char, unsigned char*)
  .text._ZN6I2Cdev9writeByteEhhh
-                0x00002cd0       0x20 ./libraries/I2Cdev/I2Cdev.o
-                0x00002cd0                I2Cdev::writeByte(unsigned char, unsigned char, unsigned char)
+                0x00002b50       0x20 ./libraries/I2Cdev/I2Cdev.o
+                0x00002b50                I2Cdev::writeByte(unsigned char, unsigned char, unsigned char)
  .text._ZN6I2Cdev9readBytesEhhhPhj
-                0x00002cf0      0x10a ./libraries/I2Cdev/I2Cdev.o
-                0x00002cf0                I2Cdev::readBytes(unsigned char, unsigned char, unsigned char, unsigned char*, unsigned int)
+                0x00002b70      0x10a ./libraries/I2Cdev/I2Cdev.o
+                0x00002b70                I2Cdev::readBytes(unsigned char, unsigned char, unsigned char, unsigned char*, unsigned int)
  .text._ZN6I2Cdev8readByteEhhPhj
-                0x00002dfa       0x16 ./libraries/I2Cdev/I2Cdev.o
-                0x00002dfa                I2Cdev::readByte(unsigned char, unsigned char, unsigned char*, unsigned int)
+                0x00002c7a       0x16 ./libraries/I2Cdev/I2Cdev.o
+                0x00002c7a                I2Cdev::readByte(unsigned char, unsigned char, unsigned char*, unsigned int)
  .text._ZN6I2Cdev9writeBitsEhhhhh
-                0x00002e10       0x94 ./libraries/I2Cdev/I2Cdev.o
-                0x00002e10                I2Cdev::writeBits(unsigned char, unsigned char, unsigned char, unsigned char, unsigned char)
+                0x00002c90       0x94 ./libraries/I2Cdev/I2Cdev.o
+                0x00002c90                I2Cdev::writeBits(unsigned char, unsigned char, unsigned char, unsigned char, unsigned char)
  .text._ZN6I2Cdev8writeBitEhhhh
-                0x00002ea4       0x74 ./libraries/I2Cdev/I2Cdev.o
-                0x00002ea4                I2Cdev::writeBit(unsigned char, unsigned char, unsigned char, unsigned char)
+                0x00002d24       0x74 ./libraries/I2Cdev/I2Cdev.o
+                0x00002d24                I2Cdev::writeBit(unsigned char, unsigned char, unsigned char, unsigned char)
  .text._ZN6I2Cdev8readBitsEhhhhPhj
-                0x00002f18       0x84 ./libraries/I2Cdev/I2Cdev.o
-                0x00002f18                I2Cdev::readBits(unsigned char, unsigned char, unsigned char, unsigned char, unsigned char*, unsigned int)
+                0x00002d98       0x84 ./libraries/I2Cdev/I2Cdev.o
+                0x00002d98                I2Cdev::readBits(unsigned char, unsigned char, unsigned char, unsigned char, unsigned char*, unsigned int)
  .text._GLOBAL__I_Compass
-                0x00002f9c        0x8 ./libraries/HMC5883L/HMC5883L.o
+                0x00002e1c        0x8 ./libraries/HMC5883L/HMC5883L.o
  .text._ZN8HMC5883L14testConnectionEv
-                0x00002fa4       0x4c ./libraries/HMC5883L/HMC5883L.o
-                0x00002fa4                HMC5883L::testConnection()
- .text._ZN8HMC5883L11getHeadingZEv
-                0x00002ff0       0x4a ./libraries/HMC5883L/HMC5883L.o
-                0x00002ff0                HMC5883L::getHeadingZ()
- .text._ZN8HMC5883L7setModeEh
-                0x0000303a       0x22 ./libraries/HMC5883L/HMC5883L.o
-                0x0000303a                HMC5883L::setMode(unsigned char)
- .text._ZN8HMC5883L7setGainEh
-                0x0000305c       0x14 ./libraries/HMC5883L/HMC5883L.o
-                0x0000305c                HMC5883L::setGain(unsigned char)
- .text._ZN8HMC5883L10initializeEv
-                0x00003070       0x28 ./libraries/HMC5883L/HMC5883L.o
-                0x00003070                HMC5883L::initialize()
+                0x00002e24       0x4c ./libraries/HMC5883L/HMC5883L.o
+                0x00002e24                HMC5883L::testConnection()
  .text._ZN13FlightControl4turnEi
-                0x00003098       0x62 ./libraries/FlightControl/FlightControl.o
-                0x00003098                FlightControl::turn(int)
- .text._ZN13FlightControl7takeOffEv
-                0x000030fa       0x10 ./libraries/FlightControl/FlightControl.o
-                0x000030fa                FlightControl::takeOff()
+                0x00002e70       0x98 ./libraries/FlightControl/FlightControl.o
+                0x00002e70                FlightControl::turn(int)
  .text._ZN13FlightControl4landEv
-                0x0000310a        0xc ./libraries/FlightControl/FlightControl.o
-                0x0000310a                FlightControl::land()
+                0x00002f08       0x3a ./libraries/FlightControl/FlightControl.o
+                0x00002f08                FlightControl::land()
  .text._ZN13FlightControl5hoverEv
-                0x00003116       0x12 ./libraries/FlightControl/FlightControl.o
-                0x00003116                FlightControl::hover()
+                0x00002f42       0x3a ./libraries/FlightControl/FlightControl.o
+                0x00002f42                FlightControl::hover()
  .text._ZN13FlightControl12enableYawPIDEb
-                0x00003128        0x6 ./libraries/FlightControl/FlightControl.o
-                0x00003128                FlightControl::enableYawPID(bool)
+                0x00002f7c        0xa ./libraries/FlightControl/FlightControl.o
+                0x00002f7c                FlightControl::enableYawPID(bool)
  .text._Z41__static_initialization_and_destruction_0ii
-                0x0000312e       0x2c ./libraries/FlightControl/FlightControl.o
+                0x00002f86       0x2c ./libraries/FlightControl/FlightControl.o
  .text._GLOBAL__D_pointerToObj
-                0x0000315a        0xe ./libraries/FlightControl/FlightControl.o
+                0x00002fb2        0xe ./libraries/FlightControl/FlightControl.o
  .text._GLOBAL__I_pointerToObj
-                0x00003168        0xe ./libraries/FlightControl/FlightControl.o
+                0x00002fc0        0xe ./libraries/FlightControl/FlightControl.o
+ .text._ZN13FlightControl13calibrateAccZEv
+                0x00002fce       0x84 ./libraries/FlightControl/FlightControl.o
+                0x00002fce                FlightControl::calibrateAccZ()
+ .text._ZN13FlightControl13calibrateGyroEv
+                0x00003052       0x84 ./libraries/FlightControl/FlightControl.o
+                0x00003052                FlightControl::calibrateGyro()
  .text._ZN13FlightControl18setBottomRotorDutyEj
-                0x00003176       0x40 ./libraries/FlightControl/FlightControl.o
-                0x00003176                FlightControl::setBottomRotorDuty(unsigned int)
+                0x000030d6       0x40 ./libraries/FlightControl/FlightControl.o
+                0x000030d6                FlightControl::setBottomRotorDuty(unsigned int)
  .text._ZN13FlightControl15setTopRotorDutyEj
-                0x000031b6       0x40 ./libraries/FlightControl/FlightControl.o
-                0x000031b6                FlightControl::setTopRotorDuty(unsigned int)
- .text._ZN13FlightControl7forwardEb
-                0x000031f6       0x14 ./libraries/FlightControl/FlightControl.o
-                0x000031f6                FlightControl::forward(bool)
+                0x00003116       0x40 ./libraries/FlightControl/FlightControl.o
+                0x00003116                FlightControl::setTopRotorDuty(unsigned int)
+ .text._ZN13FlightControl7takeOffEv
+                0x00003156       0x50 ./libraries/FlightControl/FlightControl.o
+                0x00003156                FlightControl::takeOff()
+ .text._ZN13FlightControl10flightPlanEv
+                0x000031a6      0x106 ./libraries/FlightControl/FlightControl.o
+                0x000031a6                FlightControl::flightPlan()
  .text._ZN13FlightControl8mainLoopEv
-                0x0000320a      0x396 ./libraries/FlightControl/FlightControl.o
-                0x0000320a                FlightControl::mainLoop()
+                0x000032ac      0x40c ./libraries/FlightControl/FlightControl.o
+                0x000032ac                FlightControl::mainLoop()
  .text._ZL7wrapperv
-                0x000035a0        0xe ./libraries/FlightControl/FlightControl.o
+                0x000036b8        0xe ./libraries/FlightControl/FlightControl.o
  .text._ZN13FlightControl10initializeEv
-                0x000035ae      0x2d2 ./libraries/FlightControl/FlightControl.o
-                0x000035ae                FlightControl::initialize()
+                0x000036c6      0x406 ./libraries/FlightControl/FlightControl.o
+                0x000036c6                FlightControl::initialize()
  .text._ZN3PIDC1Efffffff
-                0x00003880       0xb8 ./libraries/FlightControl/PID.o
-                0x00003880                PID::PID(float, float, float, float, float, float, float)
+                0x00003acc       0xb8 ./libraries/FlightControl/PID.o
+                0x00003acc                PID::PID(float, float, float, float, float, float, float)
  .text._ZN3PID4loopEff
-                0x00003938      0x18c ./libraries/FlightControl/PID.o
-                0x00003938                PID::loop(float, float)
+                0x00003b84      0x18c ./libraries/FlightControl/PID.o
+                0x00003b84                PID::loop(float, float)
  .text._ZN3PIDD1Ev
-                0x00003ac4        0xc ./libraries/FlightControl/PID.o
-                0x00003ac4                PID::~PID()
+                0x00003d10        0xc ./libraries/FlightControl/PID.o
+                0x00003d10                PID::~PID()
  .text._ZN3PIDD0Ev
-                0x00003ad0       0x12 ./libraries/FlightControl/PID.o
-                0x00003ad0                PID::~PID()
+                0x00003d1c       0x12 ./libraries/FlightControl/PID.o
+                0x00003d1c                PID::~PID()
+ .text._Z8blinkLEDv
+                0x00003d2e       0x14 ./main.o
+                0x00003d2e                blinkLED()
  .text._Z10onXmitDone15radio_tx_done_t
-                0x00003ae2       0x36 ./main.o
-                0x00003ae2                onXmitDone(radio_tx_done_t)
+                0x00003d42       0x36 ./main.o
+                0x00003d42                onXmitDone(radio_tx_done_t)
  .text._Z9errHandle13radio_error_t
-                0x00003b18       0x36 ./main.o
-                0x00003b18                errHandle(radio_error_t)
+                0x00003d78       0x36 ./main.o
+                0x00003d78                errHandle(radio_error_t)
  .text._Z16executeRemoteCmd9RemoteCmd
-                0x00003b4e      0x1aa ./main.o
-                0x00003b4e                executeRemoteCmd(RemoteCmd)
- .text.loop     0x00003cf8      0x39a ./main.o
-                0x00003cf8                loop
- .text.setup    0x00004092       0x5a ./main.o
-                0x00004092                setup
- .text.main     0x000040ec       0x1e ./main.o
-                0x000040ec                main
+                0x00003dae       0x7c ./main.o
+                0x00003dae                executeRemoteCmd(RemoteCmd)
+ .text.loop     0x00003e2a      0x10e ./main.o
+                0x00003e2a                loop
+ .text.setup    0x00003f38       0x5a ./main.o
+                0x00003f38                setup
+ .text.main     0x00003f92       0x1e ./main.o
+                0x00003f92                main
  .text.avr-libc
-                0x0000410a      0x20a /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/libc.a(malloc.o)
-                0x0000410a                malloc
-                0x00004264                free
+                0x00003fb0      0x20a /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/libc.a(malloc.o)
+                0x00003fb0                malloc
+                0x0000410a                free
  .text.avr-libc
-                0x00004314        0x6 /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/libc.a(exit.o)
-                0x00004314                exit
+                0x000041ba        0x6 /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/libc.a(exit.o)
+                0x000041ba                exit
  .text.avr-libc
-                0x0000431a       0x12 /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/libc.a(memcpy.o)
-                0x0000431a                memcpy
+                0x000041c0       0x12 /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/libc.a(memcpy.o)
+                0x000041c0                memcpy
  .text.avr-libc.fplib
-                0x0000432c        0xa /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/libc.a(addsf3.o)
-                0x0000432c                __subsf3
-                0x0000432e                __addsf3
+                0x000041d2        0xa /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/libc.a(addsf3.o)
+                0x000041d2                __subsf3
+                0x000041d4                __addsf3
  .text.avr-libc.fplib
-                0x00004336       0xc0 /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/libc.a(addsf3x.o)
-                0x00004350                __addsf3x
+                0x000041dc       0xc0 /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/libc.a(addsf3x.o)
+                0x000041f6                __addsf3x
  .text.avr-libc.fplib
-                0x000043f6        0x8 /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/libc.a(cmpsf2.o)
-                0x000043f6                __lesf2
-                0x000043f6                __nesf2
-                0x000043f6                __eqsf2
-                0x000043f6                __cmpsf2
-                0x000043f6                __ltsf2
+                0x0000429c        0x8 /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/libc.a(cmpsf2.o)
+                0x0000429c                __lesf2
+                0x0000429c                __nesf2
+                0x0000429c                __eqsf2
+                0x0000429c                __cmpsf2
+                0x0000429c                __ltsf2
  .text.avr-libc.fplib
-                0x000043fe        0x4 /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/libc.a(divsf3.o)
-                0x000043fe                __divsf3
+                0x000042a4        0x4 /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/libc.a(divsf3.o)
+                0x000042a4                __divsf3
  .text.avr-libc.fplib
-                0x00004402       0xcc /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/libc.a(divsf3x.o)
-                0x00004418                __divsf3x
-                0x0000441c                __divsf3_pse
+                0x000042a8       0xcc /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/libc.a(divsf3x.o)
+                0x000042be                __divsf3x
+                0x000042c2                __divsf3_pse
  .text.avr-libc.fplib
-                0x000044ce        0xa /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/libc.a(fixsfsi.o)
-                0x000044ce                __fixsfsi
+                0x00004374        0xa /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/libc.a(fixsfsi.o)
+                0x00004374                __fixsfsi
  .text.avr-libc.fplib
-                0x000044d8       0x58 /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/libc.a(fixunssfsi.o)
-                0x000044d8                __fixunssfsi
+                0x0000437e       0x58 /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/libc.a(fixunssfsi.o)
+                0x0000437e                __fixunssfsi
  .text.avr-libc.fplib
-                0x00004530       0x7a /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/libc.a(floatsisf.o)
-                0x00004534                __floatsisf
-                0x00004530                __floatunsisf
+                0x000043d6       0x7a /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/libc.a(floatsisf.o)
+                0x000043da                __floatsisf
+                0x000043d6                __floatunsisf
  .text.avr-libc.fplib
-                0x000045aa       0x48 /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/libc.a(fp_cmp.o)
-                0x000045aa                __fp_cmp
+                0x00004450       0x48 /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/libc.a(fp_cmp.o)
+                0x00004450                __fp_cmp
  .text.avr-libc.fplib
-                0x000045f2        0xc /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/libc.a(fp_inf.o)
-                0x000045f2                __fp_inf
+                0x00004498        0xc /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/libc.a(fp_inf.o)
+                0x00004498                __fp_inf
  .text.avr-libc.fplib
-                0x000045fe        0x6 /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/libc.a(fp_nan.o)
-                0x000045fe                __fp_nan
+                0x000044a4        0x6 /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/libc.a(fp_nan.o)
+                0x000044a4                __fp_nan
  .text.avr-libc.fplib
-                0x00004604        0xe /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/libc.a(fp_pscA.o)
-                0x00004604                __fp_pscA
+                0x000044aa        0xe /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/libc.a(fp_pscA.o)
+                0x000044aa                __fp_pscA
  .text.avr-libc.fplib
-                0x00004612        0xe /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/libc.a(fp_pscB.o)
-                0x00004612                __fp_pscB
+                0x000044b8        0xe /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/libc.a(fp_pscB.o)
+                0x000044b8                __fp_pscB
  .text.avr-libc.fplib
-                0x00004620       0x22 /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/libc.a(fp_round.o)
-                0x00004620                __fp_round
+                0x000044c6       0x22 /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/libc.a(fp_round.o)
+                0x000044c6                __fp_round
  .text.avr-libc.fplib
-                0x00004642       0x44 /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/libc.a(fp_split3.o)
-                0x00004642                __fp_split3
-                0x00004652                __fp_splitA
+                0x000044e8       0x44 /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/libc.a(fp_split3.o)
+                0x000044e8                __fp_split3
+                0x000044f8                __fp_splitA
  .text.avr-libc.fplib
-                0x00004686        0xe /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/libc.a(fp_zero.o)
-                0x00004686                __fp_zero
-                0x00004688                __fp_szero
+                0x0000452c        0xe /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/libc.a(fp_zero.o)
+                0x0000452c                __fp_zero
+                0x0000452e                __fp_szero
  .text.avr-libc.fplib
-                0x00004694        0x8 /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/libc.a(gesf2.o)
-                0x00004694                __gtsf2
-                0x00004694                __gesf2
+                0x0000453a        0x8 /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/libc.a(gesf2.o)
+                0x0000453a                __gtsf2
+                0x0000453a                __gesf2
  .text.avr-libc.fplib
-                0x0000469c        0x4 /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/libc.a(mulsf3.o)
-                0x0000469c                __mulsf3
+                0x00004542        0x4 /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/libc.a(mulsf3.o)
+                0x00004542                __mulsf3
  .text.avr-libc.fplib
-                0x000046a0       0xc2 /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/libc.a(mulsf3x.o)
-                0x000046b8                __mulsf3_pse
-                0x000046b4                __mulsf3x
- .text.libgcc   0x00004762       0x3e /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/avr51/libgcc.a(_mulsi3.o)
-                0x00004762                __mulsi3
- .text.libgcc   0x000047a0       0x18 /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/avr51/libgcc.a(_udivmodqi4.o)
-                0x000047a0                __udivmodqi4
- .text.libgcc   0x000047b8       0x28 /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/avr51/libgcc.a(_udivmodhi4.o)
-                0x000047b8                __udivmodhi4
- .text.libgcc   0x000047e0       0x26 /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/avr51/libgcc.a(_divmodhi4.o)
-                0x000047e0                __divmodhi4
-                0x000047e0                _div
- .text.libgcc   0x00004806       0x44 /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/avr51/libgcc.a(_udivmodsi4.o)
-                0x00004806                __udivmodsi4
- .text.libgcc   0x0000484a        0xc /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/avr51/libgcc.a(_tablejump.o)
-                0x0000484e                __tablejump__
-                0x0000484a                __tablejump2__
-                0x00004856                . = ALIGN (0x2)
+                0x00004546       0xc2 /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/libc.a(mulsf3x.o)
+                0x0000455e                __mulsf3_pse
+                0x0000455a                __mulsf3x
+ .text.libgcc   0x00004608       0x3e /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/avr51/libgcc.a(_mulsi3.o)
+                0x00004608                __mulsi3
+ .text.libgcc   0x00004646       0x28 /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/avr51/libgcc.a(_udivmodhi4.o)
+                0x00004646                __udivmodhi4
+ .text.libgcc   0x0000466e       0x26 /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/avr51/libgcc.a(_divmodhi4.o)
+                0x0000466e                __divmodhi4
+                0x0000466e                _div
+ .text.libgcc   0x00004694       0x44 /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/avr51/libgcc.a(_udivmodsi4.o)
+                0x00004694                __udivmodsi4
+ .text.libgcc   0x000046d8       0x36 /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/avr51/libgcc.a(_divmodsi4.o)
+                0x000046d8                __divmodsi4
+ .text.libgcc   0x0000470e        0xc /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/avr51/libgcc.a(_tablejump.o)
+                0x00004712                __tablejump__
+                0x0000470e                __tablejump2__
+                0x0000471a                . = ALIGN (0x2)
  *(.fini9)
- .fini9         0x00004856        0x0 /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/avr51/libgcc.a(_exit.o)
-                0x00004856                _exit
+ .fini9         0x0000471a        0x0 /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/avr51/libgcc.a(_exit.o)
+                0x0000471a                _exit
  *(.fini9)
  *(.fini8)
  *(.fini8)
  *(.fini7)
  *(.fini7)
  *(.fini6)
- .fini6         0x00004856       0x16 /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/avr51/libgcc.a(_dtors.o)
-                0x00004856                __do_global_dtors
+ .fini6         0x0000471a       0x16 /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/avr51/libgcc.a(_dtors.o)
+                0x0000471a                __do_global_dtors
  *(.fini6)
  *(.fini5)
  *(.fini5)
@@ -2663,271 +2694,269 @@ LOAD /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/avr51/libgcc.a
  *(.fini1)
  *(.fini1)
  *(.fini0)
- .fini0         0x0000486c        0x4 /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/avr51/libgcc.a(_exit.o)
+ .fini0         0x00004730        0x4 /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/avr51/libgcc.a(_exit.o)
  *(.fini0)
-                0x00004870                _etext = .
+                0x00004734                _etext = .
 
-.data           0x00800200      0x17c load address 0x00004870
+.data           0x00800200      0x120 load address 0x00004734
                 0x00800200                PROVIDE (__data_start, .)
  *(.data)
  .data          0x00800200        0x2 ./libraries/zigduino/Print.o
  .data          0x00800202       0xb0 ./libraries/FlightControl/FlightControl.o
- .data          0x008002b2       0x74 ./main.o
- .data          0x00800326        0x6 /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/libc.a(malloc.o)
-                0x00800328                __malloc_heap_start
-                0x0080032a                __malloc_heap_end
-                0x00800326                __malloc_margin
+ .data          0x008002b2       0x18 ./main.o
+ .data          0x008002ca        0x6 /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/libc.a(malloc.o)
+                0x008002cc                __malloc_heap_start
+                0x008002ce                __malloc_heap_end
+                0x008002ca                __malloc_margin
  *(.data*)
  .data._ZL9tone_pins
-                0x0080032c        0x6 ./libraries/zigduino/Tone.o
+                0x008002d0        0x6 ./libraries/zigduino/Tone.o
  .data.analog_reference
-                0x00800332        0x1 ./libraries/zigduino/wiring_analog.o
-                0x00800332                analog_reference
+                0x008002d6        0x1 ./libraries/zigduino/wiring_analog.o
+                0x008002d6                analog_reference
  .data._ZN6I2Cdev11readTimeoutE
-                0x00800333        0x2 ./libraries/I2Cdev/I2Cdev.o
-                0x00800333                I2Cdev::readTimeout
+                0x008002d7        0x2 ./libraries/I2Cdev/I2Cdev.o
+                0x008002d7                I2Cdev::readTimeout
+ .data._ZZN13FlightControl10flightPlanEvE10isFirstRun
+                0x008002d9        0x1 ./libraries/FlightControl/FlightControl.o
  *(.rodata)
  *(.rodata*)
  .rodata._ZTV14HardwareSerial
-                0x00800335       0x10 ./libraries/zigduino/HardwareSerial.o
-                0x00800335                vtable for HardwareSerial
+                0x008002da       0x10 ./libraries/zigduino/HardwareSerial.o
+                0x008002da                vtable for HardwareSerial
  .rodata._ZTV9IPAddress
-                0x00800345        0x6 ./libraries/zigduino/IPAddress.o
-                0x00800345                vtable for IPAddress
+                0x008002ea        0x6 ./libraries/zigduino/IPAddress.o
+                0x008002ea                vtable for IPAddress
  .rodata._ZTV7TwoWire
-                0x0080034b       0x10 ./libraries/Wire/Wire.o
-                0x0080034b                vtable for TwoWire
+                0x008002f0       0x10 ./libraries/Wire/Wire.o
+                0x008002f0                vtable for TwoWire
  .rodata._ZTV9RemoteCmd
-                0x0080035b        0x8 ./libraries/Misc/RemoteCmd.o
-                0x0080035b                vtable for RemoteCmd
+                0x00800300        0x8 ./libraries/Misc/RemoteCmd.o
+                0x00800300                vtable for RemoteCmd
  .rodata._ZTV8MaxBotix
-                0x00800363        0x8 ./libraries/MaxBotix/MaxBotix.o
-                0x00800363                vtable for MaxBotix
+                0x00800308        0x8 ./libraries/MaxBotix/MaxBotix.o
+                0x00800308                vtable for MaxBotix
  .rodata._ZTV13LowPassFilter
-                0x0080036b        0x8 ./libraries/LowPassFilter/LowPassFilter.o
-                0x0080036b                vtable for LowPassFilter
+                0x00800310        0x8 ./libraries/LowPassFilter/LowPassFilter.o
+                0x00800310                vtable for LowPassFilter
  .rodata._ZTV3PID
-                0x00800373        0x8 ./libraries/FlightControl/PID.o
-                0x00800373                vtable for PID
+                0x00800318        0x8 ./libraries/FlightControl/PID.o
+                0x00800318                vtable for PID
  *(.gnu.linkonce.d*)
-                0x0080037c                . = ALIGN (0x2)
- *fill*         0x0080037b        0x1 00
-                0x0080037c                _edata = .
-                0x0080037c                PROVIDE (__data_end, .)
+                0x00800320                . = ALIGN (0x2)
+                0x00800320                _edata = .
+                0x00800320                PROVIDE (__data_end, .)
 
-.bss            0x0080037c      0x47e
-                0x0080037c                PROVIDE (__bss_start, .)
+.bss            0x00800320      0x4a8
+                0x00800320                PROVIDE (__bss_start, .)
  *(.bss)
  *(.bss*)
  .bss.rx_buffer
-                0x0080037c       0x44 ./libraries/zigduino/HardwareSerial.o
-                0x0080037c                rx_buffer
+                0x00800320       0x44 ./libraries/zigduino/HardwareSerial.o
+                0x00800320                rx_buffer
  .bss.tx_buffer
-                0x008003c0       0x44 ./libraries/zigduino/HardwareSerial.o
-                0x008003c0                tx_buffer
+                0x00800364       0x44 ./libraries/zigduino/HardwareSerial.o
+                0x00800364                tx_buffer
  .bss.rx_buffer1
-                0x00800404       0x44 ./libraries/zigduino/HardwareSerial.o
-                0x00800404                rx_buffer1
+                0x008003a8       0x44 ./libraries/zigduino/HardwareSerial.o
+                0x008003a8                rx_buffer1
  .bss.tx_buffer1
-                0x00800448       0x44 ./libraries/zigduino/HardwareSerial.o
-                0x00800448                tx_buffer1
- .bss.Serial    0x0080048c       0x1f ./libraries/zigduino/HardwareSerial.o
-                0x0080048c                Serial
- .bss.Serial1   0x008004ab       0x1f ./libraries/zigduino/HardwareSerial.o
-                0x008004ab                Serial1
+                0x008003ec       0x44 ./libraries/zigduino/HardwareSerial.o
+                0x008003ec                tx_buffer1
+ .bss.Serial    0x00800430       0x1f ./libraries/zigduino/HardwareSerial.o
+                0x00800430                Serial
+ .bss.Serial1   0x0080044f       0x1f ./libraries/zigduino/HardwareSerial.o
+                0x0080044f                Serial1
  .bss._ZL11INADDR_NONE
-                0x008004ca        0x6 ./libraries/zigduino/IPAddress.o
+                0x0080046e        0x6 ./libraries/zigduino/IPAddress.o
  .bss.timer2_toggle_count
-                0x008004d0        0x4 ./libraries/zigduino/Tone.o
-                0x008004d0                timer2_toggle_count
+                0x00800474        0x4 ./libraries/zigduino/Tone.o
+                0x00800474                timer2_toggle_count
  .bss.timer2_pin_port
-                0x008004d4        0x2 ./libraries/zigduino/Tone.o
-                0x008004d4                timer2_pin_port
+                0x00800478        0x2 ./libraries/zigduino/Tone.o
+                0x00800478                timer2_pin_port
  .bss.timer2_pin_mask
-                0x008004d6        0x1 ./libraries/zigduino/Tone.o
-                0x008004d6                timer2_pin_mask
- .bss.intFunc   0x008004d7       0x10 ./libraries/zigduino/WInterrupts.o
+                0x0080047a        0x1 ./libraries/zigduino/Tone.o
+                0x0080047a                timer2_pin_mask
+ .bss.intFunc   0x0080047b       0x10 ./libraries/zigduino/WInterrupts.o
  .bss.timer0_overflow_count
-                0x008004e7        0x4 ./libraries/zigduino/wiring.o
-                0x008004e7                timer0_overflow_count
+                0x0080048b        0x4 ./libraries/zigduino/wiring.o
+                0x0080048b                timer0_overflow_count
  .bss.timer0_millis
-                0x008004eb        0x4 ./libraries/zigduino/wiring.o
-                0x008004eb                timer0_millis
+                0x0080048f        0x4 ./libraries/zigduino/wiring.o
+                0x0080048f                timer0_millis
  .bss.timer0_fract
-                0x008004ef        0x1 ./libraries/zigduino/wiring.o
+                0x00800493        0x1 ./libraries/zigduino/wiring.o
  .bss._ZN14cZigduinoRadio13rxFrameBufferE
-                0x008004f0       0x7f ./libraries/ZigduinoRadio/ZigduinoRadio.o
-                0x008004f0                cZigduinoRadio::rxFrameBuffer
+                0x00800494       0x7f ./libraries/ZigduinoRadio/ZigduinoRadio.o
+                0x00800494                cZigduinoRadio::rxFrameBuffer
  .bss._ZN14cZigduinoRadio12rxRingBufferE
-                0x0080056f       0x80 ./libraries/ZigduinoRadio/ZigduinoRadio.o
-                0x0080056f                cZigduinoRadio::rxRingBuffer
+                0x00800513       0x80 ./libraries/ZigduinoRadio/ZigduinoRadio.o
+                0x00800513                cZigduinoRadio::rxRingBuffer
  .bss._ZN14cZigduinoRadio16rxRingBufferHeadE
-                0x008005ef        0x1 ./libraries/ZigduinoRadio/ZigduinoRadio.o
-                0x008005ef                cZigduinoRadio::rxRingBufferHead
+                0x00800593        0x1 ./libraries/ZigduinoRadio/ZigduinoRadio.o
+                0x00800593                cZigduinoRadio::rxRingBufferHead
  .bss._ZN14cZigduinoRadio16rxRingBufferTailE
-                0x008005f0        0x1 ./libraries/ZigduinoRadio/ZigduinoRadio.o
-                0x008005f0                cZigduinoRadio::rxRingBufferTail
+                0x00800594        0x1 ./libraries/ZigduinoRadio/ZigduinoRadio.o
+                0x00800594                cZigduinoRadio::rxRingBufferTail
  .bss._ZN14cZigduinoRadio11txTmpBufferE
-                0x008005f1       0x7f ./libraries/ZigduinoRadio/ZigduinoRadio.o
-                0x008005f1                cZigduinoRadio::txTmpBuffer
- .bss._ZN14cZigduinoRadio17txTmpBufferLengthE
-                0x00800670        0x1 ./libraries/ZigduinoRadio/ZigduinoRadio.o
-                0x00800670                cZigduinoRadio::txTmpBufferLength
+                0x00800595       0x7f ./libraries/ZigduinoRadio/ZigduinoRadio.o
+                0x00800595                cZigduinoRadio::txTmpBuffer
  .bss._ZN14cZigduinoRadio7lastLqiE
-                0x00800671        0x1 ./libraries/ZigduinoRadio/ZigduinoRadio.o
-                0x00800671                cZigduinoRadio::lastLqi
+                0x00800614        0x1 ./libraries/ZigduinoRadio/ZigduinoRadio.o
+                0x00800614                cZigduinoRadio::lastLqi
  .bss._ZN14cZigduinoRadio18hasAttachedRxEventE
-                0x00800672        0x1 ./libraries/ZigduinoRadio/ZigduinoRadio.o
-                0x00800672                cZigduinoRadio::hasAttachedRxEvent
+                0x00800615        0x1 ./libraries/ZigduinoRadio/ZigduinoRadio.o
+                0x00800615                cZigduinoRadio::hasAttachedRxEvent
  .bss._ZN14cZigduinoRadio18hasAttachedTxEventE
-                0x00800673        0x1 ./libraries/ZigduinoRadio/ZigduinoRadio.o
-                0x00800673                cZigduinoRadio::hasAttachedTxEvent
- .bss._ZN14cZigduinoRadio21usedBeginTransmissionE
-                0x00800674        0x1 ./libraries/ZigduinoRadio/ZigduinoRadio.o
-                0x00800674                cZigduinoRadio::usedBeginTransmission
+                0x00800616        0x1 ./libraries/ZigduinoRadio/ZigduinoRadio.o
+                0x00800616                cZigduinoRadio::hasAttachedTxEvent
  .bss._ZN14cZigduinoRadio8txIsBusyE
-                0x00800675        0x1 ./libraries/ZigduinoRadio/ZigduinoRadio.o
-                0x00800675                cZigduinoRadio::txIsBusy
+                0x00800617        0x1 ./libraries/ZigduinoRadio/ZigduinoRadio.o
+                0x00800617                cZigduinoRadio::txIsBusy
  .bss._ZN14cZigduinoRadio19zrEventReceiveFrameE
-                0x00800676        0x2 ./libraries/ZigduinoRadio/ZigduinoRadio.o
-                0x00800676                cZigduinoRadio::zrEventReceiveFrame
+                0x00800618        0x2 ./libraries/ZigduinoRadio/ZigduinoRadio.o
+                0x00800618                cZigduinoRadio::zrEventReceiveFrame
  .bss._ZN14cZigduinoRadio13zrEventTxDoneE
-                0x00800678        0x2 ./libraries/ZigduinoRadio/ZigduinoRadio.o
-                0x00800678                cZigduinoRadio::zrEventTxDone
+                0x0080061a        0x2 ./libraries/ZigduinoRadio/ZigduinoRadio.o
+                0x0080061a                cZigduinoRadio::zrEventTxDone
  .bss.ZigduinoRadio
-                0x0080067a        0x1 ./libraries/ZigduinoRadio/ZigduinoRadio.o
-                0x0080067a                ZigduinoRadio
+                0x0080061c        0x1 ./libraries/ZigduinoRadio/ZigduinoRadio.o
+                0x0080061c                ZigduinoRadio
  .bss.user_radio_error
-                0x0080067b        0x2 ./libraries/ZigduinoRadio/ZigduinoRadioEvents.o
-                0x0080067b                user_radio_error
+                0x0080061d        0x2 ./libraries/ZigduinoRadio/ZigduinoRadioEvents.o
+                0x0080061d                user_radio_error
  .bss.user_radio_irq
-                0x0080067d        0x2 ./libraries/ZigduinoRadio/ZigduinoRadioEvents.o
-                0x0080067d                user_radio_irq
+                0x0080061f        0x2 ./libraries/ZigduinoRadio/ZigduinoRadioEvents.o
+                0x0080061f                user_radio_irq
  .bss.user_radio_receive_frame
-                0x0080067f        0x2 ./libraries/ZigduinoRadio/ZigduinoRadioEvents.o
-                0x0080067f                user_radio_receive_frame
+                0x00800621        0x2 ./libraries/ZigduinoRadio/ZigduinoRadioEvents.o
+                0x00800621                user_radio_receive_frame
  .bss.user_radio_tx_done
-                0x00800681        0x2 ./libraries/ZigduinoRadio/ZigduinoRadioEvents.o
-                0x00800681                user_radio_tx_done
+                0x00800623        0x2 ./libraries/ZigduinoRadio/ZigduinoRadioEvents.o
+                0x00800623                user_radio_tx_done
  .bss.radiostatus
-                0x00800683        0x8 ./libraries/ZigduinoRadio/radio_rfa.o
+                0x00800625        0x8 ./libraries/ZigduinoRadio/radio_rfa.o
  .bss.twi_state
-                0x0080068b        0x1 ./libraries/Wire/utility/twi.o
+                0x0080062d        0x1 ./libraries/Wire/utility/twi.o
  .bss.twi_slarw
-                0x0080068c        0x1 ./libraries/Wire/utility/twi.o
+                0x0080062e        0x1 ./libraries/Wire/utility/twi.o
  .bss.twi_onSlaveTransmit
-                0x0080068d        0x2 ./libraries/Wire/utility/twi.o
+                0x0080062f        0x2 ./libraries/Wire/utility/twi.o
  .bss.twi_onSlaveReceive
-                0x0080068f        0x2 ./libraries/Wire/utility/twi.o
+                0x00800631        0x2 ./libraries/Wire/utility/twi.o
  .bss.twi_masterBuffer
-                0x00800691       0x20 ./libraries/Wire/utility/twi.o
+                0x00800633       0x20 ./libraries/Wire/utility/twi.o
  .bss.twi_masterBufferIndex
-                0x008006b1        0x1 ./libraries/Wire/utility/twi.o
+                0x00800653        0x1 ./libraries/Wire/utility/twi.o
  .bss.twi_masterBufferLength
-                0x008006b2        0x1 ./libraries/Wire/utility/twi.o
+                0x00800654        0x1 ./libraries/Wire/utility/twi.o
  .bss.twi_txBuffer
-                0x008006b3       0x20 ./libraries/Wire/utility/twi.o
+                0x00800655       0x20 ./libraries/Wire/utility/twi.o
  .bss.twi_txBufferIndex
-                0x008006d3        0x1 ./libraries/Wire/utility/twi.o
+                0x00800675        0x1 ./libraries/Wire/utility/twi.o
  .bss.twi_txBufferLength
-                0x008006d4        0x1 ./libraries/Wire/utility/twi.o
+                0x00800676        0x1 ./libraries/Wire/utility/twi.o
  .bss.twi_rxBuffer
-                0x008006d5       0x20 ./libraries/Wire/utility/twi.o
+                0x00800677       0x20 ./libraries/Wire/utility/twi.o
  .bss.twi_rxBufferIndex
-                0x008006f5        0x1 ./libraries/Wire/utility/twi.o
+                0x00800697        0x1 ./libraries/Wire/utility/twi.o
  .bss.twi_error
-                0x008006f6        0x1 ./libraries/Wire/utility/twi.o
+                0x00800698        0x1 ./libraries/Wire/utility/twi.o
  .bss._ZN7TwoWire8rxBufferE
-                0x008006f7       0x20 ./libraries/Wire/Wire.o
-                0x008006f7                TwoWire::rxBuffer
+                0x00800699       0x20 ./libraries/Wire/Wire.o
+                0x00800699                TwoWire::rxBuffer
  .bss._ZN7TwoWire13rxBufferIndexE
-                0x00800717        0x1 ./libraries/Wire/Wire.o
-                0x00800717                TwoWire::rxBufferIndex
+                0x008006b9        0x1 ./libraries/Wire/Wire.o
+                0x008006b9                TwoWire::rxBufferIndex
  .bss._ZN7TwoWire14rxBufferLengthE
-                0x00800718        0x1 ./libraries/Wire/Wire.o
-                0x00800718                TwoWire::rxBufferLength
+                0x008006ba        0x1 ./libraries/Wire/Wire.o
+                0x008006ba                TwoWire::rxBufferLength
  .bss._ZN7TwoWire9txAddressE
-                0x00800719        0x1 ./libraries/Wire/Wire.o
-                0x00800719                TwoWire::txAddress
+                0x008006bb        0x1 ./libraries/Wire/Wire.o
+                0x008006bb                TwoWire::txAddress
  .bss._ZN7TwoWire8txBufferE
-                0x0080071a       0x20 ./libraries/Wire/Wire.o
-                0x0080071a                TwoWire::txBuffer
+                0x008006bc       0x20 ./libraries/Wire/Wire.o
+                0x008006bc                TwoWire::txBuffer
  .bss._ZN7TwoWire13txBufferIndexE
-                0x0080073a        0x1 ./libraries/Wire/Wire.o
-                0x0080073a                TwoWire::txBufferIndex
+                0x008006dc        0x1 ./libraries/Wire/Wire.o
+                0x008006dc                TwoWire::txBufferIndex
  .bss._ZN7TwoWire14txBufferLengthE
-                0x0080073b        0x1 ./libraries/Wire/Wire.o
-                0x0080073b                TwoWire::txBufferLength
+                0x008006dd        0x1 ./libraries/Wire/Wire.o
+                0x008006dd                TwoWire::txBufferLength
  .bss._ZN7TwoWire12transmittingE
-                0x0080073c        0x1 ./libraries/Wire/Wire.o
-                0x0080073c                TwoWire::transmitting
- .bss.Wire      0x0080073d        0xc ./libraries/Wire/Wire.o
-                0x0080073d                Wire
- .bss.Timer1    0x00800749        0x6 ./libraries/Timers/TimerOne.o
-                0x00800749                Timer1
- .bss.Timer3    0x0080074f        0x4 ./libraries/Timers/TimerThree.o
-                0x0080074f                Timer3
+                0x008006de        0x1 ./libraries/Wire/Wire.o
+                0x008006de                TwoWire::transmitting
+ .bss.Wire      0x008006df        0xc ./libraries/Wire/Wire.o
+                0x008006df                Wire
+ .bss.Timer1    0x008006eb        0x6 ./libraries/Timers/TimerOne.o
+                0x008006eb                Timer1
+ .bss.Timer3    0x008006f1        0x4 ./libraries/Timers/TimerThree.o
+                0x008006f1                Timer3
  .bss._ZN14SoftwareSerial13active_objectE
-                0x00800753        0x2 ./libraries/SoftwareSerial/SoftwareSerial.o
-                0x00800753                SoftwareSerial::active_object
+                0x008006f5        0x2 ./libraries/SoftwareSerial/SoftwareSerial.o
+                0x008006f5                SoftwareSerial::active_object
  .bss._ZN14SoftwareSerial15_receive_bufferE
-                0x00800755       0x40 ./libraries/SoftwareSerial/SoftwareSerial.o
-                0x00800755                SoftwareSerial::_receive_buffer
+                0x008006f7       0x40 ./libraries/SoftwareSerial/SoftwareSerial.o
+                0x008006f7                SoftwareSerial::_receive_buffer
  .bss._ZN14SoftwareSerial20_receive_buffer_tailE
-                0x00800795        0x1 ./libraries/SoftwareSerial/SoftwareSerial.o
-                0x00800795                SoftwareSerial::_receive_buffer_tail
+                0x00800737        0x1 ./libraries/SoftwareSerial/SoftwareSerial.o
+                0x00800737                SoftwareSerial::_receive_buffer_tail
  .bss._ZN14SoftwareSerial20_receive_buffer_headE
-                0x00800796        0x1 ./libraries/SoftwareSerial/SoftwareSerial.o
-                0x00800796                SoftwareSerial::_receive_buffer_head
+                0x00800738        0x1 ./libraries/SoftwareSerial/SoftwareSerial.o
+                0x00800738                SoftwareSerial::_receive_buffer_head
  .bss.AltSensor
-                0x00800797        0x2 ./libraries/MaxBotix/MaxBotix.o
-                0x00800797                AltSensor
+                0x00800739        0x2 ./libraries/MaxBotix/MaxBotix.o
+                0x00800739                AltSensor
  .bss.AccelGyro
-                0x00800799        0xf ./libraries/MPU6050/MPU6050.o
-                0x00800799                AccelGyro
- .bss.Compass   0x008007a8        0x8 ./libraries/HMC5883L/HMC5883L.o
-                0x008007a8                Compass
+                0x0080073b        0xf ./libraries/MPU6050/MPU6050.o
+                0x0080073b                AccelGyro
+ .bss.Compass   0x0080074a        0x8 ./libraries/HMC5883L/HMC5883L.o
+                0x0080074a                Compass
  .bss.pointerToObj
-                0x008007b0        0x2 ./libraries/FlightControl/FlightControl.o
-                0x008007b0                pointerToObj
- .bss.turnStop  0x008007b2        0x4 ./libraries/FlightControl/FlightControl.o
-                0x008007b2                turnStop
- .bss.turnDir   0x008007b6        0x1 ./libraries/FlightControl/FlightControl.o
-                0x008007b6                turnDir
- .bss.hopCounter
-                0x008007b7        0x2 ./libraries/FlightControl/FlightControl.o
-                0x008007b7                hopCounter
- .bss.takeOffCounter
-                0x008007b9        0x2 ./libraries/FlightControl/FlightControl.o
-                0x008007b9                takeOffCounter
+                0x00800752        0x2 ./libraries/FlightControl/FlightControl.o
+                0x00800752                pointerToObj
+ .bss.turnStop  0x00800754        0x4 ./libraries/FlightControl/FlightControl.o
+                0x00800754                turnStop
+ .bss.turnDir   0x00800758        0x1 ./libraries/FlightControl/FlightControl.o
+                0x00800758                turnDir
+ .bss.altLP     0x00800759        0xb ./libraries/FlightControl/FlightControl.o
+                0x00800759                altLP
+ .bss.takeOffStart
+                0x00800764        0x4 ./libraries/FlightControl/FlightControl.o
+                0x00800764                takeOffStart
+ .bss.loopCounter
+                0x00800768        0x4 ./libraries/FlightControl/FlightControl.o
+                0x00800768                loopCounter
  .bss.FlightControl1
-                0x008007bb       0x2c ./libraries/FlightControl/FlightControl.o
-                0x008007bb                FlightControl1
- .bss.altFilter
-                0x008007e7        0x9 ./libraries/FlightControl/FlightControl.o
-                0x008007e7                altFilter
+                0x0080076c       0x4d ./libraries/FlightControl/FlightControl.o
+                0x0080076c                FlightControl1
  .bss._ZZN13FlightControl18setBottomRotorDutyEjE8lastDuty
-                0x008007f0        0x2 ./libraries/FlightControl/FlightControl.o
+                0x008007b9        0x2 ./libraries/FlightControl/FlightControl.o
  .bss._ZZN13FlightControl15setTopRotorDutyEjE8lastDuty
-                0x008007f2        0x2 ./libraries/FlightControl/FlightControl.o
- .bss._ZZN13FlightControl8mainLoopEvE11loopCounter
-                0x008007f4        0x1 ./libraries/FlightControl/FlightControl.o
+                0x008007bb        0x2 ./libraries/FlightControl/FlightControl.o
+ .bss._ZZN13FlightControl10flightPlanEvE4step
+                0x008007bd        0x1 ./libraries/FlightControl/FlightControl.o
+ .bss._ZZN13FlightControl10flightPlanEvE5start
+                0x008007be        0x4 ./libraries/FlightControl/FlightControl.o
+ .bss._ZZ8blinkLEDvE10blinkState
+                0x008007c2        0x1 ./main.o
  *(COMMON)
- COMMON         0x008007f5        0x1 ./libraries/ZigduinoRadio/radio_rfa.o
-                0x008007f5                temprssi
- COMMON         0x008007f6        0x4 /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/libc.a(malloc.o)
-                0x008007f6                __brkval
-                0x008007f8                __flp
-                0x008007fa                PROVIDE (__bss_end, .)
-                0x00004870                __data_load_start = LOADADDR (.data)
-                0x000049ec                __data_load_end = (__data_load_start + SIZEOF (.data))
+ COMMON         0x008007c3        0x1 ./libraries/ZigduinoRadio/radio_rfa.o
+                0x008007c3                temprssi
+ COMMON         0x008007c4        0x4 /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/libc.a(malloc.o)
+                0x008007c4                __brkval
+                0x008007c6                __flp
+                0x008007c8                PROVIDE (__bss_end, .)
+                0x00004734                __data_load_start = LOADADDR (.data)
+                0x00004854                __data_load_end = (__data_load_start + SIZEOF (.data))
 
-.noinit         0x008007fa        0x0
-                0x008007fa                PROVIDE (__noinit_start, .)
+.noinit         0x008007c8        0x0
+                0x008007c8                PROVIDE (__noinit_start, .)
  *(.noinit*)
-                0x008007fa                PROVIDE (__noinit_end, .)
-                0x008007fa                _end = .
-                0x008007fa                PROVIDE (__heap_start, .)
+                0x008007c8                PROVIDE (__noinit_end, .)
+                0x008007c8                _end = .
+                0x008007c8                PROVIDE (__heap_start, .)
 
 .eeprom         0x00810000        0x0
  *(.eeprom*)
@@ -3021,18 +3050,34 @@ C_OQPSK1000_STR                                   ./libraries/ZigduinoRadio/trx_
 C_OQPSK2000_STR                                   ./libraries/ZigduinoRadio/trx_datarate_str.o
 C_OQPSK250_STR                                    ./libraries/ZigduinoRadio/trx_datarate_str.o
 C_OQPSK500_STR                                    ./libraries/ZigduinoRadio/trx_datarate_str.o
+Comp6DOF_n0m1::Comp6DOF_n0m1()                    ./libraries/Comp6DOF/Comp6DOF_n0m1.o
+Comp6DOF_n0m1::Comp6DOF_n0m1()                    ./libraries/Comp6DOF/Comp6DOF_n0m1.o
+Comp6DOF_n0m1::atan2Int(int, int)                 ./libraries/Comp6DOF/Comp6DOF_n0m1.o
+Comp6DOF_n0m1::atanInt(int, int)                  ./libraries/Comp6DOF/Comp6DOF_n0m1.o
+Comp6DOF_n0m1::calOffsets()                       ./libraries/Comp6DOF/Comp6DOF_n0m1.o
+Comp6DOF_n0m1::calSense(int*, int*, int*, int*, int*) ./libraries/Comp6DOF/Comp6DOF_n0m1.o
+Comp6DOF_n0m1::compCompass(int, int, int, int, int, int, unsigned char) ./libraries/Comp6DOF/Comp6DOF_n0m1.o
+Comp6DOF_n0m1::degToAngle(int)                    ./libraries/Comp6DOF/Comp6DOF_n0m1.o
+Comp6DOF_n0m1::deviantSpread(int, int, int)       ./libraries/Comp6DOF/Comp6DOF_n0m1.o
+Comp6DOF_n0m1::divInt(int, int)                   ./libraries/Comp6DOF/Comp6DOF_n0m1.o
+Comp6DOF_n0m1::intSqrt(unsigned long)             ./libraries/Comp6DOF/Comp6DOF_n0m1.o
+Comp6DOF_n0m1::linearEquationsSolving(int, float*, float*, float*) ./libraries/Comp6DOF/Comp6DOF_n0m1.o
+Comp6DOF_n0m1::lowPassInt(int, int, int, int)     ./libraries/Comp6DOF/Comp6DOF_n0m1.o
+Comp6DOF_n0m1::sinInt(unsigned int)               ./libraries/Comp6DOF/Comp6DOF_n0m1.o
 Compass                                           ./libraries/HMC5883L/HMC5883L.o
                                                   ./libraries/FlightControl/FlightControl.o
 FlightControl1                                    ./libraries/FlightControl/FlightControl.o
                                                   ./main.o
+FlightControl::calibrateAccZ()                    ./libraries/FlightControl/FlightControl.o
+FlightControl::calibrateGyro()                    ./libraries/FlightControl/FlightControl.o
+                                                  ./main.o
 FlightControl::enableAltPID(bool)                 ./libraries/FlightControl/FlightControl.o
 FlightControl::enableYawPID(bool)                 ./libraries/FlightControl/FlightControl.o
                                                   ./main.o
+FlightControl::executeFlightPlan()                ./libraries/FlightControl/FlightControl.o
+FlightControl::flightPlan()                       ./libraries/FlightControl/FlightControl.o
 FlightControl::forward(bool)                      ./libraries/FlightControl/FlightControl.o
-                                                  ./main.o
-FlightControl::hop()                              ./libraries/FlightControl/FlightControl.o
 FlightControl::hover()                            ./libraries/FlightControl/FlightControl.o
-                                                  ./main.o
 FlightControl::idle()                             ./libraries/FlightControl/FlightControl.o
 FlightControl::initialize()                       ./libraries/FlightControl/FlightControl.o
                                                   ./main.o
@@ -3055,7 +3100,6 @@ HMC5883L::getHeading(int*, int*, int*)            ./libraries/HMC5883L/HMC5883L.
 HMC5883L::getHeadingX()                           ./libraries/HMC5883L/HMC5883L.o
 HMC5883L::getHeadingY()                           ./libraries/HMC5883L/HMC5883L.o
 HMC5883L::getHeadingZ()                           ./libraries/HMC5883L/HMC5883L.o
-                                                  ./libraries/FlightControl/FlightControl.o
 HMC5883L::getIDA()                                ./libraries/HMC5883L/HMC5883L.o
 HMC5883L::getIDB()                                ./libraries/HMC5883L/HMC5883L.o
 HMC5883L::getIDC()                                ./libraries/HMC5883L/HMC5883L.o
@@ -3065,7 +3109,6 @@ HMC5883L::getMode()                               ./libraries/HMC5883L/HMC5883L.
 HMC5883L::getReadyStatus()                        ./libraries/HMC5883L/HMC5883L.o
 HMC5883L::getSampleAveraging()                    ./libraries/HMC5883L/HMC5883L.o
 HMC5883L::initialize()                            ./libraries/HMC5883L/HMC5883L.o
-                                                  ./libraries/FlightControl/FlightControl.o
 HMC5883L::setDataRate(unsigned char)              ./libraries/HMC5883L/HMC5883L.o
 HMC5883L::setGain(unsigned char)                  ./libraries/HMC5883L/HMC5883L.o
 HMC5883L::setMeasurementBias(unsigned char)       ./libraries/HMC5883L/HMC5883L.o
@@ -3134,12 +3177,12 @@ IPAddress::printTo(Print&) const                  ./libraries/zigduino/IPAddress
 LowPassFilter::LowPassFilter(unsigned char)       ./libraries/LowPassFilter/LowPassFilter.o
 LowPassFilter::LowPassFilter(unsigned char)       ./libraries/LowPassFilter/LowPassFilter.o
                                                   ./libraries/FlightControl/FlightControl.o
-LowPassFilter::filter(int)                        ./libraries/LowPassFilter/LowPassFilter.o
+LowPassFilter::filter(long)                       ./libraries/LowPassFilter/LowPassFilter.o
+                                                  ./libraries/FlightControl/FlightControl.o
+LowPassFilter::~LowPassFilter()                   ./libraries/LowPassFilter/LowPassFilter.o
                                                   ./libraries/FlightControl/FlightControl.o
 LowPassFilter::~LowPassFilter()                   ./libraries/LowPassFilter/LowPassFilter.o
 LowPassFilter::~LowPassFilter()                   ./libraries/LowPassFilter/LowPassFilter.o
-LowPassFilter::~LowPassFilter()                   ./libraries/LowPassFilter/LowPassFilter.o
-                                                  ./libraries/FlightControl/FlightControl.o
 MPU6050::MPU6050()                                ./libraries/MPU6050/MPU6050.o
 MPU6050::MPU6050()                                ./libraries/MPU6050/MPU6050.o
 MPU6050::MPU6050(unsigned char)                   ./libraries/MPU6050/MPU6050.o
@@ -3152,6 +3195,7 @@ MPU6050::getAcceleration(int*, int*, int*)        ./libraries/MPU6050/MPU6050.o
 MPU6050::getAccelerationX()                       ./libraries/MPU6050/MPU6050.o
 MPU6050::getAccelerationY()                       ./libraries/MPU6050/MPU6050.o
 MPU6050::getAccelerationZ()                       ./libraries/MPU6050/MPU6050.o
+                                                  ./libraries/FlightControl/FlightControl.o
 MPU6050::getAccelerometerPowerOnDelay()           ./libraries/MPU6050/MPU6050.o
 MPU6050::getAuxVDDIOLevel()                       ./libraries/MPU6050/MPU6050.o
 MPU6050::getClockOutputEnabled()                  ./libraries/MPU6050/MPU6050.o
@@ -3320,6 +3364,7 @@ MPU6050::setFreefallDetectionCounterDecrement(unsigned char) ./libraries/MPU6050
 MPU6050::setFreefallDetectionDuration(unsigned char) ./libraries/MPU6050/MPU6050.o
 MPU6050::setFreefallDetectionThreshold(unsigned char) ./libraries/MPU6050/MPU6050.o
 MPU6050::setFullScaleAccelRange(unsigned char)    ./libraries/MPU6050/MPU6050.o
+                                                  ./libraries/FlightControl/FlightControl.o
 MPU6050::setFullScaleGyroRange(unsigned char)     ./libraries/MPU6050/MPU6050.o
                                                   ./libraries/FlightControl/FlightControl.o
 MPU6050::setI2CBypassEnabled(bool)                ./libraries/MPU6050/MPU6050.o
@@ -3415,6 +3460,7 @@ PID::PID(float, float, float, float, float, float, float) ./libraries/FlightCont
                                                   ./libraries/FlightControl/FlightControl.o
 PID::loop(float, float)                           ./libraries/FlightControl/PID.o
                                                   ./libraries/FlightControl/FlightControl.o
+PID::reset()                                      ./libraries/FlightControl/PID.o
 PID::~PID()                                       ./libraries/FlightControl/PID.o
 PID::~PID()                                       ./libraries/FlightControl/PID.o
 PID::~PID()                                       ./libraries/FlightControl/PID.o
@@ -3423,6 +3469,7 @@ Print::print(String const&)                       ./libraries/zigduino/Print.o
 Print::print(__FlashStringHelper const*)          ./libraries/zigduino/Print.o
 Print::print(char const*)                         ./libraries/zigduino/Print.o
                                                   ./main.o
+                                                  ./libraries/Comp6DOF/Comp6DOF_n0m1.o
                                                   ./libraries/MPU6050/MPU6050.o
 Print::print(char)                                ./libraries/zigduino/Print.o
                                                   ./main.o
@@ -3430,13 +3477,15 @@ Print::print(char)                                ./libraries/zigduino/Print.o
 Print::print(double, int)                         ./libraries/zigduino/Print.o
                                                   ./main.o
 Print::print(int, int)                            ./libraries/zigduino/Print.o
-                                                  ./main.o
+                                                  ./libraries/Comp6DOF/Comp6DOF_n0m1.o
 Print::print(long, int)                           ./libraries/zigduino/Print.o
 Print::print(unsigned char, int)                  ./libraries/zigduino/Print.o
                                                   ./main.o
+                                                  ./libraries/Comp6DOF/Comp6DOF_n0m1.o
                                                   ./libraries/MPU6050/MPU6050.o
                                                   ./libraries/zigduino/IPAddress.o
 Print::print(unsigned int, int)                   ./libraries/zigduino/Print.o
+                                                  ./libraries/Comp6DOF/Comp6DOF_n0m1.o
 Print::print(unsigned long, int)                  ./libraries/zigduino/Print.o
 Print::printFloat(double, unsigned char)          ./libraries/zigduino/Print.o
 Print::printNumber(unsigned long, unsigned char)  ./libraries/zigduino/Print.o
@@ -3446,12 +3495,14 @@ Print::println(Printable const&)                  ./libraries/zigduino/Print.o
 Print::println(String const&)                     ./libraries/zigduino/Print.o
 Print::println(__FlashStringHelper const*)        ./libraries/zigduino/Print.o
 Print::println(char const*)                       ./libraries/zigduino/Print.o
+                                                  ./libraries/Comp6DOF/Comp6DOF_n0m1.o
                                                   ./libraries/FlightControl/FlightControl.o
 Print::println(char)                              ./libraries/zigduino/Print.o
 Print::println(double, int)                       ./libraries/zigduino/Print.o
 Print::println(int, int)                          ./libraries/zigduino/Print.o
 Print::println(long, int)                         ./libraries/zigduino/Print.o
 Print::println(unsigned char, int)                ./libraries/zigduino/Print.o
+                                                  ./libraries/Comp6DOF/Comp6DOF_n0m1.o
 Print::println(unsigned int, int)                 ./libraries/zigduino/Print.o
 Print::println(unsigned long, int)                ./libraries/zigduino/Print.o
 Print::write(char const*)                         ./libraries/zigduino/Print.o
@@ -3470,9 +3521,9 @@ RemoteCmd::decode(unsigned char*)                 ./libraries/Misc/RemoteCmd.o
                                                   ./main.o
 RemoteCmd::encode(unsigned char*)                 ./libraries/Misc/RemoteCmd.o
 RemoteCmd::~RemoteCmd()                           ./libraries/Misc/RemoteCmd.o
+RemoteCmd::~RemoteCmd()                           ./libraries/Misc/RemoteCmd.o
+RemoteCmd::~RemoteCmd()                           ./libraries/Misc/RemoteCmd.o
                                                   ./main.o
-RemoteCmd::~RemoteCmd()                           ./libraries/Misc/RemoteCmd.o
-RemoteCmd::~RemoteCmd()                           ./libraries/Misc/RemoteCmd.o
 SPI                                               ./libraries/SPI/SPI.o
 SPIClass::begin()                                 ./libraries/SPI/SPI.o
 SPIClass::end()                                   ./libraries/SPI/SPI.o
@@ -3482,6 +3533,7 @@ SPIClass::setDataMode(unsigned char)              ./libraries/SPI/SPI.o
 Serial                                            ./libraries/zigduino/HardwareSerial.o
 Serial1                                           ./libraries/zigduino/HardwareSerial.o
                                                   ./main.o
+                                                  ./libraries/Comp6DOF/Comp6DOF_n0m1.o
                                                   ./libraries/FlightControl/FlightControl.o
                                                   ./libraries/MPU6050/MPU6050.o
 SoftwareSerial::SoftwareSerial(unsigned char, unsigned char, bool) ./libraries/SoftwareSerial/SoftwareSerial.o
@@ -3659,6 +3711,7 @@ Wire                                              ./libraries/Wire/Wire.o
 ZigduinoRadio                                     ./libraries/ZigduinoRadio/ZigduinoRadio.o
                                                   ./main.o
 __addsf3                                          /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/libc.a(addsf3.o)
+                                                  ./libraries/Comp6DOF/Comp6DOF_n0m1.o
                                                   ./libraries/FlightControl/PID.o
                                                   ./libraries/FlightControl/FlightControl.o
                                                   ./libraries/zigduino/Print.o
@@ -3687,16 +3740,18 @@ __data_end                                        /usr/local/CrossPack-AVR-20100
 __data_load_start                                 /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/crtm128rfa1.o
 __data_start                                      /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/crtm128rfa1.o
 __divmodhi4                                       /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/avr51/libgcc.a(_divmodhi4.o)
+                                                  ./libraries/Comp6DOF/Comp6DOF_n0m1.o
                                                   ./libraries/FlightControl/FlightControl.o
-                                                  ./libraries/LowPassFilter/LowPassFilter.o
                                                   ./libraries/SoftwareSerial/SoftwareSerial.o
                                                   ./libraries/ZigduinoRadio/ZigduinoRadioInC.o
                                                   ./libraries/ZigduinoRadio/ZigduinoRadio.o
                                                   ./libraries/zigduino/HardwareSerial.o
 __divmodsi4                                       /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/avr51/libgcc.a(_divmodsi4.o)
                                                   /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/libc.a(random.o)
+                                                  ./libraries/LowPassFilter/LowPassFilter.o
                                                   ./libraries/zigduino/WMath.o
 __divsf3                                          /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/libc.a(divsf3.o)
+                                                  ./libraries/Comp6DOF/Comp6DOF_n0m1.o
                                                   ./libraries/FlightControl/PID.o
                                                   ./libraries/zigduino/Print.o
 __divsf3_pse                                      /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/libc.a(divsf3x.o)
@@ -3729,6 +3784,7 @@ __do_copy_data                                    /usr/local/CrossPack-AVR-20100
                                                   /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/libc.a(random.o)
                                                   /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/libc.a(malloc.o)
                                                   ./main.o
+                                                  ./libraries/Comp6DOF/Comp6DOF_n0m1.o
                                                   ./libraries/FlightControl/PID.o
                                                   ./libraries/FlightControl/FlightControl.o
                                                   ./libraries/I2Cdev/I2Cdev.o
@@ -3759,15 +3815,19 @@ __do_global_dtors                                 /usr/local/CrossPack-AVR-20100
 __dtors_end                                       /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/avr51/libgcc.a(_dtors.o)
 __dtors_start                                     /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/avr51/libgcc.a(_dtors.o)
 __eqsf2                                           /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/libc.a(cmpsf2.o)
+                                                  ./libraries/Comp6DOF/Comp6DOF_n0m1.o
 __fixsfsi                                         /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/libc.a(fixsfsi.o)
                                                   ./main.o
+                                                  ./libraries/Comp6DOF/Comp6DOF_n0m1.o
                                                   ./libraries/FlightControl/PID.o
                                                   ./libraries/FlightControl/FlightControl.o
                                                   ./libraries/zigduino/Print.o
 __fixunssfsi                                      /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/libc.a(fixunssfsi.o)
                                                   /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/libc.a(fixsfsi.o)
+                                                  ./libraries/Comp6DOF/Comp6DOF_n0m1.o
                                                   ./libraries/zigduino/Print.o
 __floatsisf                                       /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/libc.a(floatsisf.o)
+                                                  ./libraries/Comp6DOF/Comp6DOF_n0m1.o
                                                   ./libraries/FlightControl/PID.o
                                                   ./libraries/FlightControl/FlightControl.o
                                                   ./libraries/zigduino/Stream.o
@@ -3816,15 +3876,15 @@ __fp_zero                                         /usr/local/CrossPack-AVR-20100
 __gesf2                                           /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/libc.a(gesf2.o)
 __gtsf2                                           /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/libc.a(gesf2.o)
                                                   ./libraries/FlightControl/PID.o
-                                                  ./libraries/FlightControl/FlightControl.o
 __heap_end                                        /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/crtm128rfa1.o
                                                   /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/libc.a(malloc.o)
 __heap_start                                      /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/libc.a(malloc.o)
 __init                                            /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/crtm128rfa1.o
 __lesf2                                           /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/libc.a(cmpsf2.o)
 __ltsf2                                           /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/libc.a(cmpsf2.o)
-                                                  ./main.o
+                                                  ./libraries/Comp6DOF/Comp6DOF_n0m1.o
                                                   ./libraries/FlightControl/PID.o
+                                                  ./libraries/FlightControl/FlightControl.o
                                                   ./libraries/zigduino/Print.o
 __malloc_heap_end                                 /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/libc.a(malloc.o)
                                                   /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/libc.a(realloc.o)
@@ -3832,6 +3892,7 @@ __malloc_heap_start                               /usr/local/CrossPack-AVR-20100
 __malloc_margin                                   /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/libc.a(malloc.o)
                                                   /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/libc.a(realloc.o)
 __mulsf3                                          /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/libc.a(mulsf3.o)
+                                                  ./libraries/Comp6DOF/Comp6DOF_n0m1.o
                                                   ./libraries/FlightControl/PID.o
                                                   ./libraries/FlightControl/FlightControl.o
                                                   ./libraries/zigduino/Stream.o
@@ -3841,6 +3902,7 @@ __mulsf3x                                         /usr/local/CrossPack-AVR-20100
                                                   /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/libc.a(mulsf3.o)
 __mulsi3                                          /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/avr51/libgcc.a(_mulsi3.o)
                                                   /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/libc.a(random.o)
+                                                  ./libraries/Comp6DOF/Comp6DOF_n0m1.o
                                                   ./libraries/Timers/TimerThree.o
                                                   ./libraries/Timers/TimerOne.o
                                                   ./libraries/zigduino/wiring_pulse.o
@@ -3853,6 +3915,7 @@ __mulsi_const_10                                  /usr/local/CrossPack-AVR-20100
 __nesf2                                           /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/libc.a(cmpsf2.o)
 __stack                                           /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/crtm128rfa1.o
 __subsf3                                          /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/libc.a(addsf3.o)
+                                                  ./libraries/Comp6DOF/Comp6DOF_n0m1.o
                                                   ./libraries/FlightControl/PID.o
                                                   ./libraries/FlightControl/FlightControl.o
                                                   ./libraries/zigduino/Print.o
@@ -3864,12 +3927,11 @@ __udivmodhi4                                      /usr/local/CrossPack-AVR-20100
                                                   /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/avr51/libgcc.a(_divmodhi4.o)
                                                   /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/libc.a(utoa.o)
                                                   /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/libc.a(itoa.o)
-__udivmodqi4                                      /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/avr51/libgcc.a(_udivmodqi4.o)
-                                                  ./libraries/FlightControl/FlightControl.o
 __udivmodsi4                                      /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/avr51/libgcc.a(_udivmodsi4.o)
                                                   /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/avr51/libgcc.a(_divmodsi4.o)
                                                   /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/libc.a(ultoa.o)
                                                   /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/libc.a(ltoa.o)
+                                                  ./libraries/Comp6DOF/Comp6DOF_n0m1.o
                                                   ./libraries/Timers/TimerThree.o
                                                   ./libraries/Timers/TimerOne.o
                                                   ./libraries/zigduino/wiring_pulse.o
@@ -3973,7 +4035,7 @@ __vectors                                         /usr/local/CrossPack-AVR-20100
 _div                                              /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/avr51/libgcc.a(_divmodhi4.o)
 _exit                                             /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/avr51/libgcc.a(_exit.o)
                                                   /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/libc.a(exit.o)
-altFilter                                         ./libraries/FlightControl/FlightControl.o
+altLP                                             ./libraries/FlightControl/FlightControl.o
 analogRead                                        ./libraries/zigduino/wiring_analog.o
                                                   ./libraries/MaxBotix/MaxBotix.o
 analogReference                                   ./libraries/zigduino/wiring_analog.o
@@ -3995,13 +4057,11 @@ cZigduinoRadio::begin(signed char)                ./libraries/ZigduinoRadio/Zigd
                                                   ./main.o
 cZigduinoRadio::begin(signed char, unsigned char*) ./libraries/ZigduinoRadio/ZigduinoRadio.o
 cZigduinoRadio::beginTransmission()               ./libraries/ZigduinoRadio/ZigduinoRadio.o
-                                                  ./main.o
 cZigduinoRadio::cZigduinoRadio()                  ./libraries/ZigduinoRadio/ZigduinoRadio.o
 cZigduinoRadio::cZigduinoRadio()                  ./libraries/ZigduinoRadio/ZigduinoRadio.o
 cZigduinoRadio::cancelTransmission()              ./libraries/ZigduinoRadio/ZigduinoRadio.o
 cZigduinoRadio::doCca()                           ./libraries/ZigduinoRadio/ZigduinoRadio.o
 cZigduinoRadio::endTransmission()                 ./libraries/ZigduinoRadio/ZigduinoRadio.o
-                                                  ./main.o
 cZigduinoRadio::flush()                           ./libraries/ZigduinoRadio/ZigduinoRadio.o
                                                   ./main.o
 cZigduinoRadio::forceState(unsigned char)         ./libraries/ZigduinoRadio/ZigduinoRadio.o
@@ -4037,11 +4097,11 @@ cZigduinoRadio::usedBeginTransmission             ./libraries/ZigduinoRadio/Zigd
 cZigduinoRadio::write(char*)                      ./libraries/ZigduinoRadio/ZigduinoRadio.o
 cZigduinoRadio::write(unsigned char)              ./libraries/ZigduinoRadio/ZigduinoRadio.o
 cZigduinoRadio::write(unsigned char*, unsigned char) ./libraries/ZigduinoRadio/ZigduinoRadio.o
-                                                  ./main.o
 cZigduinoRadio::zrEventReceiveFrame               ./libraries/ZigduinoRadio/ZigduinoRadio.o
 cZigduinoRadio::zrEventTxDone                     ./libraries/ZigduinoRadio/ZigduinoRadio.o
 delay                                             ./libraries/zigduino/wiring.o
                                                   ./main.o
+                                                  ./libraries/FlightControl/FlightControl.o
 delayMicroseconds                                 ./libraries/zigduino/wiring.o
 detachInterrupt                                   ./libraries/zigduino/WInterrupts.o
 digitalRead                                       ./libraries/zigduino/wiring_digital.o
@@ -4049,6 +4109,7 @@ digitalRead                                       ./libraries/zigduino/wiring_di
 digitalWrite                                      ./libraries/zigduino/wiring_digital.o
                                                   ./main.o
                                                   ./libraries/FlightControl/FlightControl.o
+                                                  ./libraries/MaxBotix/MaxBotix.o
                                                   ./libraries/SPI/SPI.o
                                                   ./libraries/SoftwareSerial/SoftwareSerial.o
                                                   ./libraries/Wire/utility/twi.o
@@ -4078,7 +4139,6 @@ free                                              /usr/local/CrossPack-AVR-20100
                                                   ./libraries/MPU6050/MPU6050.o
                                                   ./libraries/zigduino/new.o
                                                   ./libraries/zigduino/WString.o
-hopCounter                                        ./libraries/FlightControl/FlightControl.o
 init                                              ./libraries/zigduino/wiring.o
                                                   ./main.o
 isspace                                           /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/libc.a(isspace.o)
@@ -4086,6 +4146,7 @@ isspace                                           /usr/local/CrossPack-AVR-20100
 itoa                                              /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/libc.a(itoa.o)
                                                   ./libraries/zigduino/WString.o
 loop                                              ./main.o
+loopCounter                                       ./libraries/FlightControl/FlightControl.o
 ltoa                                              /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/libc.a(ltoa.o)
                                                   ./libraries/zigduino/WString.o
 main                                              ./main.o
@@ -4111,6 +4172,7 @@ memmove                                           /usr/local/CrossPack-AVR-20100
                                                   ./libraries/zigduino/WString.o
 micros                                            ./libraries/zigduino/wiring.o
 millis                                            ./libraries/zigduino/wiring.o
+                                                  ./libraries/FlightControl/FlightControl.o
                                                   ./libraries/I2Cdev/I2Cdev.o
                                                   ./libraries/zigduino/Stream.o
 noTone(unsigned char)                             ./libraries/zigduino/Tone.o
@@ -4216,7 +4278,7 @@ strrev                                            /usr/local/CrossPack-AVR-20100
                                                   /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/libc.a(itoa.o)
 strstr                                            /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/libc.a(strstr.o)
                                                   ./libraries/zigduino/WString.o
-takeOffCounter                                    ./libraries/FlightControl/FlightControl.o
+takeOffStart                                      ./libraries/FlightControl/FlightControl.o
 temprssi                                          ./libraries/ZigduinoRadio/radio_rfa.o
                                                   ./libraries/ZigduinoRadio/ZigduinoRadioInC.o
                                                   ./libraries/ZigduinoRadio/ZigduinoRadio.o

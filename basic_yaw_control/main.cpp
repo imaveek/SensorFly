@@ -11,7 +11,9 @@
 
 #define LED_PIN 23
 
-#define DEBUG 1
+//#define SEND_PERIOD 2000
+
+//#define DEBUG 1
 
 void errHandle(radio_error_t err);
 void onXmitDone(radio_tx_done_t x);
@@ -42,10 +44,6 @@ void setup() {
 
 void loop() {
 
-	const uint8_t sendbuflen = 32;
-	uint8_t sendBuffer[sendbuflen];
-	uint8_t buflen=0;
-
 	uint8_t buf[sizeof(RemoteCmd)];
 	RemoteCmd remoteCmd;
 
@@ -66,33 +64,52 @@ void loop() {
 		executeRemoteCmd(remoteCmd);
 	}
 
+#ifdef SEND_PERIOD
+	const uint8_t sendbuflen = 38;
+	uint8_t sendBuffer[sendbuflen];
+	uint8_t buflen=0;
 
-	// Send  Readings
-	// Sensors
-	memcpy(sendBuffer+buflen,&FlightControl1.alt,2);buflen += 2;
-	memcpy(sendBuffer+buflen,&FlightControl1.gz,2);buflen += 2;
-	memcpy(sendBuffer+buflen,&FlightControl1.mz,2);buflen += 2;
+	static unsigned long last = millis();
 
-	// Yaw loop
-	memcpy(sendBuffer+buflen,&FlightControl1.yawInput,4);buflen += 4;
-	memcpy(sendBuffer+buflen,&FlightControl1.yawPID->error,4);buflen += 4;
-	memcpy(sendBuffer+buflen,&FlightControl1.topRotDuty,2);buflen += 2;
-	memcpy(sendBuffer+buflen,&FlightControl1.botRotDuty,2);buflen += 2;
+	unsigned long now = millis();
+	if ((now-last) > SEND_PERIOD) {
 
-	// Alt loop
-	memcpy(sendBuffer+buflen,&FlightControl1.altInput,4);buflen += 4;
-	memcpy(sendBuffer+buflen,&FlightControl1.altPID->error,4);buflen += 4;
-	memcpy(sendBuffer+buflen,&FlightControl1.throttle,2);buflen += 2;
+		// Send  Readings
+		// Sensors
+		memcpy(sendBuffer+buflen,&FlightControl1.alt,2);buflen += 2;
+		memcpy(sendBuffer+buflen,&FlightControl1.accZbias,2);buflen += 2;
+		memcpy(sendBuffer+buflen,&FlightControl1.velZ,4);buflen += 4;
 
-	// Turn
-	memcpy(sendBuffer+buflen,&FlightControl1.gyrosum,4);buflen += 4;
+		// Yaw loop
+		memcpy(sendBuffer+buflen,&FlightControl1.yawInput,4);buflen += 4;
+		memcpy(sendBuffer+buflen,&FlightControl1.yawPID->error,4);buflen += 4;
+		memcpy(sendBuffer+buflen,&FlightControl1.topRotDuty,2);buflen += 2;
+		memcpy(sendBuffer+buflen,&FlightControl1.botRotDuty,2);buflen += 2;
+
+		// Alt loop
+		memcpy(sendBuffer+buflen,&FlightControl1.altInput,4);buflen += 4;
+		memcpy(sendBuffer+buflen,&FlightControl1.altPID->error,4);buflen += 4;
+		memcpy(sendBuffer+buflen,&FlightControl1.throttle,2);buflen += 2;
+
+		// Turn
+		memcpy(sendBuffer+buflen,&FlightControl1.gyrosum,4);buflen += 4;
+		memcpy(sendBuffer+buflen,&FlightControl1.dispZ,4);buflen += 4;
+
+		ZigduinoRadio.beginTransmission();
+		ZigduinoRadio.write(sendBuffer,buflen);
+		ZigduinoRadio.endTransmission();
+
+		last = now;
+	}
+#endif
 
 #ifdef DEBUG
 	// Sensors
 	Serial1.println();
-	Serial1.print("h:");Serial1.print(FlightControl1.alt);
+	Serial1.print("az:");Serial1.print(FlightControl1.alt);
 	Serial1.print("\t gz:");Serial1.print(FlightControl1.gz);
-	Serial1.print("\t mz:");Serial1.print(FlightControl1.gz);
+	Serial1.print("\t head:");Serial1.print(FlightControl1.heading);
+	Serial1.print("\t asp:");Serial1.print(FlightControl1.accZbias);
 	Serial1.println();
 	// Yaw loop
 	Serial1.print("yawInp:");Serial1.print(FlightControl1.yawInput);
@@ -110,58 +127,28 @@ void loop() {
 	Serial1.println();
 #endif
 
-	ZigduinoRadio.beginTransmission();
-	ZigduinoRadio.write(sendBuffer,buflen);
-	ZigduinoRadio.endTransmission();
-
-	delay(200);
+	blinkLED();
+	delay(100);
 }
 
 // Execute remote commands
 void executeRemoteCmd(RemoteCmd remoteCmd) {
 	switch(remoteCmd.cmd) {
-	case 'p':
-		FlightControl1.yawPID->Kp = remoteCmd.value;
-		break;
-	case 'i':
-		FlightControl1.yawPID->Ki = remoteCmd.value;
-		break;
-	case 'd':
-		FlightControl1.yawPID->Kd = remoteCmd.value;
-		break;
-	case 'g':
-		FlightControl1.gyroSetPoint = remoteCmd.value;
-		break;
-	case 'a':
-		FlightControl1.altSetPoint = remoteCmd.value;
-		break;
 	case 'l':
 		FlightControl1.land();
 		break;
 	case 't':
 		FlightControl1.takeOff();
 		break;
-	case 'h':
-		FlightControl1.hover();
-		break;
 	case 'x':
+		FlightControl1.calibrateGyro();
 		FlightControl1.throttle  = remoteCmd.value;
-		break;
-	case 'e':
-		if(remoteCmd.value < 1)
-			FlightControl1.enableYawPID(false);
-		else
-			FlightControl1.enableYawPID(true);
+		FlightControl1.enableYawPID(true);
 		break;
 	case 'o':
 		FlightControl1.turn(remoteCmd.value);
 		break;
-	case 'f':
-		if(remoteCmd.value < 1)
-			FlightControl1.forward(false);
-		else
-			FlightControl1.forward(true);
-		break;	default:
+	default:
 		break;
 	}
 }

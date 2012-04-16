@@ -5,16 +5,16 @@
 #include "I2Cdev.h"
 #include "MPU6050.h"
 #include "HMC5883L.h"
-#include "SRF01.h"
-
-
-//SRF01 HeightSensor;
+#include "Comp6DOF_n0m1.h"
+#include "MaxBotix.h"
 
 int16_t mx, my, mz;
 int16_t ax, ay, az;
 int16_t gx, gy, gz;
 
 uint16_t height=0;
+Comp6DOF_n0m1 sixDOF1;
+
 
 #define LED_PIN 23
 bool blinkState = false;
@@ -22,7 +22,6 @@ bool blinkState = false;
 void setup() {
 	// configure Arduino LED for
 	pinMode(LED_PIN, OUTPUT);
-
 
 	// join I2C bus (I2Cdev library doesn't do this automatically)
 	Wire.begin();
@@ -39,6 +38,9 @@ void setup() {
 	AccelGyro.setI2CBypassEnabled(HIGH);
 
 	Compass.initialize();
+	Compass.setGain(0); // 1.3
+	Compass.setMode(HMC5883L_MODE_CONTINUOUS);
+
 
 	// verify connection
 	Serial1.println("Testing device connections...");
@@ -65,13 +67,13 @@ void loop() {
 
 	// display tab-separated gyro x/y/z values
 	Serial1.print("mag:\t");
-	Serial1.print(mx); Serial1.print("\t");
-	Serial1.print(my); Serial1.print("\t");
-	Serial1.println(mz);
+	Serial1.print(mx-sixDOF1.xHardOff()); Serial1.print("\t");
+	Serial1.print(my-sixDOF1.yHardOff()); Serial1.print("\t");
+	Serial1.println(mz-sixDOF1.zHardOff());
 
-	//	height = HeightSensor.value();
-	//	Serial1.print("height:\t");
-	//	Serial1.println(height);
+	height = AltSensor.value();
+	Serial1.print("height:\t");
+	Serial1.println(height);
 
 	delay(500);
 

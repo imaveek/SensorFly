@@ -15,8 +15,8 @@ main.d main.o: ../main.cpp ../main.h \
   /Users/imaveek/SensorFly/libraries/MPU6050/MPU6050.h \
   /Users/imaveek/SensorFly/libraries/zigduino/HardwareSerial.h \
   /Users/imaveek/SensorFly/libraries/HMC5883L/HMC5883L.h \
-  /Users/imaveek/SensorFly/libraries/SRF01/SRF01.h \
-  /Users/imaveek/SensorFly/libraries/SoftwareSerial/SoftwareSerial.h
+  /Users/imaveek/SensorFly/libraries/Comp6DOF/Comp6DOF_n0m1.h \
+  /Users/imaveek/SensorFly/libraries/MaxBotix/MaxBotix.h
 
 ../main.h:
 
@@ -52,6 +52,6 @@ main.d main.o: ../main.cpp ../main.h \
 
 /Users/imaveek/SensorFly/libraries/HMC5883L/HMC5883L.h:
 
-/Users/imaveek/SensorFly/libraries/SRF01/SRF01.h:
+/Users/imaveek/SensorFly/libraries/Comp6DOF/Comp6DOF_n0m1.h:
 
-/Users/imaveek/SensorFly/libraries/SoftwareSerial/SoftwareSerial.h:
+/Users/imaveek/SensorFly/libraries/MaxBotix/MaxBotix.h:

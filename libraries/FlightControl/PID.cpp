@@ -10,6 +10,10 @@
 
 PID::PID() {
 	// TODO Auto-generated constructor stub
+	reset();
+}
+
+void PID::reset() {
 	pre_error=0;
 	integral=0;
 	error=0;

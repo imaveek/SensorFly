@@ -10,36 +10,37 @@
 #include "TimerThree.h"
 #include "MPU6050.h"
 #include "HMC5883L.h"
-#include "MaxBotix.h"
 #include "LowPassFilter.h"
+#include "Comp6DOF_n0m1.h"
+#include "MaxBotix.h"
 #include <stdlib.h>
 
 
-#define GYRO_BIAS 5
+#define GYRO_BIAS 22
 #define GYRO_LPF_LEN 20
-#define PWM_PERIOD 10000
-#define PID_PERIOD 10000
+#define PWM_PERIOD 100
+#define PID_PERIOD 10000UL
 
 #define DUTY_MIN 0
 #define DUTY_MAX 1024
-#define ALT_PID_FREQ_DIV 10
+#define ALT_PID_FREQ_DIV 1
 
-#define THROTTLE_SET 900
-#define THROTTLE_DELTA 100
+#define THROTTLE_MAX 1000
+#define THROTTLE_MIN 600
 
-#define MAX_TAKEOFF_SPEED 10
-#define MAX_LAND_SPEED 4
-#define SPEED_DUTY_DELTA 20
-#define THROTTLE_LAND_DELTA 20
+#define THROTTLE_SET 750
+#define THROTTLE_TAKEOFF_DELTA 10
+#define THROTTLE_LAND_DELTA 40
 
-#define YAW_PID_CUTOFF_DUTY 300
-#define TURN_CUTOFF_DUTY 100
+#define TURN_GYRO_SET_OFFSET 5000
+#define HOVER_ACC_SET_OFFSET 500
 
-#define TURN_DUTY_OFFSET 3
+#define TAKEOFF_TIME 2000
 
-#define HOP_LENGTH 200
-#define TAKEOFF_TIME 90
+#define HOVER_HEIGHT 80
 
+#define ACC_FILTER_MAX 5000
+#define ACC_FILTER_MIN 500
 
 void * pointerToObj;
 static void wrapper();
@@ -47,22 +48,24 @@ static void wrapper();
 float turnStop = 0;
 int8_t turnDir;
 
-int16_t hopCounter=0;
-int16_t takeOffCounter=0;
+LowPassFilter altLP(5);
+
+unsigned long takeOffStart=0;
+unsigned long loopCounter=0;
 
 
 FlightControl FlightControl1;
-LowPassFilter altFilter(10);
-
 
 void FlightControl::initialize() {
 	// Initialize values
 	yawPIDenabled = false;
 	altPIDenabled = false;
-	gyroSetPoint = GYRO_BIAS;
-	altSetPoint = 70;
+	gyroBias = 0;
+	accZbias = 0;
+	accZsetPoint = 0;
+	gyroSetPoint = 0;
 
-	dt = 0.01;//PID_PERIOD/1000000UL;
+	dt = 0.01;
 
 	throttle = 0;
 	yawInput=0;
@@ -70,13 +73,19 @@ void FlightControl::initialize() {
 	botRotDuty=0;
 	gz=0;
 	alt=0;
-
+	heading=0;
 	gyrosum = 0;
+	velZ=0;
+	dispZ=0;
 
-	yawPID = new PID(0.2,0,0,500,dt,100,-100);
-	altPID = new PID(5,0,0,5,dt*ALT_PID_FREQ_DIV,300,-200);
+	yawPID = new PID(0.1,0,0,200,dt,200,-200);
+	altPID = new PID(8,0,0,200,dt,250,-200);
+	alt2PID = new PID(2,0,0,200,dt,0,-200);
+
+	isExecutingFlightPlan = false;
 
 	flightMode = Idle;
+	lastFlightMode = Idle;
 
 	// *************** Motor PWM *******************
 	// set a timer of length 100 microseconds
@@ -98,10 +107,9 @@ void FlightControl::initialize() {
 	Serial1.println("Initializing Accel/Gyro ...");
 	AccelGyro.initialize();
 	AccelGyro.setI2CBypassEnabled(HIGH);
-	AccelGyro.setDLPFMode(MPU6050_DLPF_BW_98);
+	AccelGyro.setDLPFMode(MPU6050_DLPF_BW_5);
 	AccelGyro.setFullScaleGyroRange(MPU6050_GYRO_FS_1000);
-
-	Compass.initialize();
+	AccelGyro.setFullScaleAccelRange(MPU6050_ACCEL_FS_4);
 
 
 	// verify connection
@@ -109,14 +117,50 @@ void FlightControl::initialize() {
 	Serial1.println(AccelGyro.testConnection() ? "MPU6050 connection successful" : "MPU6050 connection failed");
 	Serial1.println(Compass.testConnection() ? "HMC5883L connection successful" : "HMC5883L connection failed");
 
-	alt = AltSensor.value();
-	//	// Compute gyro bias
-	//	for(uint8_t i=0;i<20;i++) {
-	//		LowPassFilter glp(20);
-	//		gz = glp.filter(AccelGyro.getRotationZ());
-	//		delay(1);
-	//	}
-	//	gyroSetPoint = gz;
+}
+
+void FlightControl::flightPlan() {
+	static unsigned long start = 0;
+	static bool isFirstRun = true;
+	static uint8_t step = 0;
+
+	if (!isExecutingFlightPlan)
+		return;
+
+	if (isFirstRun) {
+		step = 0;
+		start = millis();
+		isFirstRun = false;
+	}
+
+	unsigned long elapsedTime = millis() - start;
+
+
+	switch(step) {
+	case 0:
+		if (elapsedTime <  1500)
+			break;
+		turn(180);
+		step++;
+		break;
+	case 1:
+		if (elapsedTime < 6000)
+			break;
+		land();
+		step++;
+		break;
+	case 2:
+		step = 0;
+		start = 0;
+		isFirstRun = true;
+		isExecutingFlightPlan = false;
+		break;
+	}
+}
+
+void FlightControl::executeFlightPlan() {
+	if (!isExecutingFlightPlan)
+		isExecutingFlightPlan = true;
 }
 
 
@@ -129,84 +173,46 @@ void wrapper() {
 void FlightControl::mainLoop()
 {
 	sei();
-	static uint8_t loopCounter=0;
 
 	// Get measurements
 	gz = AccelGyro.getRotationZ();
-	mz = Compass.getHeadingZ();
 
 	loopCounter++;
 
+	flightPlan();
+
 	switch(flightMode) {
-	case Idle: // Do nothing. Stationary landed.
-		yawPIDenabled = false;
-		throttle = 0;
-		topRotDuty = throttle;
-		botRotDuty = throttle;
-		break;
-	case Hover: // Maintain altitude. Can go forward in this mode.
-		// Slow Altitude Control loop
-		if (altPIDenabled && (loopCounter % ALT_PID_FREQ_DIV)==0) {
-			alt = altFilter.filter(AltSensor.value());
-			altInput = altPID->loop(altSetPoint,alt);
-			throttle = THROTTLE_SET + altInput;
-			throttle = (throttle<DUTY_MIN) ? DUTY_MIN:throttle;
-			throttle = (throttle>DUTY_MAX) ? DUTY_MAX:throttle;
-		}
-		topRotDuty = throttle;
-		botRotDuty = throttle;
-		break;
-	case TakeOff: // Increase throttle till height is achieved
-		takeOffCounter++;
-		if(takeOffCounter >= TAKEOFF_TIME) {
-			land();
-			break;
-		}
-		if((loopCounter % ALT_PID_FREQ_DIV)==0) {
-			throttle = throttle + THROTTLE_DELTA;
-			if (throttle > YAW_PID_CUTOFF_DUTY) {
-				yawPIDenabled = true;
-			}
-			throttle = (throttle>DUTY_MAX) ? DUTY_MAX:throttle;
-			topRotDuty = throttle;
-			botRotDuty = throttle;
-		}
-		break;
-	case Land: // Decrease throttle to land smoothly
-		if((loopCounter % ALT_PID_FREQ_DIV)!=0)
-			break;
-		throttle = throttle - THROTTLE_LAND_DELTA;
-		throttle = (throttle<DUTY_MIN) ? DUTY_MIN:throttle;
-		if (throttle < YAW_PID_CUTOFF_DUTY)
-			yawPIDenabled = false;
-		if (throttle == DUTY_MIN)
-			idle();
-		topRotDuty = throttle;
-		botRotDuty = throttle;
-		break;
-	case Turn: // Execute open loop turn
-		gyrosum += (gz-gyroSetPoint) * dt * 1000/32768;
-		if (abs(gyrosum)-abs(turnStop) > 0) {
-			gyrosum = 0;
-			yawPIDenabled = true;
-		} else {
-			topRotDuty = throttle+(turnDir*TURN_DUTY_OFFSET);
-			botRotDuty = throttle-(turnDir*TURN_DUTY_OFFSET);
-		}
-		break;
-	case Hop: // Take off hop and land
-		if(hopCounter==0) {
-			forward(true);
-		}
-		hopCounter++;
-		if (hopCounter >= HOP_LENGTH) {
-			forward(false);
-			land();
-		}
-		break;
+	case Idle: idleMode(); // Do nothing. Stationary landed.
+	break;
+	case Hover: hoverMode(); // Maintain altitude. Can go forward in this mode.
+	break;
+	case TakeOff: takeOffMode(); // Increase throttle till height is achieved
+	break;
+	case Land: landMode(); // Decrease throttle to land smoothly
+	break;
+	case Turn: turnMode(); // Execute open loop turn
+	break;
 	}
 
-	// Fast Yaw Control loop
+	// Altitude control loop
+	if (altPIDenabled) {
+		if (alt > 200) {
+			alt = 20;
+		}
+		if (loopCounter % ALT_PID_FREQ_DIV == 0) {
+			alt = altLP.filter(AltSensor.value());
+			int16_t err =  altSetPoint - alt;
+			if (err > 0)
+				altInput = altPID->loop(altSetPoint,alt);
+			else
+				altInput = alt2PID->loop(altSetPoint,alt);
+			throttle = THROTTLE_SET + altInput;
+			throttle = (throttle>THROTTLE_MAX) ? THROTTLE_MAX:throttle;
+			throttle = (throttle<THROTTLE_MIN) ? THROTTLE_MIN:throttle;
+		}
+	}
+
+	// Yaw Control loop
 	if (yawPIDenabled) {
 		yawInput = yawPID->loop(gyroSetPoint,gz);
 		topRotDuty = throttle - yawInput;
@@ -218,25 +224,79 @@ void FlightControl::mainLoop()
 	setBottomRotorDuty(botRotDuty);
 }
 
+inline void FlightControl::hoverMode() {
+	topRotDuty = throttle;
+	botRotDuty = throttle;
+}
+
+inline void FlightControl::idleMode() {
+	altPIDenabled = false;
+	yawPIDenabled = false;
+	throttle = DUTY_MIN;
+	topRotDuty = throttle;
+	botRotDuty = throttle;
+}
+
+inline void FlightControl::takeOffMode() {
+	unsigned long now = millis();
+	if ((now-takeOffStart) > TAKEOFF_TIME) {
+		hover();
+		return;
+	}
+	throttle = throttle + THROTTLE_TAKEOFF_DELTA;
+	if (throttle > 100) {
+		yawPIDenabled = true;
+	}
+	throttle = (throttle>THROTTLE_MAX) ? THROTTLE_MAX:throttle;
+	topRotDuty = throttle;
+	botRotDuty = throttle;
+}
+
+inline void FlightControl::landMode() {
+	throttle = throttle - THROTTLE_LAND_DELTA;
+	throttle = (throttle<DUTY_MIN) ? DUTY_MIN:throttle;
+	alt = altLP.filter(AltSensor.value());
+	if (throttle==DUTY_MIN) {
+		idle();
+	}
+	if (alt < 25 || alt > 200) {
+		idle();
+	}
+	if (throttle < 300)
+		yawPIDenabled = false;
+}
+
+inline void FlightControl::turnMode() {
+	gyrosum += (gz-gyroBias) * dt * 1000/32768;
+	if ((turnDir * (turnStop - gyrosum)) < 0) {
+		gyrosum = 0;
+		gyroSetPoint = gyroBias;
+		flightMode = lastFlightMode;
+	}
+}
 
 void FlightControl::turn(int16_t angle) {
 	gyrosum = 0;
 	turnStop = angle;
 	turnDir = angle/abs(angle);
-	yawPIDenabled = false;
-}
-
-void FlightControl::hop() {
-	hopCounter = 0;
-	flightMode = Hop;
+	lastFlightMode = flightMode;
+	gyroSetPoint = turnDir * TURN_GYRO_SET_OFFSET;
+	flightMode = Turn;
 }
 
 void FlightControl::takeOff() {
-	takeOffCounter = 0;
+	FlightControl1.calibrateGyro();
+	FlightControl1.calibrateAccZ();
+	takeOffStart = millis();
+	gyroSetPoint = gyroBias;
 	flightMode = TakeOff;
 }
 
 void FlightControl::land() {
+	velZ = 0;
+	dispZ = 0;
+	altPIDenabled = false;
+	gyroSetPoint = gyroBias;
 	flightMode = Land;
 }
 
@@ -250,7 +310,10 @@ void FlightControl::forward(bool status) {
 void FlightControl::hover() {
 	yawPIDenabled = true;
 	altPIDenabled = true;
+	gyroSetPoint = gyroBias;
+	altSetPoint = HOVER_HEIGHT;
 	flightMode = Hover;
+	executeFlightPlan();
 }
 
 void FlightControl::idle() {
@@ -290,4 +353,26 @@ void FlightControl::setBottomRotorDuty(uint16_t duty) {
 	if(duty != lastDuty)
 		Timer1.setPwmDuty(MOTOR2_PIN,duty);
 	lastDuty = duty;
+}
+
+
+
+void FlightControl::calibrateGyro() {
+	int16_t gz = 0;
+	LowPassFilter glp(100);
+	for(uint8_t i=0;i<100;i++) {
+		delay(1);
+		gz = glp.filter(AccelGyro.getRotationZ());
+	}
+	gyroBias = gz;
+}
+
+void FlightControl::calibrateAccZ() {
+	int16_t az = 0;
+	LowPassFilter alp(100);
+	for(uint8_t i=0;i<100;i++) {
+		delay(1);
+		az = alp.filter(AccelGyro.getAccelerationZ());
+	}
+	accZbias = az;
 }

@@ -37,12 +37,14 @@ void setup() {
 void loop()
 {
 	static char mode = 0;
-	const uint8_t rxbuflen = 32;
+	const uint8_t rxbuflen = 38;
 	uint8_t rxBuffer[rxbuflen];
 	uint8_t buflen=0;
 	float gyrosum;
+	float dispZ;
 
-	int16_t gz=0,mz=0,h=0;
+	int16_t gz=0,h=0;
+	float head=0;
 	int16_t throttle=0,topRotDuty=0,botRotDuty=0;
 	float yawInput=0,yawError=0;
 	float altInput=0,altError=0;
@@ -67,7 +69,7 @@ void loop()
 
 			memcpy(&h,rxBuffer+buflen,2);buflen += 2;
 			memcpy(&gz,rxBuffer+buflen,2);buflen += 2;
-			memcpy(&mz,rxBuffer+buflen,2);buflen += 2;
+			memcpy(&head,rxBuffer+buflen,4);buflen += 4;
 
 			memcpy(&yawInput,rxBuffer+buflen,4);buflen += 4;
 			memcpy(&yawError,rxBuffer+buflen,4);buflen += 4;
@@ -79,12 +81,13 @@ void loop()
 			memcpy(&throttle,rxBuffer+buflen,2);buflen += 2;
 
 			memcpy(&gyrosum,rxBuffer+buflen,4);buflen += 4;
+			memcpy(&dispZ,rxBuffer+buflen,4);buflen += 4;
 
 			// Sensors
 			Serial1.println();
-			Serial1.print("h:");Serial1.print(h);
+			Serial1.print("az:");Serial1.print(h);
 			Serial1.print("\t gz:");Serial1.print(gz);
-			Serial1.print("\t mz:");Serial1.print(mz);
+			Serial1.print("\t head:");Serial1.print(head);
 			Serial1.println();
 			// Yaw loop
 			Serial1.print("yawInp:");Serial1.print(yawInput);
@@ -99,11 +102,12 @@ void loop()
 			Serial1.println();
 			// Turn
 			Serial1.print("gyrosum:");Serial1.print(gyrosum);
+			Serial1.print("\t dispZ:");Serial1.print(dispZ);
 			Serial1.println();
 
 		}
 		Serial1.flush();
-		delay(500);
+		delay(100);
 		if (Serial1.available()) {
 			char c = Serial1.read();
 			if (c == 27)
@@ -169,7 +173,7 @@ void loop()
 		Serial1.println();
 		break;
 	}
-	delay(100);
+	delay(10);
 }
 
 void errHandle(radio_error_t err)

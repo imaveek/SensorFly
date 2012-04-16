@@ -46,4 +46,5 @@ libraries/LowPassFilter \
 libraries/I2Cdev \
 libraries/HMC5883L \
 libraries/FlightControl \
+libraries/Comp6DOF \
 

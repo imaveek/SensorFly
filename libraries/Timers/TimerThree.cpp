@@ -61,12 +61,12 @@ void TimerThree::setPeriod(long microseconds)		// AR modified for atomic access
 {
 
 	long cycles = (F_CPU / 2000000) * microseconds;                                // the counter runs backwards after TOP, interrupt is at BOTTOM so divide microseconds by 2
-	if(cycles < RESOLUTION)              clockSelectBits = _BV(CS10);              // no prescale, full xtal
-	else if((cycles >>= 3) < RESOLUTION) clockSelectBits = _BV(CS11);              // prescale by /8
-	else if((cycles >>= 3) < RESOLUTION) clockSelectBits = _BV(CS11) | _BV(CS10);  // prescale by /64
-	else if((cycles >>= 2) < RESOLUTION) clockSelectBits = _BV(CS12);              // prescale by /256
-	else if((cycles >>= 2) < RESOLUTION) clockSelectBits = _BV(CS12) | _BV(CS10);  // prescale by /1024
-	else        cycles = RESOLUTION - 1, clockSelectBits = _BV(CS12) | _BV(CS10);  // request was out of bounds, set as maximum
+	if(cycles < RESOLUTION_TIM3)              clockSelectBits = _BV(CS10);              // no prescale, full xtal
+	else if((cycles >>= 3) < RESOLUTION_TIM3) clockSelectBits = _BV(CS11);              // prescale by /8
+	else if((cycles >>= 3) < RESOLUTION_TIM3) clockSelectBits = _BV(CS11) | _BV(CS10);  // prescale by /64
+	else if((cycles >>= 2) < RESOLUTION_TIM3) clockSelectBits = _BV(CS12);              // prescale by /256
+	else if((cycles >>= 2) < RESOLUTION_TIM3) clockSelectBits = _BV(CS12) | _BV(CS10);  // prescale by /1024
+	else        cycles = RESOLUTION_TIM3 - 1, clockSelectBits = _BV(CS12) | _BV(CS10);  // request was out of bounds, set as maximum
 
 	oldSREG = SREG;
 	cli();							// Disable interrupts for 16 bit register access
