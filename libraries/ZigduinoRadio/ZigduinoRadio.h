@@ -75,6 +75,7 @@ class cZigduinoRadio
 	public:
 		cZigduinoRadio();
 		void begin(channel_t);
+		void begin(channel_t chan, txpwr_t pwr, uint8_t* frameHeader);
 		void begin(channel_t, uint8_t*);
 		void setFrameHeader(uint8_t*);
 		void attachError(void(*)(radio_error_t));

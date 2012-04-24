@@ -78,7 +78,7 @@ void FlightControl::initialize() {
 	velZ=0;
 	dispZ=0;
 
-	yawPID = new PID(0.1,0,0,200,dt,200,-200);
+	yawPID = new PID(0.2,0,0,200,dt,200,-200);
 	altPID = new PID(8,0,0,200,dt,250,-200);
 	alt2PID = new PID(2,0,0,200,dt,0,-200);
 
@@ -135,21 +135,32 @@ void FlightControl::flightPlan() {
 
 	unsigned long elapsedTime = millis() - start;
 
-
 	switch(step) {
 	case 0:
 		if (elapsedTime <  1500)
 			break;
-		turn(180);
+		turn(90);
 		step++;
 		break;
 	case 1:
+		if (elapsedTime <  3000)
+			break;
+		turn(90);
+		step++;
+		break;
+	case 2:
+		if (elapsedTime <  4500)
+			break;
+		turn(90);
+		step++;
+		break;
+	case 3:
 		if (elapsedTime < 6000)
 			break;
 		land();
 		step++;
 		break;
-	case 2:
+	case 4:
 		step = 0;
 		start = 0;
 		isFirstRun = true;

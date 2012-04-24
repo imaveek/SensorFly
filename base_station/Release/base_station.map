@@ -554,6 +554,8 @@ Discarded input sections
                 0x00000000        0x0 ./libraries/ZigduinoRadio/ZigduinoRadio.o
  .text._ZN14cZigduinoRadio7txFrameEPhh
                 0x00000000        0x0 ./libraries/ZigduinoRadio/ZigduinoRadio.o
+ .text._ZN14cZigduinoRadio5beginEaaPh
+                0x00000000        0x0 ./libraries/ZigduinoRadio/ZigduinoRadio.o
  .text._ZN14cZigduinoRadioC2Ev
                 0x00000000        0x0 ./libraries/ZigduinoRadio/ZigduinoRadio.o
  .text          0x00000000        0x0 ./libraries/ZigduinoRadio/ZigduinoRadioEvents.o
@@ -3266,14 +3268,14 @@ IPAddress::operator=(unsigned long)               ./libraries/zigduino/IPAddress
 IPAddress::operator==(unsigned char const*)       ./libraries/zigduino/IPAddress.o
 IPAddress::printTo(Print&) const                  ./libraries/zigduino/IPAddress.o
 LowPassFilter::LowPassFilter(unsigned char)       ./libraries/LowPassFilter/LowPassFilter.o
-                                                  ./libraries/FlightControl/FlightControl.o
 LowPassFilter::LowPassFilter(unsigned char)       ./libraries/LowPassFilter/LowPassFilter.o
+                                                  ./libraries/FlightControl/FlightControl.o
 LowPassFilter::filter(long)                       ./libraries/LowPassFilter/LowPassFilter.o
                                                   ./libraries/FlightControl/FlightControl.o
 LowPassFilter::~LowPassFilter()                   ./libraries/LowPassFilter/LowPassFilter.o
+LowPassFilter::~LowPassFilter()                   ./libraries/LowPassFilter/LowPassFilter.o
+LowPassFilter::~LowPassFilter()                   ./libraries/LowPassFilter/LowPassFilter.o
                                                   ./libraries/FlightControl/FlightControl.o
-LowPassFilter::~LowPassFilter()                   ./libraries/LowPassFilter/LowPassFilter.o
-LowPassFilter::~LowPassFilter()                   ./libraries/LowPassFilter/LowPassFilter.o
 MPU6050::MPU6050()                                ./libraries/MPU6050/MPU6050.o
 MPU6050::MPU6050()                                ./libraries/MPU6050/MPU6050.o
 MPU6050::MPU6050(unsigned char)                   ./libraries/MPU6050/MPU6050.o
@@ -3547,8 +3549,8 @@ MaxBotix::~MaxBotix()                             ./libraries/MaxBotix/MaxBotix.
 PID::PID()                                        ./libraries/FlightControl/PID.o
 PID::PID()                                        ./libraries/FlightControl/PID.o
 PID::PID(float, float, float, float, float, float, float) ./libraries/FlightControl/PID.o
-                                                  ./libraries/FlightControl/FlightControl.o
 PID::PID(float, float, float, float, float, float, float) ./libraries/FlightControl/PID.o
+                                                  ./libraries/FlightControl/FlightControl.o
 PID::loop(float, float)                           ./libraries/FlightControl/PID.o
                                                   ./libraries/FlightControl/FlightControl.o
 PID::reset()                                      ./libraries/FlightControl/PID.o
@@ -4156,6 +4158,7 @@ cZigduinoRadio::available()                       ./libraries/ZigduinoRadio/Zigd
                                                   ./main.o
 cZigduinoRadio::begin(signed char)                ./libraries/ZigduinoRadio/ZigduinoRadio.o
                                                   ./main.o
+cZigduinoRadio::begin(signed char, signed char, unsigned char*) ./libraries/ZigduinoRadio/ZigduinoRadio.o
 cZigduinoRadio::begin(signed char, unsigned char*) ./libraries/ZigduinoRadio/ZigduinoRadio.o
 cZigduinoRadio::beginTransmission()               ./libraries/ZigduinoRadio/ZigduinoRadio.o
                                                   ./main.o

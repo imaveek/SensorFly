@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">&#x0A;<refactoring comment="Delete resource &apos;Copy of basic_radio&apos;" deleteContents="false" description="Delete resource &apos;Copy of basic_radio&apos;" element1="/Copy of basic_radio" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="1" stamp="1334624088242"/>&#x0A;<refactoring comment="Delete resource &apos;basic_sensor_anchor&apos;" deleteContents="false" description="Delete resource &apos;basic_sensor_anchor&apos;" element1="/basic_sensor_anchor" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="1" stamp="1334624165348"/>
+</session>

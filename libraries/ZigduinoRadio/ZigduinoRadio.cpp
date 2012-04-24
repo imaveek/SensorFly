@@ -85,6 +85,12 @@ void cZigduinoRadio::begin(channel_t chan)
 	begin(chan, 0);
 }
 
+void cZigduinoRadio::begin(channel_t chan, txpwr_t pwr, uint8_t* frameHeader)
+{
+	begin(chan, frameHeader);
+	radio_set_param(RP_TXPWR(pwr));
+}
+
 /**
  * @brief Radio Initialization
  *
