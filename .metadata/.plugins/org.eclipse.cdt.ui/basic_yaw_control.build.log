@@ -34,7 +34,7 @@ AVR Memory Usage
 ----------------
 Device: atmega128rfa1
 
-Program:   18554 bytes (14.2% Full)
+Program:   18486 bytes (14.1% Full)
 (.text + .data + .bootloader)
 
 Data:       1480 bytes (9.0% Full)

@@ -2,27 +2,14 @@
 **** Build of configuration Release for project base_station ****
 
 make all 
-Building file: /Users/imaveek/SensorFly/libraries/ZigduinoRadio/ZigduinoRadio.cpp
+Building file: /Users/imaveek/SensorFly/libraries/FlightControl/FlightControl.cpp
 Invoking: AVR C++ Compiler
-avr-g++ -I"/Users/imaveek/SensorFly/libraries/zigduino" -I"/Users/imaveek/SensorFly/libraries/Comp6DOF" -I"/Users/imaveek/SensorFly/libraries/LowPassFilter" -I"/Users/imaveek/SensorFly/libraries/MaxBotix" -I"/Users/imaveek/SensorFly/libraries/SoftwareSerial" -I"/Users/imaveek/SensorFly/libraries/Timers" -I"/Users/imaveek/SensorFly/libraries/Misc" -I"/Users/imaveek/SensorFly/libraries/SPI" -I"/Users/imaveek/SensorFly/libraries/Wire" -I"/Users/imaveek/SensorFly/libraries/I2Cdev" -I"/Users/imaveek/SensorFly/libraries/MPU6050" -I"/Users/imaveek/SensorFly/libraries/Wire/utility" -I"/Users/imaveek/SensorFly/libraries/ZigduinoRadio" -I"/Users/imaveek/SensorFly/libraries/ZigduinoRadio/boards" -I"/Users/imaveek/SensorFly/libraries/HMC5883L" -Wall -Os -ffunction-sections -fdata-sections -funsigned-char -funsigned-bitfields -fno-exceptions --pedantic -c -mmcu=atmega128rfa1 -DF_CPU=16000000UL -MMD -MP -MF"libraries/ZigduinoRadio/ZigduinoRadio.d" -MT"libraries/ZigduinoRadio/ZigduinoRadio.d" -c -o "libraries/ZigduinoRadio/ZigduinoRadio.o" "/Users/imaveek/SensorFly/libraries/ZigduinoRadio/ZigduinoRadio.cpp"
-Finished building: /Users/imaveek/SensorFly/libraries/ZigduinoRadio/ZigduinoRadio.cpp
- 
-Building file: ../main.cpp
-Invoking: AVR C++ Compiler
-avr-g++ -I"/Users/imaveek/SensorFly/libraries/zigduino" -I"/Users/imaveek/SensorFly/libraries/Comp6DOF" -I"/Users/imaveek/SensorFly/libraries/LowPassFilter" -I"/Users/imaveek/SensorFly/libraries/MaxBotix" -I"/Users/imaveek/SensorFly/libraries/SoftwareSerial" -I"/Users/imaveek/SensorFly/libraries/Timers" -I"/Users/imaveek/SensorFly/libraries/Misc" -I"/Users/imaveek/SensorFly/libraries/SPI" -I"/Users/imaveek/SensorFly/libraries/Wire" -I"/Users/imaveek/SensorFly/libraries/I2Cdev" -I"/Users/imaveek/SensorFly/libraries/MPU6050" -I"/Users/imaveek/SensorFly/libraries/Wire/utility" -I"/Users/imaveek/SensorFly/libraries/ZigduinoRadio" -I"/Users/imaveek/SensorFly/libraries/ZigduinoRadio/boards" -I"/Users/imaveek/SensorFly/libraries/HMC5883L" -Wall -Os -ffunction-sections -fdata-sections -funsigned-char -funsigned-bitfields -fno-exceptions --pedantic -c -mmcu=atmega128rfa1 -DF_CPU=16000000UL -MMD -MP -MF"main.d" -MT"main.d" -c -o "main.o" "../main.cpp"
-In file included from ../main.h:11,
-                 from ../main.cpp:3:
+avr-g++ -I"/Users/imaveek/SensorFly/libraries/zigduino" -I"/Users/imaveek/SensorFly/libraries/Comp6DOF" -I"/Users/imaveek/SensorFly/libraries/LowPassFilter" -I"/Users/imaveek/SensorFly/libraries/MaxBotix" -I"/Users/imaveek/SensorFly/libraries/SoftwareSerial" -I"/Users/imaveek/SensorFly/libraries/Timers" -I"/Users/imaveek/SensorFly/libraries/Misc" -I"/Users/imaveek/SensorFly/libraries/SPI" -I"/Users/imaveek/SensorFly/libraries/Wire" -I"/Users/imaveek/SensorFly/libraries/I2Cdev" -I"/Users/imaveek/SensorFly/libraries/MPU6050" -I"/Users/imaveek/SensorFly/libraries/Wire/utility" -I"/Users/imaveek/SensorFly/libraries/ZigduinoRadio" -I"/Users/imaveek/SensorFly/libraries/ZigduinoRadio/boards" -I"/Users/imaveek/SensorFly/libraries/HMC5883L" -Wall -Os -ffunction-sections -fdata-sections -funsigned-char -funsigned-bitfields -fno-exceptions --pedantic -c -mmcu=atmega128rfa1 -DF_CPU=16000000UL -MMD -MP -MF"libraries/FlightControl/FlightControl.d" -MT"libraries/FlightControl/FlightControl.d" -c -o "libraries/FlightControl/FlightControl.o" "/Users/imaveek/SensorFly/libraries/FlightControl/FlightControl.cpp"
+In file included from /Users/imaveek/SensorFly/libraries/I2Cdev/I2Cdev.h:68,
+                 from /Users/imaveek/SensorFly/libraries/MPU6050/MPU6050.h:40,
+                 from /Users/imaveek/SensorFly/libraries/FlightControl/FlightControl.cpp:11:
 /Users/imaveek/SensorFly/libraries/zigduino/Arduino.h:191:14: warning: anonymous variadic macros were introduced in C99
-In file included from /Users/imaveek/SensorFly/libraries/zigduino/Arduino.h:206,
-                 from ../main.h:11,
-                 from ../main.cpp:3:
-/Users/imaveek/SensorFly/libraries/zigduino/pins_arduino.h:82: warning: only initialized variables can be placed into program memory area
-/Users/imaveek/SensorFly/libraries/zigduino/pins_arduino.h:98: warning: only initialized variables can be placed into program memory area
-/Users/imaveek/SensorFly/libraries/zigduino/pins_arduino.h:114: warning: only initialized variables can be placed into program memory area
-/Users/imaveek/SensorFly/libraries/zigduino/pins_arduino.h:130: warning: only initialized variables can be placed into program memory area
-/Users/imaveek/SensorFly/libraries/zigduino/pins_arduino.h:162: warning: only initialized variables can be placed into program memory area
-/Users/imaveek/SensorFly/libraries/zigduino/pins_arduino.h:194: warning: only initialized variables can be placed into program memory area
-Finished building: ../main.cpp
+Finished building: /Users/imaveek/SensorFly/libraries/FlightControl/FlightControl.cpp
  
 Building target: base_station.elf
 Invoking: AVR C++ Linker

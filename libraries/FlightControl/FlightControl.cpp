@@ -137,30 +137,30 @@ void FlightControl::flightPlan() {
 
 	switch(step) {
 	case 0:
-		if (elapsedTime <  1500)
+		if (elapsedTime <  6000)
 			break;
-		turn(90);
+		turn(180);
 		step++;
 		break;
+//	case 1:
+//		if (elapsedTime <  12000)
+//			break;
+//		turn(90);
+//		step++;
+//		break;
+//	case 2:
+//		if (elapsedTime <  18000)
+//			break;
+//		turn(90);
+//		step++;
+//		break;
 	case 1:
-		if (elapsedTime <  3000)
-			break;
-		turn(90);
-		step++;
-		break;
-	case 2:
-		if (elapsedTime <  4500)
-			break;
-		turn(90);
-		step++;
-		break;
-	case 3:
-		if (elapsedTime < 6000)
+		if (elapsedTime < 12000)
 			break;
 		land();
 		step++;
 		break;
-	case 4:
+	case 2:
 		step = 0;
 		start = 0;
 		isFirstRun = true;
