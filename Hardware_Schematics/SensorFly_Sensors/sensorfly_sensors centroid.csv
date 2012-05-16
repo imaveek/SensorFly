@@ -1,0 +1,33 @@
+Screaming Circuits SMD component position file.
+
+Centroid Data for pc board: "sensorfly_sensors.brd" as of: 2/15/12 5:24 PM
+Measurements are in inches. Comma delimited
+Only surface mount components included
+
+RefDes,Layer,LocationX,LocationY,Rotation
+C2,Top,1.977,1.066,270
+C3,Top,1.451,1.552,180
+C4,Top,1.844,0.972,180
+C5,Top,1.703,1.339,180
+C6,Top,1.699,1.121,270
+C7,Top,1.394,1.375,270
+C8,Top,1.889,1.489,0
+C9,Top,1.941,1.553,180
+C10,Top,1.704,1.270,0
+C11,Top,1.539,1.466,180
+C12,Top,1.933,1.244,0
+C13,Top,1.296,1.041,270
+C14,Top,1.625,0.981,0
+C15,Top,1.740,1.520,270
+C16,Top,1.598,1.083,270
+D1,Top,1.446,0.981,0
+JP4,Top,1.300,1.272,270
+L1,Top,1.195,1.039,90
+R1,Top,1.190,1.510,90
+R2,Top,1.267,1.511,90
+R3,Top,1.799,1.206,270
+R4,Top,1.849,1.206,270
+U1,Top,1.526,1.314,90
+U2,Top,1.841,1.073,270
+U3,Top,1.901,1.364,90
+U4,Top,1.511,1.042,90
