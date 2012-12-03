@@ -1,4 +1,3 @@
-.metadata/
 # Compiled source #
 ###################
 *.com
@@ -55,3 +54,4 @@ Thumbs.db
 
 #files being edited
 *~
+/.metadata

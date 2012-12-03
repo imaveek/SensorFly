@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<session version="1.0">
-<refactoring comment="Rename resource &apos;basic_yaw_control/libraries/SRF01&apos; to &apos;HeightSensor&apos;" description="Rename resource &apos;SRF01&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="libraries/SRF01" name="HeightSensor" stamp="1333603775942" updateReferences="true"/>
-</session>
