@@ -1,5 +1,4 @@
 .metadata
-.DS_Store
 # Compiled source #
 ###################
 *.com
@@ -8,6 +7,13 @@
 *.exe
 *.o
 *.so
+*.elf
+*.hex
+*.lst
+*.eep
+*.lss
+*.map
+*.sym
 
 # Packages #
 ############
@@ -40,7 +46,8 @@ ehthumbs.db
 Thumbs.db
 
 
-#Some of these are related to eclipse. So i keep them out of my repo
+# Eclipse #
+##########
 .cproject
 .dep/
 .project
@@ -48,15 +55,3 @@ Thumbs.db
 
 #files being edited
 *~
-
-# make and build files
-*.lst
-*.o
-*.eep
-*.lss
-*.map
-*.sym
-
-# I keep these, since I prefer having the reference of the final build
-# *.elf
-# *.hex
