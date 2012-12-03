@@ -54,7 +54,7 @@ void loop() {
 		Serial1.print("Rx: ");
 		for(uint8_t i=0;i<sizeof(RemoteCmd);i++)
 			buf[i] = ZigduinoRadio.read();
-		remoteCmd.decode(buf);
+		remoteCmd.decode((uint8_t *)buf);
 		ZigduinoRadio.flush();
 		Serial1.print(remoteCmd.cmd);
 		Serial1.print("=");

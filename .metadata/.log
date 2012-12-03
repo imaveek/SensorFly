@@ -1867,3 +1867,621 @@ Binding(ALT+COMMAND+R,
 
 !ENTRY org.eclipse.ui 4 4 2012-05-13 15:02:47.005
 !MESSAGE Invalid preference page path: XML Syntax
+!SESSION 2012-12-03 12:45:45.486 -----------------------------------------------
+eclipse.buildId=M20120914-1800
+java.version=1.6.0_37
+java.vendor=Apple Inc.
+BootLoader constants: OS=macosx, ARCH=x86_64, WS=cocoa, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.java.product -keyring /Users/imaveek/.eclipse_keyring -showlocation
+Command-line arguments:  -os macosx -ws cocoa -arch x86_64 -product org.eclipse.epp.package.java.product -keyring /Users/imaveek/.eclipse_keyring -showlocation
+
+!ENTRY org.eclipse.core.net 1 0 2012-12-03 12:46:00.634
+!MESSAGE System property http.nonProxyHosts has been set to local|*.local|169.254/16|*.169.254/16 by an external source. This value will be overwritten using the values from the preferences
+
+!ENTRY org.eclipse.cdt.managedbuilder.core 4 0 2012-12-03 12:46:06.345
+!MESSAGE Unsupported property id=de.innot.avreclipse.buildArtefactType.app
+!STACK 1
+org.eclipse.core.runtime.CoreException: Unsupported property id=de.innot.avreclipse.buildArtefactType.app
+	at org.eclipse.cdt.managedbuilder.internal.buildproperties.BuildProperty.setValue(BuildProperty.java:61)
+	at org.eclipse.cdt.managedbuilder.internal.buildproperties.BuildProperty.<init>(BuildProperty.java:49)
+	at org.eclipse.cdt.managedbuilder.internal.buildproperties.BuildPropertyManager.createProperty(BuildPropertyManager.java:124)
+	at org.eclipse.cdt.managedbuilder.internal.buildproperties.BuildProperties.setProperty(BuildProperties.java:78)
+	at org.eclipse.cdt.managedbuilder.internal.core.Configuration.loadFromProject(Configuration.java:841)
+	at org.eclipse.cdt.managedbuilder.internal.core.Configuration.<init>(Configuration.java:402)
+	at org.eclipse.cdt.managedbuilder.internal.dataprovider.ConfigurationDataProvider.load(ConfigurationDataProvider.java:373)
+	at org.eclipse.cdt.managedbuilder.internal.dataprovider.ConfigurationDataProvider.loadConfiguration(ConfigurationDataProvider.java:548)
+	at org.eclipse.cdt.internal.core.settings.model.CProjectDescriptionManager.loadData(CProjectDescriptionManager.java:1144)
+	at org.eclipse.cdt.internal.core.settings.model.CConfigurationDescriptionCache.loadData(CConfigurationDescriptionCache.java:130)
+	at org.eclipse.cdt.internal.core.settings.model.CProjectDescription.loadDatas(CProjectDescription.java:194)
+	at org.eclipse.cdt.internal.core.settings.model.xml.XmlProjectDescriptionStorage.loadProjectDescription(XmlProjectDescriptionStorage.java:493)
+	at org.eclipse.cdt.internal.core.settings.model.xml.XmlProjectDescriptionStorage.getProjectDescription(XmlProjectDescriptionStorage.java:235)
+	at org.eclipse.cdt.internal.core.settings.model.CProjectDescriptionManager.getProjectDescriptionInternal(CProjectDescriptionManager.java:436)
+	at org.eclipse.cdt.internal.core.settings.model.CProjectDescriptionManager.getProjectDescription(CProjectDescriptionManager.java:418)
+	at org.eclipse.cdt.internal.core.settings.model.CProjectDescriptionManager.getProjectDescription(CProjectDescriptionManager.java:412)
+	at org.eclipse.cdt.internal.core.settings.model.CProjectDescriptionManager.getProjectDescription(CProjectDescriptionManager.java:405)
+	at org.eclipse.cdt.internal.core.model.CProject.computeSourceRoots(CProject.java:624)
+	at org.eclipse.cdt.internal.core.model.CProject.computeChildren(CProject.java:645)
+	at org.eclipse.cdt.internal.core.model.CProject.buildStructure(CProject.java:609)
+	at org.eclipse.cdt.internal.core.model.Openable.generateInfos(Openable.java:273)
+	at org.eclipse.cdt.internal.core.model.CElement.openWhenClosed(CElement.java:430)
+	at org.eclipse.cdt.internal.core.model.CElement.getElementInfo(CElement.java:308)
+	at org.eclipse.cdt.internal.core.model.CElement.getElementInfo(CElement.java:298)
+	at org.eclipse.cdt.internal.core.model.Parent.getChildren(Parent.java:55)
+	at org.eclipse.cdt.internal.core.model.CModelManager.create(CModelManager.java:287)
+	at org.eclipse.cdt.internal.core.model.CModelManager.create(CModelManager.java:264)
+	at org.eclipse.cdt.internal.core.model.DeltaProcessor.createElement(DeltaProcessor.java:88)
+	at org.eclipse.cdt.internal.core.model.DeltaProcessor.traverseDelta(DeltaProcessor.java:454)
+	at org.eclipse.cdt.internal.core.model.DeltaProcessor.traverseDelta(DeltaProcessor.java:472)
+	at org.eclipse.cdt.internal.core.model.DeltaProcessor.processResourceDelta(DeltaProcessor.java:434)
+	at org.eclipse.cdt.internal.core.model.CModelManager.resourceChanged(CModelManager.java:895)
+	at org.eclipse.core.internal.events.NotificationManager$1.run(NotificationManager.java:291)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.NotificationManager.notify(NotificationManager.java:285)
+	at org.eclipse.core.internal.events.NotificationManager.broadcastChanges(NotificationManager.java:149)
+	at org.eclipse.core.internal.resources.Workspace.broadcastPostChange(Workspace.java:395)
+	at org.eclipse.core.internal.resources.Workspace.endOperation(Workspace.java:1530)
+	at org.eclipse.core.internal.resources.Resource.refreshLocal(Resource.java:1712)
+	at org.eclipse.cdt.internal.core.pdom.PDOMSetupJob.syncronizeProjectSettings(PDOMSetupJob.java:73)
+	at org.eclipse.cdt.internal.core.pdom.PDOMSetupJob.run(PDOMSetupJob.java:55)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+!SUBENTRY 1 org.eclipse.cdt.managedbuilder.core 4 0 2012-12-03 12:46:06.347
+!MESSAGE Unsupported property id=de.innot.avreclipse.buildArtefactType.app
+
+!ENTRY org.eclipse.cdt.managedbuilder.core 4 0 2012-12-03 12:46:06.356
+!MESSAGE Orphaned CDT build configuration [de.innot.avreclipse.configuration.app.release.553247820]: parent extension cfg [de.innot.avreclipse.configuration.app.release] not found
+!STACK 0
+java.lang.Exception
+	at org.eclipse.cdt.managedbuilder.core.ManagedBuilderCorePlugin.error(ManagedBuilderCorePlugin.java:226)
+	at org.eclipse.cdt.managedbuilder.internal.core.Configuration.loadFromProject(Configuration.java:857)
+	at org.eclipse.cdt.managedbuilder.internal.core.Configuration.<init>(Configuration.java:402)
+	at org.eclipse.cdt.managedbuilder.internal.dataprovider.ConfigurationDataProvider.load(ConfigurationDataProvider.java:373)
+	at org.eclipse.cdt.managedbuilder.internal.dataprovider.ConfigurationDataProvider.loadConfiguration(ConfigurationDataProvider.java:548)
+	at org.eclipse.cdt.internal.core.settings.model.CProjectDescriptionManager.loadData(CProjectDescriptionManager.java:1144)
+	at org.eclipse.cdt.internal.core.settings.model.CConfigurationDescriptionCache.loadData(CConfigurationDescriptionCache.java:130)
+	at org.eclipse.cdt.internal.core.settings.model.CProjectDescription.loadDatas(CProjectDescription.java:194)
+	at org.eclipse.cdt.internal.core.settings.model.xml.XmlProjectDescriptionStorage.loadProjectDescription(XmlProjectDescriptionStorage.java:493)
+	at org.eclipse.cdt.internal.core.settings.model.xml.XmlProjectDescriptionStorage.getProjectDescription(XmlProjectDescriptionStorage.java:235)
+	at org.eclipse.cdt.internal.core.settings.model.CProjectDescriptionManager.getProjectDescriptionInternal(CProjectDescriptionManager.java:436)
+	at org.eclipse.cdt.internal.core.settings.model.CProjectDescriptionManager.getProjectDescription(CProjectDescriptionManager.java:418)
+	at org.eclipse.cdt.internal.core.settings.model.CProjectDescriptionManager.getProjectDescription(CProjectDescriptionManager.java:412)
+	at org.eclipse.cdt.internal.core.settings.model.CProjectDescriptionManager.getProjectDescription(CProjectDescriptionManager.java:405)
+	at org.eclipse.cdt.internal.core.model.CProject.computeSourceRoots(CProject.java:624)
+	at org.eclipse.cdt.internal.core.model.CProject.computeChildren(CProject.java:645)
+	at org.eclipse.cdt.internal.core.model.CProject.buildStructure(CProject.java:609)
+	at org.eclipse.cdt.internal.core.model.Openable.generateInfos(Openable.java:273)
+	at org.eclipse.cdt.internal.core.model.CElement.openWhenClosed(CElement.java:430)
+	at org.eclipse.cdt.internal.core.model.CElement.getElementInfo(CElement.java:308)
+	at org.eclipse.cdt.internal.core.model.CElement.getElementInfo(CElement.java:298)
+	at org.eclipse.cdt.internal.core.model.Parent.getChildren(Parent.java:55)
+	at org.eclipse.cdt.internal.core.model.CModelManager.create(CModelManager.java:287)
+	at org.eclipse.cdt.internal.core.model.CModelManager.create(CModelManager.java:264)
+	at org.eclipse.cdt.internal.core.model.DeltaProcessor.createElement(DeltaProcessor.java:88)
+	at org.eclipse.cdt.internal.core.model.DeltaProcessor.traverseDelta(DeltaProcessor.java:454)
+	at org.eclipse.cdt.internal.core.model.DeltaProcessor.traverseDelta(DeltaProcessor.java:472)
+	at org.eclipse.cdt.internal.core.model.DeltaProcessor.processResourceDelta(DeltaProcessor.java:434)
+	at org.eclipse.cdt.internal.core.model.CModelManager.resourceChanged(CModelManager.java:895)
+	at org.eclipse.core.internal.events.NotificationManager$1.run(NotificationManager.java:291)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.NotificationManager.notify(NotificationManager.java:285)
+	at org.eclipse.core.internal.events.NotificationManager.broadcastChanges(NotificationManager.java:149)
+	at org.eclipse.core.internal.resources.Workspace.broadcastPostChange(Workspace.java:395)
+	at org.eclipse.core.internal.resources.Workspace.endOperation(Workspace.java:1530)
+	at org.eclipse.core.internal.resources.Resource.refreshLocal(Resource.java:1712)
+	at org.eclipse.cdt.internal.core.pdom.PDOMSetupJob.syncronizeProjectSettings(PDOMSetupJob.java:73)
+	at org.eclipse.cdt.internal.core.pdom.PDOMSetupJob.run(PDOMSetupJob.java:55)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+
+!ENTRY org.eclipse.cdt.managedbuilder.core 4 0 2012-12-03 12:46:06.789
+!MESSAGE Unsupported property id=de.innot.avreclipse.buildArtefactType.app
+!STACK 1
+org.eclipse.core.runtime.CoreException: Unsupported property id=de.innot.avreclipse.buildArtefactType.app
+	at org.eclipse.cdt.managedbuilder.internal.buildproperties.BuildProperty.setValue(BuildProperty.java:61)
+	at org.eclipse.cdt.managedbuilder.internal.buildproperties.BuildProperty.<init>(BuildProperty.java:49)
+	at org.eclipse.cdt.managedbuilder.internal.buildproperties.BuildPropertyManager.createProperty(BuildPropertyManager.java:124)
+	at org.eclipse.cdt.managedbuilder.internal.buildproperties.BuildProperties.setProperty(BuildProperties.java:78)
+	at org.eclipse.cdt.managedbuilder.internal.core.Configuration.loadFromProject(Configuration.java:841)
+	at org.eclipse.cdt.managedbuilder.internal.core.Configuration.<init>(Configuration.java:402)
+	at org.eclipse.cdt.managedbuilder.internal.dataprovider.ConfigurationDataProvider.load(ConfigurationDataProvider.java:373)
+	at org.eclipse.cdt.managedbuilder.internal.dataprovider.ConfigurationDataProvider.loadConfiguration(ConfigurationDataProvider.java:548)
+	at org.eclipse.cdt.internal.core.settings.model.CProjectDescriptionManager.loadData(CProjectDescriptionManager.java:1144)
+	at org.eclipse.cdt.internal.core.settings.model.CConfigurationDescriptionCache.loadData(CConfigurationDescriptionCache.java:130)
+	at org.eclipse.cdt.internal.core.settings.model.CProjectDescription.loadDatas(CProjectDescription.java:194)
+	at org.eclipse.cdt.internal.core.settings.model.xml.XmlProjectDescriptionStorage.loadProjectDescription(XmlProjectDescriptionStorage.java:493)
+	at org.eclipse.cdt.internal.core.settings.model.xml.XmlProjectDescriptionStorage.getProjectDescription(XmlProjectDescriptionStorage.java:235)
+	at org.eclipse.cdt.internal.core.settings.model.CProjectDescriptionManager.getProjectDescriptionInternal(CProjectDescriptionManager.java:436)
+	at org.eclipse.cdt.internal.core.settings.model.CProjectDescriptionManager.getProjectDescription(CProjectDescriptionManager.java:418)
+	at org.eclipse.cdt.internal.core.settings.model.CProjectDescriptionManager.getProjectDescription(CProjectDescriptionManager.java:412)
+	at org.eclipse.cdt.internal.core.settings.model.CProjectDescriptionManager.getProjectDescription(CProjectDescriptionManager.java:405)
+	at org.eclipse.cdt.core.CCorePlugin.getProjectDescription(CCorePlugin.java:1276)
+	at org.eclipse.cdt.internal.core.model.CModelManager.getBinaryParser(CModelManager.java:604)
+	at org.eclipse.cdt.internal.core.model.CModelManager.createBinaryFile(CModelManager.java:639)
+	at org.eclipse.cdt.internal.core.model.CContainer.computeChild(CContainer.java:259)
+	at org.eclipse.cdt.internal.core.model.CContainer.computeChildren(CContainer.java:225)
+	at org.eclipse.cdt.internal.core.model.CContainer.buildStructure(CContainer.java:191)
+	at org.eclipse.cdt.internal.core.model.Openable.generateInfos(Openable.java:273)
+	at org.eclipse.cdt.internal.core.model.CElement.openWhenClosed(CElement.java:430)
+	at org.eclipse.cdt.internal.core.model.CElement.getElementInfo(CElement.java:308)
+	at org.eclipse.cdt.internal.core.model.CElement.getElementInfo(CElement.java:298)
+	at org.eclipse.cdt.internal.core.model.Parent.getChildren(Parent.java:55)
+	at org.eclipse.cdt.internal.core.model.CElement.accept(CElement.java:527)
+	at org.eclipse.cdt.internal.core.model.CElement.accept(CElement.java:529)
+	at org.eclipse.cdt.internal.core.model.CElement.accept(CElement.java:529)
+	at org.eclipse.cdt.internal.core.pdom.indexer.PDOMRebuildTask.createDelegate(PDOMRebuildTask.java:112)
+	at org.eclipse.cdt.internal.core.pdom.indexer.PDOMRebuildTask.run(PDOMRebuildTask.java:75)
+	at org.eclipse.cdt.internal.core.pdom.PDOMIndexerJob.run(PDOMIndexerJob.java:137)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+!SUBENTRY 1 org.eclipse.cdt.managedbuilder.core 4 0 2012-12-03 12:46:06.789
+!MESSAGE Unsupported property id=de.innot.avreclipse.buildArtefactType.app
+
+!ENTRY org.eclipse.cdt.managedbuilder.core 4 0 2012-12-03 12:46:06.790
+!MESSAGE Orphaned CDT build configuration [de.innot.avreclipse.configuration.app.release.553247820]: parent extension cfg [de.innot.avreclipse.configuration.app.release] not found
+!STACK 0
+java.lang.Exception
+	at org.eclipse.cdt.managedbuilder.core.ManagedBuilderCorePlugin.error(ManagedBuilderCorePlugin.java:226)
+	at org.eclipse.cdt.managedbuilder.internal.core.Configuration.loadFromProject(Configuration.java:857)
+	at org.eclipse.cdt.managedbuilder.internal.core.Configuration.<init>(Configuration.java:402)
+	at org.eclipse.cdt.managedbuilder.internal.dataprovider.ConfigurationDataProvider.load(ConfigurationDataProvider.java:373)
+	at org.eclipse.cdt.managedbuilder.internal.dataprovider.ConfigurationDataProvider.loadConfiguration(ConfigurationDataProvider.java:548)
+	at org.eclipse.cdt.internal.core.settings.model.CProjectDescriptionManager.loadData(CProjectDescriptionManager.java:1144)
+	at org.eclipse.cdt.internal.core.settings.model.CConfigurationDescriptionCache.loadData(CConfigurationDescriptionCache.java:130)
+	at org.eclipse.cdt.internal.core.settings.model.CProjectDescription.loadDatas(CProjectDescription.java:194)
+	at org.eclipse.cdt.internal.core.settings.model.xml.XmlProjectDescriptionStorage.loadProjectDescription(XmlProjectDescriptionStorage.java:493)
+	at org.eclipse.cdt.internal.core.settings.model.xml.XmlProjectDescriptionStorage.getProjectDescription(XmlProjectDescriptionStorage.java:235)
+	at org.eclipse.cdt.internal.core.settings.model.CProjectDescriptionManager.getProjectDescriptionInternal(CProjectDescriptionManager.java:436)
+	at org.eclipse.cdt.internal.core.settings.model.CProjectDescriptionManager.getProjectDescription(CProjectDescriptionManager.java:418)
+	at org.eclipse.cdt.internal.core.settings.model.CProjectDescriptionManager.getProjectDescription(CProjectDescriptionManager.java:412)
+	at org.eclipse.cdt.internal.core.settings.model.CProjectDescriptionManager.getProjectDescription(CProjectDescriptionManager.java:405)
+	at org.eclipse.cdt.core.CCorePlugin.getProjectDescription(CCorePlugin.java:1276)
+	at org.eclipse.cdt.internal.core.model.CModelManager.getBinaryParser(CModelManager.java:604)
+	at org.eclipse.cdt.internal.core.model.CModelManager.createBinaryFile(CModelManager.java:639)
+	at org.eclipse.cdt.internal.core.model.CContainer.computeChild(CContainer.java:259)
+	at org.eclipse.cdt.internal.core.model.CContainer.computeChildren(CContainer.java:225)
+	at org.eclipse.cdt.internal.core.model.CContainer.buildStructure(CContainer.java:191)
+	at org.eclipse.cdt.internal.core.model.Openable.generateInfos(Openable.java:273)
+	at org.eclipse.cdt.internal.core.model.CElement.openWhenClosed(CElement.java:430)
+	at org.eclipse.cdt.internal.core.model.CElement.getElementInfo(CElement.java:308)
+	at org.eclipse.cdt.internal.core.model.CElement.getElementInfo(CElement.java:298)
+	at org.eclipse.cdt.internal.core.model.Parent.getChildren(Parent.java:55)
+	at org.eclipse.cdt.internal.core.model.CElement.accept(CElement.java:527)
+	at org.eclipse.cdt.internal.core.model.CElement.accept(CElement.java:529)
+	at org.eclipse.cdt.internal.core.model.CElement.accept(CElement.java:529)
+	at org.eclipse.cdt.internal.core.pdom.indexer.PDOMRebuildTask.createDelegate(PDOMRebuildTask.java:112)
+	at org.eclipse.cdt.internal.core.pdom.indexer.PDOMRebuildTask.run(PDOMRebuildTask.java:75)
+	at org.eclipse.cdt.internal.core.pdom.PDOMIndexerJob.run(PDOMIndexerJob.java:137)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+
+!ENTRY org.eclipse.cdt.managedbuilder.core 4 0 2012-12-03 12:46:06.841
+!MESSAGE Unsupported property id=de.innot.avreclipse.buildArtefactType.app
+!STACK 1
+org.eclipse.core.runtime.CoreException: Unsupported property id=de.innot.avreclipse.buildArtefactType.app
+	at org.eclipse.cdt.managedbuilder.internal.buildproperties.BuildProperty.setValue(BuildProperty.java:61)
+	at org.eclipse.cdt.managedbuilder.internal.buildproperties.BuildProperty.<init>(BuildProperty.java:49)
+	at org.eclipse.cdt.managedbuilder.internal.buildproperties.BuildPropertyManager.createProperty(BuildPropertyManager.java:124)
+	at org.eclipse.cdt.managedbuilder.internal.buildproperties.BuildProperties.setProperty(BuildProperties.java:78)
+	at org.eclipse.cdt.managedbuilder.internal.core.Configuration.loadFromProject(Configuration.java:841)
+	at org.eclipse.cdt.managedbuilder.internal.core.Configuration.<init>(Configuration.java:402)
+	at org.eclipse.cdt.managedbuilder.internal.dataprovider.ConfigurationDataProvider.load(ConfigurationDataProvider.java:373)
+	at org.eclipse.cdt.managedbuilder.internal.dataprovider.ConfigurationDataProvider.loadConfiguration(ConfigurationDataProvider.java:548)
+	at org.eclipse.cdt.internal.core.settings.model.CProjectDescriptionManager.loadData(CProjectDescriptionManager.java:1144)
+	at org.eclipse.cdt.internal.core.settings.model.CConfigurationDescriptionCache.loadData(CConfigurationDescriptionCache.java:130)
+	at org.eclipse.cdt.internal.core.settings.model.CProjectDescription.loadDatas(CProjectDescription.java:194)
+	at org.eclipse.cdt.internal.core.settings.model.xml.XmlProjectDescriptionStorage.loadProjectDescription(XmlProjectDescriptionStorage.java:493)
+	at org.eclipse.cdt.internal.core.settings.model.xml.XmlProjectDescriptionStorage.getProjectDescription(XmlProjectDescriptionStorage.java:235)
+	at org.eclipse.cdt.internal.core.settings.model.CProjectDescriptionManager.getProjectDescriptionInternal(CProjectDescriptionManager.java:436)
+	at org.eclipse.cdt.internal.core.settings.model.CProjectDescriptionManager.getProjectDescription(CProjectDescriptionManager.java:418)
+	at org.eclipse.cdt.internal.core.settings.model.CProjectDescriptionManager.getProjectDescription(CProjectDescriptionManager.java:412)
+	at org.eclipse.cdt.internal.core.settings.model.CProjectDescriptionManager.getProjectDescription(CProjectDescriptionManager.java:405)
+	at org.eclipse.cdt.internal.core.model.CProject.computeSourceRoots(CProject.java:624)
+	at org.eclipse.cdt.internal.core.model.CProject.computeChildren(CProject.java:645)
+	at org.eclipse.cdt.internal.core.model.CProject.buildStructure(CProject.java:609)
+	at org.eclipse.cdt.internal.core.model.Openable.generateInfos(Openable.java:273)
+	at org.eclipse.cdt.internal.core.model.CElement.openWhenClosed(CElement.java:430)
+	at org.eclipse.cdt.internal.core.model.CElement.getElementInfo(CElement.java:308)
+	at org.eclipse.cdt.internal.core.model.CElement.getElementInfo(CElement.java:298)
+	at org.eclipse.cdt.internal.core.model.Parent.getChildren(Parent.java:55)
+	at org.eclipse.cdt.internal.core.model.CModelManager.create(CModelManager.java:287)
+	at org.eclipse.cdt.internal.core.model.CModelManager.create(CModelManager.java:264)
+	at org.eclipse.cdt.internal.core.model.DeltaProcessor.createElement(DeltaProcessor.java:88)
+	at org.eclipse.cdt.internal.core.model.DeltaProcessor.traverseDelta(DeltaProcessor.java:454)
+	at org.eclipse.cdt.internal.core.model.DeltaProcessor.traverseDelta(DeltaProcessor.java:472)
+	at org.eclipse.cdt.internal.core.model.DeltaProcessor.processResourceDelta(DeltaProcessor.java:434)
+	at org.eclipse.cdt.internal.core.model.CModelManager.resourceChanged(CModelManager.java:895)
+	at org.eclipse.core.internal.events.NotificationManager$1.run(NotificationManager.java:291)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.NotificationManager.notify(NotificationManager.java:285)
+	at org.eclipse.core.internal.events.NotificationManager.broadcastChanges(NotificationManager.java:149)
+	at org.eclipse.core.internal.resources.Workspace.broadcastPostChange(Workspace.java:395)
+	at org.eclipse.core.internal.resources.Workspace.endOperation(Workspace.java:1530)
+	at org.eclipse.core.internal.resources.Resource.refreshLocal(Resource.java:1712)
+	at org.eclipse.cdt.internal.core.pdom.PDOMSetupJob.syncronizeProjectSettings(PDOMSetupJob.java:73)
+	at org.eclipse.cdt.internal.core.pdom.PDOMSetupJob.run(PDOMSetupJob.java:55)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+!SUBENTRY 1 org.eclipse.cdt.managedbuilder.core 4 0 2012-12-03 12:46:06.842
+!MESSAGE Unsupported property id=de.innot.avreclipse.buildArtefactType.app
+
+!ENTRY org.eclipse.cdt.managedbuilder.core 4 0 2012-12-03 12:46:06.842
+!MESSAGE Orphaned CDT build configuration [de.innot.avreclipse.configuration.app.release.553247820]: parent extension cfg [de.innot.avreclipse.configuration.app.release] not found
+!STACK 0
+java.lang.Exception
+	at org.eclipse.cdt.managedbuilder.core.ManagedBuilderCorePlugin.error(ManagedBuilderCorePlugin.java:226)
+	at org.eclipse.cdt.managedbuilder.internal.core.Configuration.loadFromProject(Configuration.java:857)
+	at org.eclipse.cdt.managedbuilder.internal.core.Configuration.<init>(Configuration.java:402)
+	at org.eclipse.cdt.managedbuilder.internal.dataprovider.ConfigurationDataProvider.load(ConfigurationDataProvider.java:373)
+	at org.eclipse.cdt.managedbuilder.internal.dataprovider.ConfigurationDataProvider.loadConfiguration(ConfigurationDataProvider.java:548)
+	at org.eclipse.cdt.internal.core.settings.model.CProjectDescriptionManager.loadData(CProjectDescriptionManager.java:1144)
+	at org.eclipse.cdt.internal.core.settings.model.CConfigurationDescriptionCache.loadData(CConfigurationDescriptionCache.java:130)
+	at org.eclipse.cdt.internal.core.settings.model.CProjectDescription.loadDatas(CProjectDescription.java:194)
+	at org.eclipse.cdt.internal.core.settings.model.xml.XmlProjectDescriptionStorage.loadProjectDescription(XmlProjectDescriptionStorage.java:493)
+	at org.eclipse.cdt.internal.core.settings.model.xml.XmlProjectDescriptionStorage.getProjectDescription(XmlProjectDescriptionStorage.java:235)
+	at org.eclipse.cdt.internal.core.settings.model.CProjectDescriptionManager.getProjectDescriptionInternal(CProjectDescriptionManager.java:436)
+	at org.eclipse.cdt.internal.core.settings.model.CProjectDescriptionManager.getProjectDescription(CProjectDescriptionManager.java:418)
+	at org.eclipse.cdt.internal.core.settings.model.CProjectDescriptionManager.getProjectDescription(CProjectDescriptionManager.java:412)
+	at org.eclipse.cdt.internal.core.settings.model.CProjectDescriptionManager.getProjectDescription(CProjectDescriptionManager.java:405)
+	at org.eclipse.cdt.internal.core.model.CProject.computeSourceRoots(CProject.java:624)
+	at org.eclipse.cdt.internal.core.model.CProject.computeChildren(CProject.java:645)
+	at org.eclipse.cdt.internal.core.model.CProject.buildStructure(CProject.java:609)
+	at org.eclipse.cdt.internal.core.model.Openable.generateInfos(Openable.java:273)
+	at org.eclipse.cdt.internal.core.model.CElement.openWhenClosed(CElement.java:430)
+	at org.eclipse.cdt.internal.core.model.CElement.getElementInfo(CElement.java:308)
+	at org.eclipse.cdt.internal.core.model.CElement.getElementInfo(CElement.java:298)
+	at org.eclipse.cdt.internal.core.model.Parent.getChildren(Parent.java:55)
+	at org.eclipse.cdt.internal.core.model.CModelManager.create(CModelManager.java:287)
+	at org.eclipse.cdt.internal.core.model.CModelManager.create(CModelManager.java:264)
+	at org.eclipse.cdt.internal.core.model.DeltaProcessor.createElement(DeltaProcessor.java:88)
+	at org.eclipse.cdt.internal.core.model.DeltaProcessor.traverseDelta(DeltaProcessor.java:454)
+	at org.eclipse.cdt.internal.core.model.DeltaProcessor.traverseDelta(DeltaProcessor.java:472)
+	at org.eclipse.cdt.internal.core.model.DeltaProcessor.processResourceDelta(DeltaProcessor.java:434)
+	at org.eclipse.cdt.internal.core.model.CModelManager.resourceChanged(CModelManager.java:895)
+	at org.eclipse.core.internal.events.NotificationManager$1.run(NotificationManager.java:291)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.NotificationManager.notify(NotificationManager.java:285)
+	at org.eclipse.core.internal.events.NotificationManager.broadcastChanges(NotificationManager.java:149)
+	at org.eclipse.core.internal.resources.Workspace.broadcastPostChange(Workspace.java:395)
+	at org.eclipse.core.internal.resources.Workspace.endOperation(Workspace.java:1530)
+	at org.eclipse.core.internal.resources.Resource.refreshLocal(Resource.java:1712)
+	at org.eclipse.cdt.internal.core.pdom.PDOMSetupJob.syncronizeProjectSettings(PDOMSetupJob.java:73)
+	at org.eclipse.cdt.internal.core.pdom.PDOMSetupJob.run(PDOMSetupJob.java:55)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+
+!ENTRY org.eclipse.cdt.managedbuilder.core 4 0 2012-12-03 12:46:10.580
+!MESSAGE Unsupported property id=de.innot.avreclipse.buildArtefactType.app
+!STACK 1
+org.eclipse.core.runtime.CoreException: Unsupported property id=de.innot.avreclipse.buildArtefactType.app
+	at org.eclipse.cdt.managedbuilder.internal.buildproperties.BuildProperty.setValue(BuildProperty.java:61)
+	at org.eclipse.cdt.managedbuilder.internal.buildproperties.BuildProperty.<init>(BuildProperty.java:49)
+	at org.eclipse.cdt.managedbuilder.internal.buildproperties.BuildPropertyManager.createProperty(BuildPropertyManager.java:124)
+	at org.eclipse.cdt.managedbuilder.internal.buildproperties.BuildProperties.setProperty(BuildProperties.java:78)
+	at org.eclipse.cdt.managedbuilder.internal.core.Configuration.loadFromProject(Configuration.java:841)
+	at org.eclipse.cdt.managedbuilder.internal.core.Configuration.<init>(Configuration.java:402)
+	at org.eclipse.cdt.managedbuilder.internal.dataprovider.ConfigurationDataProvider.load(ConfigurationDataProvider.java:373)
+	at org.eclipse.cdt.managedbuilder.internal.dataprovider.ConfigurationDataProvider.loadConfiguration(ConfigurationDataProvider.java:548)
+	at org.eclipse.cdt.internal.core.settings.model.CProjectDescriptionManager.loadData(CProjectDescriptionManager.java:1144)
+	at org.eclipse.cdt.internal.core.settings.model.CConfigurationDescriptionCache.loadData(CConfigurationDescriptionCache.java:130)
+	at org.eclipse.cdt.internal.core.settings.model.CProjectDescription.loadDatas(CProjectDescription.java:194)
+	at org.eclipse.cdt.internal.core.settings.model.xml.XmlProjectDescriptionStorage.loadProjectDescription(XmlProjectDescriptionStorage.java:493)
+	at org.eclipse.cdt.internal.core.settings.model.xml.XmlProjectDescriptionStorage.getProjectDescription(XmlProjectDescriptionStorage.java:235)
+	at org.eclipse.cdt.internal.core.settings.model.CProjectDescriptionManager.getProjectDescriptionInternal(CProjectDescriptionManager.java:436)
+	at org.eclipse.cdt.internal.core.settings.model.CProjectDescriptionManager.getProjectDescription(CProjectDescriptionManager.java:418)
+	at org.eclipse.cdt.internal.core.settings.model.CProjectDescriptionManager.getProjectDescription(CProjectDescriptionManager.java:412)
+	at org.eclipse.cdt.internal.core.settings.model.CProjectDescriptionManager.getProjectDescription(CProjectDescriptionManager.java:405)
+	at org.eclipse.cdt.internal.ui.viewsupport.ExcludedFileDecorator.decorate(ExcludedFileDecorator.java:41)
+	at org.eclipse.ui.internal.decorators.LightweightDecoratorDefinition.decorate(LightweightDecoratorDefinition.java:263)
+	at org.eclipse.ui.internal.decorators.LightweightDecoratorManager$LightweightRunnable.run(LightweightDecoratorManager.java:81)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.ui.internal.decorators.LightweightDecoratorManager.decorate(LightweightDecoratorManager.java:365)
+	at org.eclipse.ui.internal.decorators.LightweightDecoratorManager.getDecorations(LightweightDecoratorManager.java:347)
+	at org.eclipse.ui.internal.decorators.DecorationScheduler$1.ensureResultCached(DecorationScheduler.java:371)
+	at org.eclipse.ui.internal.decorators.DecorationScheduler$1.run(DecorationScheduler.java:331)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+!SUBENTRY 1 org.eclipse.cdt.managedbuilder.core 4 0 2012-12-03 12:46:10.580
+!MESSAGE Unsupported property id=de.innot.avreclipse.buildArtefactType.app
+
+!ENTRY org.eclipse.cdt.managedbuilder.core 4 0 2012-12-03 12:46:10.581
+!MESSAGE Orphaned CDT build configuration [de.innot.avreclipse.configuration.app.release.553247820]: parent extension cfg [de.innot.avreclipse.configuration.app.release] not found
+!STACK 0
+java.lang.Exception
+	at org.eclipse.cdt.managedbuilder.core.ManagedBuilderCorePlugin.error(ManagedBuilderCorePlugin.java:226)
+	at org.eclipse.cdt.managedbuilder.internal.core.Configuration.loadFromProject(Configuration.java:857)
+	at org.eclipse.cdt.managedbuilder.internal.core.Configuration.<init>(Configuration.java:402)
+	at org.eclipse.cdt.managedbuilder.internal.dataprovider.ConfigurationDataProvider.load(ConfigurationDataProvider.java:373)
+	at org.eclipse.cdt.managedbuilder.internal.dataprovider.ConfigurationDataProvider.loadConfiguration(ConfigurationDataProvider.java:548)
+	at org.eclipse.cdt.internal.core.settings.model.CProjectDescriptionManager.loadData(CProjectDescriptionManager.java:1144)
+	at org.eclipse.cdt.internal.core.settings.model.CConfigurationDescriptionCache.loadData(CConfigurationDescriptionCache.java:130)
+	at org.eclipse.cdt.internal.core.settings.model.CProjectDescription.loadDatas(CProjectDescription.java:194)
+	at org.eclipse.cdt.internal.core.settings.model.xml.XmlProjectDescriptionStorage.loadProjectDescription(XmlProjectDescriptionStorage.java:493)
+	at org.eclipse.cdt.internal.core.settings.model.xml.XmlProjectDescriptionStorage.getProjectDescription(XmlProjectDescriptionStorage.java:235)
+	at org.eclipse.cdt.internal.core.settings.model.CProjectDescriptionManager.getProjectDescriptionInternal(CProjectDescriptionManager.java:436)
+	at org.eclipse.cdt.internal.core.settings.model.CProjectDescriptionManager.getProjectDescription(CProjectDescriptionManager.java:418)
+	at org.eclipse.cdt.internal.core.settings.model.CProjectDescriptionManager.getProjectDescription(CProjectDescriptionManager.java:412)
+	at org.eclipse.cdt.internal.core.settings.model.CProjectDescriptionManager.getProjectDescription(CProjectDescriptionManager.java:405)
+	at org.eclipse.cdt.internal.ui.viewsupport.ExcludedFileDecorator.decorate(ExcludedFileDecorator.java:41)
+	at org.eclipse.ui.internal.decorators.LightweightDecoratorDefinition.decorate(LightweightDecoratorDefinition.java:263)
+	at org.eclipse.ui.internal.decorators.LightweightDecoratorManager$LightweightRunnable.run(LightweightDecoratorManager.java:81)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.ui.internal.decorators.LightweightDecoratorManager.decorate(LightweightDecoratorManager.java:365)
+	at org.eclipse.ui.internal.decorators.LightweightDecoratorManager.getDecorations(LightweightDecoratorManager.java:347)
+	at org.eclipse.ui.internal.decorators.DecorationScheduler$1.ensureResultCached(DecorationScheduler.java:371)
+	at org.eclipse.ui.internal.decorators.DecorationScheduler$1.run(DecorationScheduler.java:331)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+
+!ENTRY org.eclipse.cdt.core 1 0 2012-12-03 12:46:14.353
+!MESSAGE Indexed 'base_station' (82 sources, 143 headers) in 7.32 sec: 8,031 declarations; 17,284 references; 242 unresolved inclusions; 85 syntax errors; 6,140 unresolved names (19.52%)
+
+!ENTRY org.eclipse.cdt.core 1 0 2012-12-03 12:46:16.429
+!MESSAGE Indexed 'basic_yaw_control' (40 sources, 60 headers) in 2.04 sec: 4,062 declarations; 8,545 references; 122 unresolved inclusions; 40 syntax errors; 3,038 unresolved names (19.42%)
+
+!ENTRY org.eclipse.osgi 2 1 2012-12-03 12:49:39.099
+!MESSAGE NLS unused message: CacheManager_CannotLoadNonUrlLocation in: org.eclipse.equinox.internal.p2.repository.messages
+!SESSION 2012-12-03 12:49:49.976 -----------------------------------------------
+eclipse.buildId=M20120914-1800
+java.version=1.6.0_37
+java.vendor=Apple Inc.
+BootLoader constants: OS=macosx, ARCH=x86_64, WS=cocoa, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.java.product -keyring /Users/imaveek/.eclipse_keyring -showlocation
+Command-line arguments:  -os macosx -ws cocoa -arch x86_64 -product org.eclipse.epp.package.java.product -keyring /Users/imaveek/.eclipse_keyring -showlocation
+
+!ENTRY org.eclipse.core.net 1 0 2012-12-03 12:50:00.764
+!MESSAGE System property http.nonProxyHosts has been set to local|*.local|169.254/16|*.169.254/16 by an external source. This value will be overwritten using the values from the preferences
+
+!ENTRY org.eclipse.jface 2 0 2012-12-03 12:55:11.102
+!MESSAGE Keybinding conflicts occurred.  They may interfere with normal accelerator operation.
+!SUBENTRY 1 org.eclipse.jface 2 0 2012-12-03 12:55:11.102
+!MESSAGE A conflict occurred for ALT+COMMAND+R:
+Binding(ALT+COMMAND+R,
+	ParameterizedCommand(Command(org.eclipse.jdt.ui.edit.text.java.rename.element,Rename - Refactoring ,
+		Rename the selected element,
+		Category(org.eclipse.jdt.ui.category.refactoring,Refactor - Java,Java Refactoring Actions,true),
+		org.eclipse.ui.internal.MakeHandlersGo@677663a,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,cocoa,system)
+Binding(ALT+COMMAND+R,
+	ParameterizedCommand(Command(org.eclipse.cdt.ui.edit.text.rename.element,Rename - Refactoring ,
+		Rename the selected element,
+		Category(org.eclipse.cdt.ui.category.refactoring,Refactor - C++,C/C++ Refactorings,true),
+		org.eclipse.ui.internal.MakeHandlersGo@8d86d27,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.cdt.ui.cEditorScope,,cocoa,system)
+Binding(ALT+COMMAND+R,
+	ParameterizedCommand(Command(org.eclipse.cdt.ui.edit.text.rename.element,Rename - Refactoring ,
+		Rename the selected element,
+		Category(org.eclipse.cdt.ui.category.refactoring,Refactor - C++,C/C++ Refactorings,true),
+		org.eclipse.ui.internal.MakeHandlersGo@8d86d27,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.cdt.ui.cViewScope,,cocoa,system)
+!SUBENTRY 1 org.eclipse.jface 2 0 2012-12-03 12:55:11.102
+!MESSAGE A conflict occurred for F3:
+Binding(F3,
+	ParameterizedCommand(Command(org.eclipse.cdt.ui.edit.opendecl,Open Declaration,
+		Open an editor on the selected element's declaration(s),
+		Category(org.eclipse.cdt.ui.category.source,C/C++ Source,C/C++ Source Actions,true),
+		org.eclipse.ui.internal.MakeHandlersGo@38e61ffa,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.cdt.ui.cEditorScope,,,system)
+Binding(F3,
+	ParameterizedCommand(Command(org.eclipse.cdt.ui.edit.opendecl,Open Declaration,
+		Open an editor on the selected element's declaration(s),
+		Category(org.eclipse.cdt.ui.category.source,C/C++ Source,C/C++ Source Actions,true),
+		org.eclipse.ui.internal.MakeHandlersGo@38e61ffa,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.cdt.ui.cViewScope,,,system)
+Binding(F3,
+	ParameterizedCommand(Command(org.eclipse.jdt.ui.edit.text.java.open.editor,Open Declaration,
+		Open an editor on the selected element,
+		Category(org.eclipse.ui.category.navigate,Navigate,null,true),
+		org.eclipse.ui.internal.MakeHandlersGo@c3d7345,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,,system)
+!SUBENTRY 1 org.eclipse.jface 2 0 2012-12-03 12:55:11.102
+!MESSAGE A conflict occurred for COMMAND+SHIFT+T:
+Binding(COMMAND+SHIFT+T,
+	ParameterizedCommand(Command(org.eclipse.cdt.ui.navigate.opentype,Open Element,
+		Open an element in an Editor,
+		Category(org.eclipse.cdt.ui.category.source,C/C++ Source,C/C++ Source Actions,true),
+		org.eclipse.ui.internal.MakeHandlersGo@165abd4a,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.cdt.ui.cEditorScope,,,system)
+Binding(COMMAND+SHIFT+T,
+	ParameterizedCommand(Command(org.eclipse.cdt.ui.navigate.opentype,Open Element,
+		Open an element in an Editor,
+		Category(org.eclipse.cdt.ui.category.source,C/C++ Source,C/C++ Source Actions,true),
+		org.eclipse.ui.internal.MakeHandlersGo@165abd4a,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.cdt.ui.cViewScope,,,system)
+Binding(COMMAND+SHIFT+T,
+	ParameterizedCommand(Command(org.eclipse.jdt.ui.navigate.open.type,Open Type,
+		Open a type in a Java editor,
+		Category(org.eclipse.ui.category.navigate,Navigate,null,true),
+		org.eclipse.ui.internal.MakeHandlersGo@1f4150bd,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,,system)
+!SUBENTRY 1 org.eclipse.jface 2 0 2012-12-03 12:55:11.102
+!MESSAGE A conflict occurred for COMMAND+G:
+Binding(COMMAND+G,
+	ParameterizedCommand(Command(org.eclipse.cdt.ui.search.finddecl,Declaration,
+		Search for declarations of the selected element in the workspace,
+		Category(org.eclipse.cdt.ui.category.source,C/C++ Source,C/C++ Source Actions,true),
+		org.eclipse.ui.internal.MakeHandlersGo@791bb852,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.cdt.ui.cEditorScope,,,system)
+Binding(COMMAND+G,
+	ParameterizedCommand(Command(org.eclipse.cdt.ui.search.finddecl,Declaration,
+		Search for declarations of the selected element in the workspace,
+		Category(org.eclipse.cdt.ui.category.source,C/C++ Source,C/C++ Source Actions,true),
+		org.eclipse.ui.internal.MakeHandlersGo@791bb852,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.cdt.ui.cViewScope,,,system)
+Binding(COMMAND+G,
+	ParameterizedCommand(Command(org.eclipse.jdt.ui.edit.text.java.search.declarations.in.workspace,Declaration in Workspace,
+		Search for declarations of the selected element in the workspace,
+		Category(org.eclipse.search.ui.category.search,Search,Search command category,true),
+		org.eclipse.ui.internal.MakeHandlersGo@ae24d9c,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,,system)
+!SUBENTRY 1 org.eclipse.jface 2 0 2012-12-03 12:55:11.102
+!MESSAGE A conflict occurred for F4:
+Binding(F4,
+	ParameterizedCommand(Command(org.eclipse.cdt.ui.edit.open.type.hierarchy,Open Type Hierarchy,
+		Open a type hierarchy on the selected element,
+		Category(org.eclipse.ui.category.navigate,Navigate,null,true),
+		org.eclipse.ui.internal.MakeHandlersGo@f554259,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.cdt.ui.cEditorScope,,,system)
+Binding(F4,
+	ParameterizedCommand(Command(org.eclipse.cdt.ui.edit.open.type.hierarchy,Open Type Hierarchy,
+		Open a type hierarchy on the selected element,
+		Category(org.eclipse.ui.category.navigate,Navigate,null,true),
+		org.eclipse.ui.internal.MakeHandlersGo@f554259,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.cdt.ui.cViewScope,,,system)
+Binding(F4,
+	ParameterizedCommand(Command(org.eclipse.jdt.ui.edit.text.java.open.type.hierarchy,Open Type Hierarchy,
+		Open a type hierarchy on the selected element,
+		Category(org.eclipse.ui.category.navigate,Navigate,null,true),
+		org.eclipse.ui.internal.MakeHandlersGo@2676e8ec,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,,system)
+!SUBENTRY 1 org.eclipse.jface 2 0 2012-12-03 12:55:11.102
+!MESSAGE A conflict occurred for COMMAND+SHIFT+G:
+Binding(COMMAND+SHIFT+G,
+	ParameterizedCommand(Command(org.eclipse.cdt.ui.search.findrefs,References,
+		Search for references to the selected element in the workspace,
+		Category(org.eclipse.cdt.ui.category.source,C/C++ Source,C/C++ Source Actions,true),
+		org.eclipse.ui.internal.MakeHandlersGo@48b5f1ae,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.cdt.ui.cEditorScope,,,system)
+Binding(COMMAND+SHIFT+G,
+	ParameterizedCommand(Command(org.eclipse.cdt.ui.search.findrefs,References,
+		Search for references to the selected element in the workspace,
+		Category(org.eclipse.cdt.ui.category.source,C/C++ Source,C/C++ Source Actions,true),
+		org.eclipse.ui.internal.MakeHandlersGo@48b5f1ae,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.cdt.ui.cViewScope,,,system)
+Binding(COMMAND+SHIFT+G,
+	ParameterizedCommand(Command(org.eclipse.jdt.ui.edit.text.java.search.references.in.workspace,References in Workspace,
+		Search for references to the selected element in the workspace,
+		Category(org.eclipse.search.ui.category.search,Search,Search command category,true),
+		org.eclipse.ui.internal.MakeHandlersGo@210dfbcd,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,,system)
+!SUBENTRY 1 org.eclipse.jface 2 0 2012-12-03 12:55:11.102
+!MESSAGE A conflict occurred for ALT+COMMAND+I:
+Binding(ALT+COMMAND+I,
+	ParameterizedCommand(Command(org.eclipse.cdt.ui.edit.open.include.browser,Open Include Browser,
+		Open an include browser on the selected element,
+		Category(org.eclipse.ui.category.navigate,Navigate,null,true),
+		org.eclipse.ui.internal.MakeHandlersGo@1d0e60af,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.cdt.ui.cEditorScope,,,system)
+Binding(ALT+COMMAND+I,
+	ParameterizedCommand(Command(org.eclipse.cdt.ui.edit.open.include.browser,Open Include Browser,
+		Open an include browser on the selected element,
+		Category(org.eclipse.ui.category.navigate,Navigate,null,true),
+		org.eclipse.ui.internal.MakeHandlersGo@1d0e60af,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.cdt.ui.cViewScope,,,system)
+Binding(ALT+COMMAND+I,
+	ParameterizedCommand(Command(org.eclipse.jdt.ui.edit.text.java.inline,Inline,
+		Inline a constant, local variable or method,
+		Category(org.eclipse.jdt.ui.category.refactoring,Refactor - Java,Java Refactoring Actions,true),
+		org.eclipse.ui.internal.MakeHandlersGo@1aed9010,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,cocoa,system)
+!SUBENTRY 1 org.eclipse.jface 2 0 2012-12-03 12:55:11.102
+!MESSAGE A conflict occurred for COMMAND+SHIFT+H:
+Binding(COMMAND+SHIFT+H,
+	ParameterizedCommand(Command(org.eclipse.cdt.ui.navigate.open.type.in.hierarchy,Open Type in Hierarchy,
+		Open a type in the type hierarchy view,
+		Category(org.eclipse.ui.category.navigate,Navigate,null,true),
+		org.eclipse.ui.internal.MakeHandlersGo@628d183f,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.cdt.ui.cEditorScope,,,system)
+Binding(COMMAND+SHIFT+H,
+	ParameterizedCommand(Command(org.eclipse.cdt.ui.navigate.open.type.in.hierarchy,Open Type in Hierarchy,
+		Open a type in the type hierarchy view,
+		Category(org.eclipse.ui.category.navigate,Navigate,null,true),
+		org.eclipse.ui.internal.MakeHandlersGo@628d183f,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.cdt.ui.cViewScope,,,system)
+Binding(COMMAND+SHIFT+H,
+	ParameterizedCommand(Command(org.eclipse.jdt.ui.navigate.open.type.in.hierarchy,Open Type in Hierarchy,
+		Open a type in the type hierarchy view,
+		Category(org.eclipse.ui.category.navigate,Navigate,null,true),
+		org.eclipse.ui.internal.MakeHandlersGo@1d3302a5,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,,system)
+!SUBENTRY 1 org.eclipse.jface 2 0 2012-12-03 12:55:11.102
+!MESSAGE A conflict occurred for ALT+CTRL+H:
+Binding(ALT+CTRL+H,
+	ParameterizedCommand(Command(org.eclipse.jdt.ui.edit.text.java.open.call.hierarchy,Open Call Hierarchy,
+		Open a call hierarchy on the selected element,
+		Category(org.eclipse.ui.category.navigate,Navigate,null,true),
+		org.eclipse.ui.internal.MakeHandlersGo@7ff2ad9c,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,,system)
+Binding(ALT+CTRL+H,
+	ParameterizedCommand(Command(org.eclipse.cdt.ui.edit.open.call.hierarchy,Open Call Hierarchy,
+		Open the call hierarchy for the selected element,
+		Category(org.eclipse.ui.category.navigate,Navigate,null,true),
+		org.eclipse.ui.internal.MakeHandlersGo@15641e64,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.cdt.ui.cEditorScope,,cocoa,system)
+Binding(ALT+CTRL+H,
+	ParameterizedCommand(Command(org.eclipse.cdt.ui.edit.open.call.hierarchy,Open Call Hierarchy,
+		Open the call hierarchy for the selected element,
+		Category(org.eclipse.ui.category.navigate,Navigate,null,true),
+		org.eclipse.ui.internal.MakeHandlersGo@15641e64,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.cdt.ui.cViewScope,,cocoa,system)
+
+!ENTRY org.eclipse.cdt.core 1 0 2012-12-03 13:05:52.739
+!MESSAGE Indexed 'base_station' (40 sources, 119 headers) in 3.66 sec: 7,480 declarations; 18,598 references; 0 unresolved inclusions; 2 syntax errors; 0 unresolved names (0.00%)
+
+!ENTRY org.eclipse.cdt.core 1 0 2012-12-03 13:07:09.509
+!MESSAGE Indexed 'base_station' (40 sources, 119 headers) in 2.54 sec: 7,480 declarations; 18,598 references; 0 unresolved inclusions; 2 syntax errors; 0 unresolved names (0.00%)
+!SESSION 2012-12-03 13:13:32.491 -----------------------------------------------
+eclipse.buildId=M20120914-1800
+java.version=1.6.0_37
+java.vendor=Apple Inc.
+BootLoader constants: OS=macosx, ARCH=x86_64, WS=cocoa, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.java.product -keyring /Users/imaveek/.eclipse_keyring -showlocation
+Command-line arguments:  -os macosx -ws cocoa -arch x86_64 -product org.eclipse.epp.package.java.product -keyring /Users/imaveek/.eclipse_keyring -showlocation
+
+!ENTRY org.eclipse.core.net 1 0 2012-12-03 13:15:30.103
+!MESSAGE System property http.nonProxyHosts has been set to local|*.local|169.254/16|*.169.254/16 by an external source. This value will be overwritten using the values from the preferences
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2012-12-03 13:15:34.429
+!MESSAGE SecurityException: Unable to find field for dex.jar
+!STACK 0
+java.lang.NoSuchFieldException: forceJumbo
+	at java.lang.Class.getField(Class.java:1520)
+	at com.android.ide.eclipse.adt.internal.build.DexWrapper.loadDex(DexWrapper.java:96)
+	at com.android.ide.eclipse.adt.internal.sdk.Sdk.loadSdk(Sdk.java:273)
+	at com.android.ide.eclipse.adt.AdtPlugin$7.run(AdtPlugin.java:1389)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
